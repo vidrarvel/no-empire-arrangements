@@ -25,9 +25,6 @@ block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
 block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
 block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
 block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
-block: A GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
-block: A GTR | INTERLUDE 1 | INTERLUDE 1 | live | Strumming off-beat
-block: A GTR | VERSE 2 | VERSE 2 | live | Strumming off-beat
 block: J GTR | INTRO 2 | INTRO 2 | live | Intro riff
 block: J GTR | VERSE 1 | VERSE 1 | live | Intro riff
 block: J GTR | CHORUS 1 | CHORUS 1 | live | Chorus
@@ -35,8 +32,7 @@ block: J GTR | INTERLUDE 1 | INTERLUDE 1 | live | Intro riff
 block: J GTR | VERSE 2 | VERSE 2 | live | Intro riff
 block: J GTR | CHORUS 2 | CHORUS 2 | live | Chorus
 block: J GTR | SOLO | SOLO | live | Solo
-block: BASS SYNTH | INTRO 1 | INTRO 1 | rec | BASS SYN  | loop drone note/pad
-block: BASS SYNTH | INTRO 2 | INTRO 2 | loop | BASS SYN  | loop drone note/pad
+block: BASS SYNTH | INTRO 1 | INTRO 1 | rec | BASS SYN | loop drone note/pad
 
 note: - End on Em9 chord.
 idea: - Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
