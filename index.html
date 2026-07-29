@@ -712,7 +712,7 @@ function render(model, warnings, interactive) {
 
   var map = card.querySelector("#map");
   var S = model.sections;
-  var colTemplate = S.map(function (s) { return "minmax(" + (s.bars <= 2 ? "30px" : "40px") + ", " + s.bars + "fr)"; }).join(" ");
+  var colTemplate = S.map(function (s) { return "minmax(" + (s.bars <= 2 ? "100px" : (s.bars <= 4 ? "70px" : "40px")) + ", " + s.bars + "fr)"; }).join(" ");
   var tl = document.createElement("div");
   tl.className = "tl";
 
