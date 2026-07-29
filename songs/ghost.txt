@@ -47,3 +47,4 @@ block: J GTR | CHORUS 1 | CHORUS 1 | live | J GTR CH Riff
 block: DRUMS | CHORUS 1 | CHORUS 1 | live | DRUMS CH
 
 note: NO LOOPING, Andy on Bass
+idea: add strings?
