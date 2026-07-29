@@ -12,17 +12,17 @@ section: CHORUS 2 | 16 | 7 | Bm F#m A E - Bm F#m E | 104
 section: SOLO | 16 | 8 | Bm F#m A E - Bm F#m E
 section: END | 2 | 2 | Bm
 
-row: VOX
+row: A VOX
 row: A GTR
 row: J GTR
 row: BVs
 row: BASS | Andy
 row: DRUMS
 
-block: VOX | VERSE 1 | VERSE 1 | live | VOX V1
-block: VOX | CHORUS 1 | CHORUS 1 | live | VOX CHOR
-block: VOX | VERSE 2 | VERSE 2 | live | VOX V2
-block: VOX | CHORUS 2 | CHORUS 2 | live | VOX CHOR
+block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
+block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CHOR
+block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
+block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CHOR
 block: J GTR | INTRO 2 | VERSE 1 | live | J GTR V1 RIFF | (Bar 5 of Intro 1)
 block: J GTR | INTERLUDE | VERSE 2 | live | J GTR V2 Riff
 block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR CH Riff
