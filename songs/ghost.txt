@@ -37,9 +37,8 @@ block: JACK | VERSE 2 | VERSE 2 | live | JACK Pat 2 | bluesy strumming
 block: JACK | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
 block: JACK | SOLO | SOLO | live | Solo | in D
 block: JACK | END | END | live | Whole-note strum
-block: BASS | INTRO 1 | INTRO 2 | live | Fill | last bar
-block: BASS | VERSE 1 | VERSE 1 | live | Verse Pat 1
-block: BASS | CHORUS 1 | CHORUS 1 | live | Ch Pat 1
+block: BASS | INTRO 1 | VERSE 1 | live | Bass Verse Riff
+block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chor Riff
 block: BASS | VERSE 2 | VERSE 2 | live | Verse Pat 1
 block: BASS | CHORUS 2 | CHORUS 2 | live | Ch Pat 1
 block: BASS | SOLO | SOLO | live | Bass riff
@@ -51,7 +50,8 @@ block: IVAN | VERSE 2 | VERSE 2 | live | IVAN Pat 1
 block: IVAN | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
 block: IVAN | SOLO | SOLO | live | IVAN Pat 2
 block: IVAN | END | END | live | Kick & cymbal crash
-block: BG VOX | CHORUS 1 | CHORUS 1 | live | BVs
+block: BG VOX | CHORUS 1 | CHORUS 1 | live | BVs Chorus
+block: BG VOX | CHORUS 2 | CHORUS 2 | live | BVs Chorus
 
 note: Verse chord shape - 2 bars Am, then Am, C, D over 6-bar lines; vox sits on the 6-bar lines.
 note: Source sheet lists both "Chorus Pat 1" and "Chorus Rhythm Pat" for GTR chorus sections - treated as one pattern (GTR Chorus Pat) here; check if these were meant to differ.
