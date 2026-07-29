@@ -4,10 +4,10 @@ tempo: 102
 
 section: INTRO | 16 | 3 | Am - Am C D
 section: VERSE 1 | 16 | 4 | Am / Am C D x2
-section: CHORUS 1 | 16 | 7 | Bm F#m A E - Bm F#m E
+section: CHORUS 1 | 16 | 7 | Bm F#m A E - Bm F#m E | 104
 section: INTERLUDE | 8 | 4
 section: VERSE 2 | 16 | 5 | intro shape + verse shape
-section: CHORUS 2 | 16 | 7 | Bm F#m A E - Bm F#m E
+section: CHORUS 2 | 16 | 7 | Bm F#m A E - Bm F#m E | 104
 section: SOLO | 16 | 8 | Bm F#m A E - Bm F#m E
 section: END | 1 | 2 | Bm
 
@@ -56,5 +56,5 @@ note: Ivan to try a fill before the chorus.
 note: Ivan to vary up the kick pattern for V2.
 note: Bass to do a fill at the end.
 note: Bar counts corrected against the live Ableton project (2026-07-29): Intro 6->16, Verse 1 18->16, Verse 2 24->16, added an 8-bar Interlude between Chorus 1 and Verse 2 (not previously charted - instrumentation TBD, no blocks assigned yet). Walk-On/count-in bars and the Ending bar count were left as-is (live-only/not corrected per Andy).
-note: Tempo runs 102 BPM in verses, 104 BPM in chorus per the live project. This tool only supports one tempo value; using 102 (verse tempo) here. Chord/rhythm annotations for Verse 1 and Verse 2 have not been re-checked against the corrected bar counts.
+note: Tempo runs 102 BPM in verses, 104 BPM in chorus per the live project (2026-07-29). Song tempo is set to 102 with a 104 override on both chorus sections. Chord/rhythm annotations for Verse 1 and Verse 2 have not been re-checked against the corrected bar counts.
 note: Migrated from ghost.md (source: "Song Arrangements" gsheet, migrated 2026-07-17).
