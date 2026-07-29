@@ -43,4 +43,3 @@ note: The old PRECHORUS block ("Bridge vocals") has been folded into the end of 
 note: Bass and drums are mostly blank in the source gsheet (beyond "keeping beat" for drums) - parts not written down yet. BASS row left empty on purpose; fill in when written.
 note: End on Em9 chord.
 note: Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
-note: Migrated from empire.md (source: "Song Arrangements" gsheet, migrated 2026-07-17).
