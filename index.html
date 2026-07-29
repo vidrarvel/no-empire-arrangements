@@ -113,7 +113,7 @@
 <div id="modalRoot"></div>
 <div class="wrap">
   <h1>Arrangement Editor</h1>
-  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click a block to rename it, double-click a row label to rename the row. Drag a block's edge to resize. Or just type below. No Empire.</div>
+  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click a block to rename it, double-click a row label to rename the row, double-click a section header to edit its bars/energy/chords/tempo. Drag a block's edge to resize. Or just type below. No Empire.</div>
 
   <div class="toolbar">
     <label class="file-btn">Load source
@@ -612,6 +612,38 @@ function renameRowPrompt(uid) {
     syncAndRender();
   });
 }
+function editSectionPrompt(uid) {
+  var sec = currentModel.sections.find(function (s) { return s._uid === uid; });
+  if (!sec) return;
+  var otherNames = currentModel.sections.filter(function (s) { return s._uid !== uid; }).map(function (s) { return s.name; });
+  openFieldModal("Edit section", [
+    { key: "name", label: "Section name", value: sec.name },
+    { key: "bars", label: "Bars", value: sec.bars },
+    { key: "energy", label: "Energy (0-10)", value: sec.energy },
+    { key: "chords", label: "Chords (optional)", value: sec.chords },
+    { key: "tempo", label: "Tempo override (optional, blank = use song tempo)", value: sec.tempo || "" }
+  ], function (values) {
+    var name = (values.name || "").trim();
+    if (!name) return;
+    name = uniqueName(otherNames, name);
+    var bars = parseInt(values.bars, 10) || 4;
+    var energy = parseInt(values.energy, 10); if (isNaN(energy)) energy = 5;
+    var tempo = values.tempo ? parseFloat(values.tempo) : NaN;
+    var oldName = sec.name;
+    sec.name = name;
+    sec.bars = bars;
+    sec.energy = Math.max(0, Math.min(10, energy));
+    sec.chords = values.chords || "";
+    sec.tempo = isNaN(tempo) ? null : tempo;
+    if (oldName !== name) {
+      currentModel.blocks.forEach(function (b) {
+        if (b.from === oldName) b.from = name;
+        if (b.to === oldName) b.to = name;
+      });
+    }
+    syncAndRender();
+  });
+}
 function removeSection(uid) {
   var sec = currentModel.sections.find(function (s) { return s._uid === uid; });
   if (!sec) return;
@@ -756,7 +788,8 @@ function render(model, warnings, interactive) {
   S.forEach(function (s) {
     var c = document.createElement("div");
     c.className = "sec-head sec-col";
-    c.title = s.name + " — " + s.bars + " bars" + (s.tempo ? " · " + s.tempo + " bpm" : "") + (s.chords ? " · " + s.chords : "");
+    c.title = s.name + " — " + s.bars + " bars, energy " + s.energy + (s.tempo ? " · " + s.tempo + " bpm" : "") + (s.chords ? " · " + s.chords : "") + (interactive ? " (double-click to edit)" : "");
+    c.setAttribute("data-sec-uid", String(s._uid));
     c.innerHTML = '<div class="sec-name">' + esc(s.name) + '</div><div class="sec-bars">' + s.bars + (s.tempo ? ' <span class="sec-tempo">· ' + s.tempo + '</span>' : '') + '</div>' +
       (anyChords ? '<div class="sec-chords">' + esc(s.chords || "") + '</div>' : "") +
       (interactive ? '<span class="sec-del" title="Remove section" data-sec-uid="' + s._uid + '">&times;</span>' : "");
@@ -764,8 +797,13 @@ function render(model, warnings, interactive) {
   });
   head.appendChild(headCells); tl.appendChild(head);
   if (interactive) {
+    headCells.style.cursor = "pointer";
+    headCells.querySelectorAll(".sec-head").forEach(function (el) {
+      el.addEventListener("dblclick", function () { editSectionPrompt(parseInt(el.getAttribute("data-sec-uid"), 10)); });
+    });
     headCells.querySelectorAll(".sec-del").forEach(function (el) {
       el.addEventListener("click", function (e) { e.stopPropagation(); removeSection(parseInt(el.getAttribute("data-sec-uid"), 10)); });
+      el.addEventListener("dblclick", function (e) { e.stopPropagation(); });
     });
   }
 
