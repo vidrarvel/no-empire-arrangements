@@ -1,0 +1,43 @@
+title: EMPIRE
+time: 4/4
+tempo: 82
+
+section: INTRO | 4 | 3 | Em D C
+section: VERSE 1 | 24 | 4 | Em D C
+section: CHORUS 1 | 16 | 7 | C - Am
+section: GAP | 8 | 4 | Em D C
+section: VERSE 2 | 24 | 5 | Em D C
+section: PRECHORUS | 8 | 6
+section: CHORUS 2 | 16 | 8 | C - Am
+section: OUTRO | 16 | 7 | C - Am
+
+row: VOX
+row: GTR
+row: JACK
+row: BASS
+row: IVAN
+
+block: VOX | VERSE 1 | VERSE 1 | live | V1 | vocals out for one 4-bar line mid-verse
+block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
+block: VOX | VERSE 2 | VERSE 2 | live | V2 | same gap shape as V1
+block: VOX | PRECHORUS | PRECHORUS | live | Bridge vocals
+block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
+block: GTR | GAP | GAP | live | Strumming off-beat
+block: GTR | VERSE 2 | VERSE 2 | live | Strumming off-beat
+block: JACK | INTRO | INTRO | live | Intro riff
+block: JACK | VERSE 1 | VERSE 1 | live | Intro riff
+block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus
+block: JACK | GAP | GAP | live | Intro riff
+block: JACK | VERSE 2 | VERSE 2 | live | Intro riff
+block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus
+block: JACK | OUTRO | OUTRO | live | Solo
+block: IVAN | INTRO | INTRO | live | Keeping beat
+block: IVAN | VERSE 1 | VERSE 1 | live | Keeping beat
+block: IVAN | GAP | GAP | live | Keeping beat
+
+note: BPM discrepancy - the Songs Database lists 73, but this arrangement file (empire.md) says 82; using 82 here since it's the arrangement source of truth. Check which is current.
+note: Bass and drums are mostly blank in the source gsheet (beyond "keeping beat" for drums) - parts not written down yet. BASS row left empty on purpose; fill in when written.
+note: End on Em9 chord.
+note: Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
+note: Migrated from empire.md (source: "Song Arrangements" gsheet, migrated 2026-07-17).
