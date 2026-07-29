@@ -725,19 +725,25 @@ function render(model, warnings, interactive) {
   var tl = document.createElement("div");
   tl.className = "tl";
 
-  var acc = 0;
-  var xs = S.map(function (s) { var x0 = acc; acc += s.bars; return [x0 / totalBars, acc / totalBars]; });
-  var W = 1000, H = 44, PAD = 4;
+  var W = 100, H = 44, PAD = 4;
   function y(e) { return H - PAD - (e / 10) * (H - 2 * PAD); }
-  var d = "";
-  xs.forEach(function (pair, i) {
-    d += (i === 0 ? "M " : "L ") + (pair[0] * W).toFixed(1) + " " + y(S[i].energy).toFixed(1) + " L " + (pair[1] * W).toFixed(1) + " " + y(S[i].energy).toFixed(1) + " ";
-  });
   var eRow = document.createElement("div");
   eRow.className = "tl-row";
-  eRow.innerHTML = '<div class="tl-label">ENERGY</div><div><svg id="energy-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">' +
-    '<path d="' + d + ' L ' + W + ' ' + (H - PAD) + ' L 0 ' + (H - PAD) + ' Z" fill="var(--grid)" opacity="0.55"></path>' +
-    '<path d="' + d + '" fill="none" stroke="var(--ink-2)" stroke-width="2"></path></svg></div>';
+  eRow.innerHTML = '<div class="tl-label">ENERGY</div>';
+  var eCells = document.createElement("div");
+  eCells.className = "tl-cells"; eCells.style.gridTemplateColumns = colTemplate;
+  S.forEach(function (s, i) {
+    var yCur = y(s.energy);
+    var line = (i > 0 ? ("M 0 " + y(S[i - 1].energy).toFixed(1) + " L 0 " + yCur.toFixed(1) + " L " + W + " " + yCur.toFixed(1)) : ("M 0 " + yCur.toFixed(1) + " L " + W + " " + yCur.toFixed(1)));
+    var fillPath = line + " L " + W + " " + (H - PAD) + " L 0 " + (H - PAD) + " Z";
+    var cell = document.createElement("div");
+    cell.className = "sec-col";
+    cell.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" style="display:block;width:100%;height:' + H + 'px;">' +
+      '<path d="' + fillPath + '" fill="var(--grid)" opacity="0.55"></path>' +
+      '<path d="' + line + '" fill="none" stroke="var(--ink-2)" stroke-width="2"></path></svg>';
+    eCells.appendChild(cell);
+  });
+  eRow.appendChild(eCells);
   tl.appendChild(eRow);
 
   var head = document.createElement("div");
