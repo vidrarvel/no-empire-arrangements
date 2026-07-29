@@ -17,7 +17,7 @@ row: BG VOX
 row: GTR
 row: JACK
 row: BASS
-row: IVAN
+row: DRUMS
 
 block: VOX | VERSE 1 | VERSE 1 | live | V1 | on the two 6-bar lines
 block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
@@ -43,23 +43,11 @@ block: BASS | VERSE 2 | VERSE 2 | live | Verse Pat 1
 block: BASS | CHORUS 2 | CHORUS 2 | live | Ch Pat 1
 block: BASS | SOLO | SOLO | live | Bass riff
 block: BASS | END | END | live | Fill
-block: IVAN | INTRO 1 | INTRO 2 | live | Kick & cymbal crash | C-D bars
-block: IVAN | VERSE 1 | VERSE 1 | live | IVAN Pat 1 | 8th-note hi-hats, sidestick
-block: IVAN | CHORUS 1 | CHORUS 1 | live | IVAN Pat 2 | ride, sidestick to snare
-block: IVAN | VERSE 2 | VERSE 2 | live | IVAN Pat 1
-block: IVAN | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
-block: IVAN | SOLO | SOLO | live | IVAN Pat 2
-block: IVAN | END | END | live | Kick & cymbal crash
-block: BG VOX | CHORUS 1 | CHORUS 1 | live | BVs Chorus
+block: DRUMS | INTRO 1 | INTRO 2 | live | Kick & cymbal crash | C-D bars
+block: DRUMS | VERSE 1 | VERSE 1 | live | IVAN Pat 1 | 8th-note hi-hats, sidestick
+block: DRUMS | CHORUS 1 | CHORUS 1 | live | IVAN Pat 2 | ride, sidestick to snare
+block: DRUMS | VERSE 2 | VERSE 2 | live | IVAN Pat 1
+block: DRUMS | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
+block: DRUMS | SOLO | SOLO | live | IVAN Pat 2
+block: DRUMS | END | END | live | Kick & cymbal crash
 block: BG VOX | CHORUS 2 | CHORUS 2 | live | BVs Chorus
-
-note: Verse chord shape - 2 bars Am, then Am, C, D over 6-bar lines; vox sits on the 6-bar lines.
-note: Source sheet lists both "Chorus Pat 1" and "Chorus Rhythm Pat" for GTR chorus sections - treated as one pattern (GTR Chorus Pat) here; check if these were meant to differ.
-note: Ivan to try a fill before the chorus.
-note: Ivan to vary up the kick pattern for V2.
-note: Bass to do a fill at the end.
-note: Bar counts corrected against the live Ableton project (2026-07-29): Intro 6->16, Verse 1 18->16, Verse 2 24->16, added an 8-bar Interlude between Chorus 1 and Verse 2 (not previously charted - instrumentation TBD, no blocks assigned yet). Walk-On/count-in bars and the Ending bar count were left as-is (live-only/not corrected per Andy).
-note: Tempo runs 102 BPM in verses, 104 BPM in chorus per the live project (2026-07-29). Song tempo is set to 102 with a 104 override on both chorus sections. Chord/rhythm annotations for Verse 1 and Verse 2 have not been re-checked against the corrected bar counts.
-note: Intro split into two 8-bar sections (INTRO 1, INTRO 2) to reflect the Am / Am-C-D chord halves.
-note: Added a BG VOX row - no blocks assigned yet, fill in background vocal parts as needed.
-note: Migrated from ghost.md (source: "Song Arrangements" gsheet, migrated 2026-07-17).
