@@ -941,7 +941,7 @@ function render(model, warnings, interactive) {
   card.className = "card";
   var title = model.meta.title || "UNTITLED";
   var hasTempoOverrides = model.sections.some(function (s) { return s.tempo; });
-  var metaLine = [model.meta.time, model.meta.tempo ? "tempo " + model.meta.tempo + (hasTempoOverrides ? " (base)" : "") : ""].filter(Boolean).join(" &nbsp;·&nbsp; ");
+  var metaLine = [model.meta.time, model.meta.tempo ? model.meta.tempo + (hasTempoOverrides ? " (base)" : "") : ""].filter(Boolean).join(" &nbsp;·&nbsp; ");
   var totalBars = model.sections.reduce(function (a, s) { return a + s.bars; }, 0);
   card.innerHTML = '<h2>' + esc(title) + '</h2><div class="meta">' + metaLine + '</div><div id="map"></div>';
   mapWrap.appendChild(card);
