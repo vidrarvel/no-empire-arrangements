@@ -63,9 +63,9 @@
   .sec-chords { font-size: 9px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 12px; }
   .sec-col { border-left: 1px solid var(--grid); }
   .row-gap { height: 2px; }
-  .track { min-height: 32px; border-radius: 4px; cursor: cell; }
+  .track { grid-row: 1; min-height: 32px; border-radius: 4px; cursor: cell; }
   .track:hover { background: var(--grid); }
-  .blk { position: relative; border-radius: 4px; padding: 4px 16px 4px 6px; font-size: 10.5px; line-height: 1.2;
+  .blk { grid-row: 1; position: relative; border-radius: 4px; padding: 4px 16px 4px 6px; font-size: 10.5px; line-height: 1.2;
          min-height: 32px; min-width: 0; overflow: hidden; display: flex; flex-direction: column;
          justify-content: center; cursor: pointer; user-select: none; }
   .blk .t { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
