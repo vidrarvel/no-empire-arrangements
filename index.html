@@ -576,7 +576,7 @@ function clearToken() { localStorage.removeItem(GH_TOKEN_KEY); }
 function loadFromGithub() {
   setGhStatus("GitHub: loading…");
   var draftBeforeLoad = readDraft();
-  fetch(ghApiUrl() + "?ref=" + GH_BRANCH, { headers: { "Accept": "application/vnd.github+json" } })
+  fetch(ghApiUrl() + "?ref=" + GH_BRANCH, { headers: { "Accept": "application/vnd.github+json" }, cache: "no-store" })
     .then(function (res) {
       if (res.status === 404) { setGhStatus("GitHub: no saved file yet — showing example, Save will create it."); return null; }
       if (!res.ok) { throw new Error("HTTP " + res.status); }
@@ -1173,7 +1173,7 @@ function loadSongList() {
   var headers = { "Accept": "application/vnd.github+json" };
   var token = getToken();
   if (token) headers["Authorization"] = "token " + token;
-  fetch(url, { headers: headers })
+  fetch(url, { headers: headers, cache: "no-store" })
     .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
     .then(function (list) {
       if (!Array.isArray(list)) return;
