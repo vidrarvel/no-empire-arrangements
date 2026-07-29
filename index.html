@@ -716,7 +716,7 @@ function render(model, warnings, interactive) {
   var hasTempoOverrides = model.sections.some(function (s) { return s.tempo; });
   var metaLine = [model.meta.time, model.meta.tempo ? "tempo " + model.meta.tempo + (hasTempoOverrides ? " (base)" : "") : ""].filter(Boolean).join(" &nbsp;·&nbsp; ");
   var totalBars = model.sections.reduce(function (a, s) { return a + s.bars; }, 0);
-  card.innerHTML = '<h2>' + esc(title) + '</h2><div class="meta">' + metaLine + ' &nbsp;·&nbsp; <b>' + totalBars + '</b> bars total</div><div id="map"></div>';
+  card.innerHTML = '<h2>' + esc(title) + '</h2><div class="meta">' + metaLine + '</div><div id="map"></div>';
   mapWrap.appendChild(card);
 
   var map = card.querySelector("#map");
