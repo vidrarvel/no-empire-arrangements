@@ -506,6 +506,7 @@ var lastSyncedContent = null; // content as last confirmed on GitHub (for unsave
 var ghExists = false; // whether GH_PATH currently exists on GitHub (false = first save will create it, skip diff)
 function draftKey() { return "ne_arr_draft_" + GH_SONG; }
 function saveDraft() {
+  if (EMBED_MODE) return; // read-only embed view: never touch localStorage
   try { localStorage.setItem(draftKey(), JSON.stringify({ content: document.getElementById("src").value, ts: Date.now() })); } catch (e) { /* ignore quota/privacy-mode errors */ }
 }
 function clearDraft() {
@@ -515,6 +516,7 @@ function readDraft() {
   try { var raw = localStorage.getItem(draftKey()); return raw ? JSON.parse(raw) : null; } catch (e) { return null; }
 }
 function maybeOfferDraftRestore(draft, loadedContent) {
+  if (EMBED_MODE) return; // read-only embed view: never prompt, never mutate
   if (!draft || !draft.content || draft.content === loadedContent) return;
   var when = new Date(draft.ts).toLocaleString();
   openConfirm(
@@ -1255,6 +1257,7 @@ document.getElementById("fileInput").addEventListener("change", function (e) {
 
 document.getElementById("src").addEventListener("input", rerenderFromText);
 window.addEventListener("beforeunload", function (e) {
+  if (EMBED_MODE) return;
   if (document.getElementById("src").value !== lastSyncedContent) {
     e.preventDefault();
     e.returnValue = "";
