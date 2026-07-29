@@ -1,6 +1,6 @@
 title: EMPIRE
 time: 4/4
-tempo: 93
+tempo: 93bpm
 
 section: INTRO 1 | 8 | 3 | Em D C
 section: INTRO 2 | 8 | 4 | Em D C
@@ -11,7 +11,7 @@ section: VERSE 2 | 12 | 5 | Em D C
 section: CHORUS 2 | 16 | 8 | C - Am | 94
 section: SOLO | 8 | 8 | C - Am | 94
 section: INTERLUDE 2 | 4 | 4 | Em D C
-section: ENDING | 2 | 3 | Em
+section: ENDING | 2 | 3 | Em D C
 
 row: A VOX
 row: A GTR
@@ -25,6 +25,9 @@ block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
 block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
 block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
 block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
+block: A GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
+block: A GTR | INTERLUDE 1 | INTERLUDE 1 | live | Strumming off-beat
+block: A GTR | VERSE 2 | VERSE 2 | live | Strumming off-beat
 block: J GTR | INTRO 2 | INTRO 2 | live | Intro riff
 block: J GTR | VERSE 1 | VERSE 1 | live | Intro riff
 block: J GTR | CHORUS 1 | CHORUS 1 | live | Chorus
@@ -32,13 +35,10 @@ block: J GTR | INTERLUDE 1 | INTERLUDE 1 | live | Intro riff
 block: J GTR | VERSE 2 | VERSE 2 | live | Intro riff
 block: J GTR | CHORUS 2 | CHORUS 2 | live | Chorus
 block: J GTR | SOLO | SOLO | live | Solo
-block: BASS SYNTH | INTRO 1 | INTRO 1 | rec | BASS SYN | loop drone note/pad
-block: BASS SYNTH | INTRO 2 | VERSE 1 | loop | BASS SYN | loop drone note/pad
+block: BASS SYNTH | INTRO 1 | INTRO 1 | rec | BASS SYN  | loop drone note/pad
+block: BASS SYNTH | INTRO 2 | VERSE 1 | loop | BASS SYN  | loop drone note/pad
 block: BASS SYNTH | CHORUS 1 | CHORUS 1 | loop | BASS SYN | pre-recorded bass synth
-block: A GTR | CHORUS 1 | CHORUS 1 | live | A GTR CH | chords
-block: A GTR | INTERLUDE 1 | VERSE 2 | live | A GTR V2 | chords
-block: A GTR | CHORUS 2 | SOLO | live | A GTR CH | chords
-block: A GTR | INTERLUDE 2 | INTERLUDE 2 | live | A GTR V2 | chords
+block: BASS | INTERLUDE 1 | ENDING | live | BASS | live from here to end of song
 
 note: - End on Em9 chord.
 idea: - Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
