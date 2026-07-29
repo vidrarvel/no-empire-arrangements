@@ -1,15 +1,17 @@
 title: EMPIRE
 time: 4/4
-tempo: 82
+tempo: 93
 
-section: INTRO | 4 | 3 | Em D C
-section: VERSE 1 | 24 | 4 | Em D C
-section: CHORUS 1 | 16 | 7 | C - Am
-section: GAP | 8 | 4 | Em D C
-section: VERSE 2 | 24 | 5 | Em D C
-section: PRECHORUS | 8 | 6
-section: CHORUS 2 | 16 | 8 | C - Am
-section: OUTRO | 16 | 7 | C - Am
+section: INTRO 1 | 8 | 3 | Em D C
+section: INTRO 2 | 8 | 4 | Em D C
+section: VERSE 1 | 16 | 4 | Em D C
+section: CHORUS 1 | 8 | 7 | C - Am | 94
+section: INTERLUDE 1 | 8 | 4 | Em D C
+section: VERSE 2 | 12 | 5 | Em D C
+section: CHORUS 2 | 16 | 8 | C - Am | 94
+section: SOLO | 8 | 8 | C - Am | 94
+section: INTERLUDE 2 | 4 | 4 | Em D C
+section: ENDING | 2 | 3 | Em D C
 
 row: VOX
 row: GTR
@@ -19,24 +21,25 @@ row: IVAN
 
 block: VOX | VERSE 1 | VERSE 1 | live | V1 | vocals out for one 4-bar line mid-verse
 block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
-block: VOX | VERSE 2 | VERSE 2 | live | V2 | same gap shape as V1
-block: VOX | PRECHORUS | PRECHORUS | live | Bridge vocals
+block: VOX | VERSE 2 | VERSE 2 | live | V2 + bridge vocals into Chorus 2 (was a separate PRECHORUS section - folded in, verify exact bars)
 block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
 block: GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
-block: GTR | GAP | GAP | live | Strumming off-beat
+block: GTR | INTERLUDE 1 | INTERLUDE 1 | live | Strumming off-beat
 block: GTR | VERSE 2 | VERSE 2 | live | Strumming off-beat
-block: JACK | INTRO | INTRO | live | Intro riff
+block: JACK | INTRO 2 | INTRO 2 | live | Intro riff
 block: JACK | VERSE 1 | VERSE 1 | live | Intro riff
 block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus
-block: JACK | GAP | GAP | live | Intro riff
+block: JACK | INTERLUDE 1 | INTERLUDE 1 | live | Intro riff
 block: JACK | VERSE 2 | VERSE 2 | live | Intro riff
 block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus
-block: JACK | OUTRO | OUTRO | live | Solo
-block: IVAN | INTRO | INTRO | live | Keeping beat
+block: JACK | SOLO | SOLO | live | Solo
+block: IVAN | INTRO 1 | INTRO 2 | live | Keeping beat
 block: IVAN | VERSE 1 | VERSE 1 | live | Keeping beat
-block: IVAN | GAP | GAP | live | Keeping beat
+block: IVAN | INTERLUDE 1 | INTERLUDE 1 | live | Keeping beat
 
-note: BPM discrepancy - the Songs Database lists 73, but this arrangement file (empire.md) says 82; using 82 here since it's the arrangement source of truth. Check which is current.
+note: Chart corrected 2026-07-29 to match the actual live Ableton arrangement. Structure: Intro is two 8-bar halves (Bass & Drums, then Jack) instead of one 4-bar Intro; Verse 1 is 16 bars (was 24); Chorus 1 is 8 bars (was 16); the old Prechorus section doesn't exist live - Verse 2 goes straight into Chorus 2; Verse 2 is 12 bars (was 24); Chorus 2 stays 16 bars; the old 16-bar Outro is actually three parts live - an 8-bar Solo, a 4-bar Interlude, and a 2-bar Ending.
+note: Tempo corrected 2026-07-29: song runs at 93 BPM (was listed as 82). Chorus 1, Chorus 2, and Solo speed up to 94; everything else (Intro, Verse, Interludes, Ending) stays at 93.
+note: The old PRECHORUS block ("Bridge vocals") has been folded into the end of Verse 2 above pending confirmation of the exact bars it covers.
 note: Bass and drums are mostly blank in the source gsheet (beyond "keeping beat" for drums) - parts not written down yet. BASS row left empty on purpose; fill in when written.
 note: End on Em9 chord.
 note: Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
