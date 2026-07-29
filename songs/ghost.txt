@@ -1,0 +1,57 @@
+title: GHOST
+time: 4/4
+tempo: 95
+
+section: INTRO | 6 | 3 | Am - Am C D
+section: VERSE 1 | 18 | 4 | Am / Am C D x2
+section: CHORUS 1 | 16 | 7 | Bm F#m A E - Bm F#m E
+section: VERSE 2 | 24 | 5 | intro shape + verse shape
+section: CHORUS 2 | 16 | 7 | Bm F#m A E - Bm F#m E
+section: SOLO | 16 | 8 | Bm F#m A E - Bm F#m E
+section: END | 1 | 2 | Bm
+
+row: VOX
+row: GTR
+row: JACK
+row: BASS
+row: IVAN
+
+block: VOX | VERSE 1 | VERSE 1 | live | V1 | on the two 6-bar lines
+block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
+block: VOX | VERSE 2 | VERSE 2 | live | V2 | on the 6-bar lines
+block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: GTR | INTRO | INTRO | live | GTR Verse Rhythm Pat 1 | whole-note strum on the C-D bars
+block: GTR | VERSE 1 | VERSE 1 | live | GTR Verse Rhythm Pat 1 | whole-note strum on 2nd C-D line
+block: GTR | CHORUS 1 | CHORUS 1 | live | GTR Chorus Pat
+block: GTR | VERSE 2 | VERSE 2 | live | GTR Verse Rhythm Pat 2
+block: GTR | CHORUS 2 | CHORUS 2 | live | GTR Chorus Pat
+block: GTR | SOLO | SOLO | live | GTR Chorus Pat
+block: GTR | END | END | live | Whole-note strum
+block: JACK | INTRO | INTRO | live | Whole-note strum | C-D bars
+block: JACK | VERSE 1 | VERSE 1 | live | JACK Verse Pat 1 | picking
+block: JACK | CHORUS 1 | CHORUS 1 | live | JACK Ch Pat 1
+block: JACK | VERSE 2 | VERSE 2 | live | JACK Pat 2 | bluesy strumming
+block: JACK | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
+block: JACK | SOLO | SOLO | live | Solo | in D
+block: JACK | END | END | live | Whole-note strum
+block: BASS | INTRO | INTRO | live | Fill | last bar
+block: BASS | VERSE 1 | VERSE 1 | live | Verse Pat 1
+block: BASS | CHORUS 1 | CHORUS 1 | live | Ch Pat 1
+block: BASS | VERSE 2 | VERSE 2 | live | Verse Pat 1
+block: BASS | CHORUS 2 | CHORUS 2 | live | Ch Pat 1
+block: BASS | SOLO | SOLO | live | Bass riff
+block: BASS | END | END | live | Fill
+block: IVAN | INTRO | INTRO | live | Kick & cymbal crash | C-D bars
+block: IVAN | VERSE 1 | VERSE 1 | live | IVAN Pat 1 | 8th-note hi-hats, sidestick
+block: IVAN | CHORUS 1 | CHORUS 1 | live | IVAN Pat 2 | ride, sidestick to snare
+block: IVAN | VERSE 2 | VERSE 2 | live | IVAN Pat 1
+block: IVAN | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
+block: IVAN | SOLO | SOLO | live | IVAN Pat 2
+block: IVAN | END | END | live | Kick & cymbal crash
+
+note: Verse chord shape - 2 bars Am, then Am, C, D over 6-bar lines; vox sits on the 6-bar lines.
+note: Source sheet lists both "Chorus Pat 1" and "Chorus Rhythm Pat" for GTR chorus sections - treated as one pattern (GTR Chorus Pat) here; check if these were meant to differ.
+note: Ivan to try a fill before the chorus.
+note: Ivan to vary up the kick pattern for V2.
+note: Bass to do a fill at the end.
+note: Migrated from ghost.md (source: "Song Arrangements" gsheet, migrated 2026-07-17).
