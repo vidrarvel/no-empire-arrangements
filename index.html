@@ -59,6 +59,7 @@
   .sec-name { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink);
               white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sec-bars { font-size: 9.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .sec-tempo { font-size: 9.5px; color: var(--accent); font-variant-numeric: tabular-nums; }
   .sec-chords { font-size: 9px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 12px; }
   .sec-col { border-left: 1px solid var(--grid); }
   .row-gap { height: 2px; }
@@ -141,7 +142,7 @@
 time: 4/4
 tempo: 93
 
-section: NAME | bars | energy(0-10) | chords(optional)
+section: NAME | bars | energy(0-10) | chords(optional) | tempo(optional, overrides the song tempo for this section)
 row: ROW_ID | sublabel(optional)
 block: ROW_ID | FROM_SECTION | TO_SECTION | state | label | sublabel(optional)
 
@@ -263,10 +264,14 @@ function parseSource(text) {
       var name = fields[0];
       if (!name) { warnings.push("Line " + (i + 1) + ": section needs a name"); return; }
       if (model.sections.some(function (s) { return s.name === name; })) warnings.push("Line " + (i + 1) + ': duplicate section name "' + name + '"');
+      var secTempoRaw = fields[4];
+      var secTempo = (secTempoRaw !== undefined && secTempoRaw !== "") ? parseFloat(secTempoRaw) : NaN;
+      if (secTempoRaw && isNaN(secTempo)) warnings.push("Line " + (i + 1) + ': tempo override "' + secTempoRaw + '" is not a number, ignored');
       model.sections.push({
         _uid: nextUid(), name: name, bars: parseInt(fields[1], 10) || 4,
         energy: (fields[2] !== undefined && fields[2] !== "") ? Math.max(0, Math.min(10, parseInt(fields[2], 10))) : 5,
-        chords: fields[3] || ""
+        chords: fields[3] || "",
+        tempo: (!isNaN(secTempo)) ? secTempo : null
       });
     } else if (kw === "row") {
       var id = fields[0];
@@ -297,7 +302,8 @@ function serialize(m) {
   out.push("");
   m.sections.forEach(function (s) {
     var f = [s.name, s.bars, s.energy];
-    if (s.chords) f.push(s.chords);
+    if (s.chords || s.tempo) f.push(s.chords || "");
+    if (s.tempo) f.push(s.tempo);
     out.push("section: " + f.join(" | "));
   });
   out.push("");
@@ -456,11 +462,11 @@ function setToken(t) { localStorage.setItem(GH_TOKEN_KEY, t); }
 function clearToken() { localStorage.removeItem(GH_TOKEN_KEY); }
 
 function loadFromGithub() {
-  setGhStatus("GitHub: loading\u2026");
+  setGhStatus("GitHub: loading…");
   var draftBeforeLoad = readDraft();
   fetch(ghApiUrl() + "?ref=" + GH_BRANCH, { headers: { "Accept": "application/vnd.github+json" } })
     .then(function (res) {
-      if (res.status === 404) { setGhStatus("GitHub: no saved file yet \u2014 showing example, Save will create it."); return null; }
+      if (res.status === 404) { setGhStatus("GitHub: no saved file yet — showing example, Save will create it."); return null; }
       if (!res.ok) { throw new Error("HTTP " + res.status); }
       return res.json();
     })
@@ -478,7 +484,7 @@ function loadFromGithub() {
       lastSyncedContent = EXAMPLE;
       document.getElementById("src").value = EXAMPLE;
       rerenderFromText();
-      setGhStatus("GitHub: couldn't load (" + err.message + ") \u2014 showing example.", true);
+      setGhStatus("GitHub: couldn't load (" + err.message + ") — showing example.", true);
       maybeOfferDraftRestore(draftBeforeLoad, EXAMPLE);
     });
 }
@@ -550,14 +556,16 @@ function addSectionPrompt() {
     { key: "name", label: "Section name", value: uniqueName(names, "NEW SECTION") },
     { key: "bars", label: "Bars", value: "8" },
     { key: "energy", label: "Energy (0-10)", value: "5" },
-    { key: "chords", label: "Chords (optional)", value: "" }
+    { key: "chords", label: "Chords (optional)", value: "" },
+    { key: "tempo", label: "Tempo override (optional, blank = use song tempo)", value: "" }
   ], function (values) {
     var name = (values.name || "").trim();
     if (!name) return;
     name = uniqueName(names, name);
     var bars = parseInt(values.bars, 10) || 4;
     var energy = parseInt(values.energy, 10); if (isNaN(energy)) energy = 5;
-    currentModel.sections.push({ _uid: nextUid(), name: name, bars: bars, energy: Math.max(0, Math.min(10, energy)), chords: values.chords || "" });
+    var tempo = values.tempo ? parseFloat(values.tempo) : NaN;
+    currentModel.sections.push({ _uid: nextUid(), name: name, bars: bars, energy: Math.max(0, Math.min(10, energy)), chords: values.chords || "", tempo: isNaN(tempo) ? null : tempo });
     syncAndRender();
   });
 }
@@ -705,7 +713,8 @@ function render(model, warnings, interactive) {
   var card = document.createElement("div");
   card.className = "card";
   var title = model.meta.title || "UNTITLED";
-  var metaLine = [model.meta.time, model.meta.tempo ? "tempo " + model.meta.tempo : ""].filter(Boolean).join(" &nbsp;·&nbsp; ");
+  var hasTempoOverrides = model.sections.some(function (s) { return s.tempo; });
+  var metaLine = [model.meta.time, model.meta.tempo ? "tempo " + model.meta.tempo + (hasTempoOverrides ? " (base)" : "") : ""].filter(Boolean).join(" &nbsp;·&nbsp; ");
   var totalBars = model.sections.reduce(function (a, s) { return a + s.bars; }, 0);
   card.innerHTML = '<h2>' + esc(title) + '</h2><div class="meta">' + metaLine + ' &nbsp;·&nbsp; <b>' + totalBars + '</b> bars total</div><div id="map"></div>';
   mapWrap.appendChild(card);
@@ -740,8 +749,8 @@ function render(model, warnings, interactive) {
   S.forEach(function (s) {
     var c = document.createElement("div");
     c.className = "sec-head sec-col";
-    c.title = s.name + " — " + s.bars + " bars" + (s.chords ? " · " + s.chords : "");
-    c.innerHTML = '<div class="sec-name">' + esc(s.name) + '</div><div class="sec-bars">' + s.bars + '</div>' +
+    c.title = s.name + " — " + s.bars + " bars" + (s.tempo ? " · " + s.tempo + " bpm" : "") + (s.chords ? " · " + s.chords : "");
+    c.innerHTML = '<div class="sec-name">' + esc(s.name) + '</div><div class="sec-bars">' + s.bars + (s.tempo ? ' <span class="sec-tempo">· ' + s.tempo + '</span>' : '') + '</div>' +
       (anyChords ? '<div class="sec-chords">' + esc(s.chords || "") + '</div>' : "") +
       (interactive ? '<span class="sec-del" title="Remove section" data-sec-uid="' + s._uid + '">&times;</span>' : "");
     headCells.appendChild(c);
