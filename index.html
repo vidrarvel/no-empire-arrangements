@@ -785,6 +785,7 @@ function render(model, warnings, interactive) {
       S.forEach(function (s, idx) {
         var track = document.createElement("div");
         track.className = "track";
+        track.style.gridColumn = (idx + 1) + " / " + (idx + 2);
         track.setAttribute("data-row", row.id);
         track.setAttribute("data-idx", String(idx));
         track.addEventListener("mousedown", function () { drag = { mode: "create", row: row.id, startIdx: idx, hoverIdx: idx, blockUid: null, edge: null }; });
