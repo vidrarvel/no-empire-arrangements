@@ -400,7 +400,8 @@ function openFieldModal(title, fields, onSubmit) {
 // ---------- GitHub persistence (public repo, contents API) ----------
 var GH_OWNER = "vidrarvel";
 var GH_REPO = "no-empire-arrangements";
-var GH_PATH = "songs/the-road.txt";
+var GH_SONG = (new URLSearchParams(window.location.search).get("song") || "the-road").replace(/[^a-z0-9-]/gi, "");
+var GH_PATH = "songs/" + GH_SONG + ".txt";
 var GH_BRANCH = "main";
 var GH_TOKEN_KEY = "ne_arr_github_token";
 var ghSha = null; // set once we know the current file's blob sha, so saves overwrite rather than conflict
