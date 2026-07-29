@@ -55,8 +55,8 @@
   .tl { min-width: 700px; }
   .tl-row { display: grid; grid-template-columns: 138px 1fr; align-items: stretch; }
   .tl-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--ink-2);
-              display: flex; align-items: center; justify-content: flex-end; gap: 4px;
-              padding-right: 10px; text-align: right; line-height: 1.2; }
+              display: flex; align-items: center; justify-content: space-between; gap: 4px;
+              padding-left: 8px; padding-right: 10px; text-align: right; line-height: 1.2; }
   .tl-label small { font-weight: 400; color: var(--muted); display: block; }
   .tl-label-text { min-width: 0; }
   .tl-label-ctrl { flex: 0 0 auto; display: flex; align-items: center; gap: 1px; }
@@ -179,7 +179,10 @@ note: free text      (shown in a Notes panel)
 idea: free text      (shown in an Ideas panel)
 # a comment line, ignored</pre>
   </details>
-  <textarea id="src" spellcheck="false"></textarea>
+  <details>
+    <summary>Raw text source (advanced — edit directly, or paste a whole song in)</summary>
+    <textarea id="src" spellcheck="false" style="margin-top: 8px;"></textarea>
+  </details>
 </div>
 
 <script>
