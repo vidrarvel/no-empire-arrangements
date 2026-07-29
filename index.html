@@ -44,9 +44,12 @@
     border-radius: 6px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); cursor: pointer; }
   textarea { width: 100%; height: 320px; resize: vertical; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
     background: var(--surface); color: var(--ink); border: 1px solid var(--ring); border-radius: 8px; padding: 12px; }
-  details { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; font-size: 12.5px; color: var(--ink-2); }
-  details summary { cursor: pointer; font-weight: 600; color: var(--ink); }
-  details pre { white-space: pre-wrap; font-size: 12px; margin: 8px 0 0 0; color: var(--ink-2); }
+  details { background: transparent; border: 1px solid transparent; border-radius: 8px; padding: 4px 4px; margin-bottom: 8px; font-size: 11.5px; color: var(--muted); }
+  details summary { cursor: pointer; font-weight: 400; color: var(--muted); }
+  details summary:hover { color: var(--ink-2); }
+  details[open] { background: var(--surface); border-color: var(--ring); padding: 10px 12px; }
+  details[open] summary { color: var(--ink-2); margin-bottom: 4px; }
+  details pre { white-space: pre-wrap; font-size: 11.5px; margin: 8px 0 0 0; color: var(--ink-2); }
   #warnings { display: none; background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px;
     padding: 8px 12px; font-size: 12.5px; margin-bottom: 12px; }
   #warnings.show { display: block; }
@@ -618,6 +621,9 @@ function doGithubSave() {
       setGhStatus("GitHub: token rejected — reconnect and try again.", true);
       throw new Error("auth failed");
     }
+    if (res.status === 409) {
+      throw new Error("stale sha");
+    }
     if (!res.ok) return res.json().then(function (j) { throw new Error(j.message || ("HTTP " + res.status)); });
     return res.json();
   }).then(function (data) {
@@ -629,7 +635,12 @@ function doGithubSave() {
     setGhStatus("GitHub: saved " + new Date().toLocaleTimeString());
   }).catch(function (err) {
     console.error(err);
-    if (err.message !== "auth failed") setGhStatus("GitHub: save failed (" + err.message + ")", true);
+    if (err.message === "auth failed") return;
+    if (err.message === "stale sha") {
+      setGhStatus("GitHub: save failed — this file changed on GitHub since you opened the page (someone else saved, or it was edited directly). Reload the page to get the latest version, then try again.", true);
+      return;
+    }
+    setGhStatus("GitHub: save failed (" + err.message + ")", true);
   });
 }
 
