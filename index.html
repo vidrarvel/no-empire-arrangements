@@ -139,27 +139,6 @@
   <h1>Arrangement Editor</h1>
   <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click a block to rename it, double-click a row label to rename the row, double-click a section header to edit its bars/energy/chords/tempo. Drag a block's edge to resize, hover a block for a copy-to-section button. Use the arrows on row labels / section headers to reorder them. Ctrl+Z / Ctrl+Shift+Z (or the toolbar buttons) to undo/redo. Or just type below. No Empire.</div>
 
-  <div class="toolbar">
-    <select id="songSwitcher" title="Switch song"><option>Loading songs…</option></select>
-    <span class="divider"></span>
-    <label class="file-btn">Load source
-      <input type="file" id="fileInput" accept=".txt,.md">
-    </label>
-    <button id="btnDownloadSrc">Download source (.txt)</button>
-    <button id="btnDownloadHtml">Download map (.html)</button>
-    <span class="divider"></span>
-    <button id="btnUndo" title="Undo (Ctrl+Z)" disabled>&#8630; Undo</button>
-    <button id="btnRedo" title="Redo (Ctrl+Shift+Z)" disabled>&#8631; Redo</button>
-    <span class="divider"></span>
-    <button id="btnAddSection">+ Add section</button>
-    <button id="btnAddRow">+ Add row</button>
-    <span class="divider"></span>
-    <button id="btnReset">Reset to example</button>
-    <span class="divider"></span>
-    <button id="btnGithubSave">Save to GitHub</button>
-    <span id="ghStatus" style="font-size:11.5px;color:var(--ink-2);"></span>
-  </div>
-
   <div id="warnings"></div>
 
   <div id="mapWrap"></div>
@@ -189,6 +168,27 @@ idea: free text      (shown in an Ideas panel)
     <summary>Raw text source (advanced — edit directly, or paste a whole song in)</summary>
     <textarea id="src" spellcheck="false" style="margin-top: 8px;"></textarea>
   </details>
+
+  <div class="toolbar">
+    <select id="songSwitcher" title="Switch song"><option>Loading songs…</option></select>
+    <span class="divider"></span>
+    <label class="file-btn">Load source
+      <input type="file" id="fileInput" accept=".txt,.md">
+    </label>
+    <button id="btnDownloadSrc">Download source (.txt)</button>
+    <button id="btnDownloadHtml">Download map (.html)</button>
+    <span class="divider"></span>
+    <button id="btnUndo" title="Undo (Ctrl+Z)" disabled>&#8630; Undo</button>
+    <button id="btnRedo" title="Redo (Ctrl+Shift+Z)" disabled>&#8631; Redo</button>
+    <span class="divider"></span>
+    <button id="btnAddSection">+ Add section</button>
+    <button id="btnAddRow">+ Add row</button>
+    <span class="divider"></span>
+    <button id="btnReset">Reset to example</button>
+    <span class="divider"></span>
+    <button id="btnGithubSave">Save to GitHub</button>
+    <span id="ghStatus" style="font-size:11.5px;color:var(--ink-2);"></span>
+  </div>
 </div>
 
 <script>
@@ -502,8 +502,8 @@ var GH_PATH = "songs/" + GH_SONG + ".txt";
 var GH_BRANCH = "main";
 var GH_TOKEN_KEY = "ne_arr_github_token";
 var ghSha = null; // set once we know the current file's blob sha, so saves overwrite rather than conflict
-var lastSyncedContent = null; // content as last confirmed on GitHub (for unsaved-change detection + diff preview)
-var ghExists = false; // whether GH_PATH currently exists on GitHub (false = first save will create it, skip diff)
+var lastSyncedContent = null; // content as last confirmed on GitHub (for unsaved-change detection)
+var ghExists = false; // whether GH_PATH currently exists on GitHub (false = first save will create it)
 function draftKey() { return "ne_arr_draft_" + GH_SONG; }
 function saveDraft() {
   if (EMBED_MODE) return; // read-only embed view: never touch localStorage
@@ -633,75 +633,9 @@ function doGithubSave() {
   });
 }
 
-function proceedToSave() {
+function saveToGithub() {
   if (!getToken()) { promptForToken(doGithubSave); return; }
   doGithubSave();
-}
-
-// ---------- diff preview before save ----------
-function diffLines(oldText, newText) {
-  var a = oldText.split(NL), b = newText.split(NL);
-  var n = a.length, m = b.length;
-  var dp = new Array(n + 1);
-  for (var i = 0; i <= n; i++) { dp[i] = new Array(m + 1).fill(0); }
-  for (i = n - 1; i >= 0; i--) {
-    for (var j = m - 1; j >= 0; j--) {
-      dp[i][j] = (a[i] === b[j]) ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
-    }
-  }
-  var result = [];
-  i = 0; var j2 = 0;
-  while (i < n && j2 < m) {
-    if (a[i] === b[j2]) { result.push({ type: "same", line: a[i] }); i++; j2++; }
-    else if (dp[i + 1][j2] >= dp[i][j2 + 1]) { result.push({ type: "del", line: a[i] }); i++; }
-    else { result.push({ type: "add", line: b[j2] }); j2++; }
-  }
-  while (i < n) { result.push({ type: "del", line: a[i] }); i++; }
-  while (j2 < m) { result.push({ type: "add", line: b[j2] }); j2++; }
-  return result;
-}
-function showDiffPreview(oldContent, newContent, onConfirm) {
-  var diff = diffLines(oldContent, newContent);
-  var added = diff.filter(function (d) { return d.type === "add"; }).length;
-  var removed = diff.filter(function (d) { return d.type === "del"; }).length;
-  var root = document.getElementById("modalRoot");
-  var back = document.createElement("div"); back.className = "modal-backdrop";
-  var box = document.createElement("div"); box.className = "modal-box";
-  box.style.width = "480px"; box.style.maxHeight = "70vh"; box.style.overflow = "auto";
-  var h = document.createElement("h4"); h.textContent = "Review changes before saving"; box.appendChild(h);
-  var p = document.createElement("p"); p.textContent = "+" + added + " / -" + removed + " line(s) vs. what's currently on GitHub.";
-  box.appendChild(p);
-  var pre = document.createElement("div");
-  pre.style.fontSize = "11px"; pre.style.fontFamily = "ui-monospace, SFMono-Regular, Menlo, monospace";
-  pre.style.whiteSpace = "pre-wrap"; pre.style.maxHeight = "320px"; pre.style.overflow = "auto";
-  pre.style.background = "var(--page)"; pre.style.border = "1px solid var(--ring)"; pre.style.borderRadius = "6px"; pre.style.padding = "8px";
-  diff.forEach(function (d) {
-    if (d.type === "same") return;
-    var line = document.createElement("div");
-    line.style.color = d.type === "add" ? "#1baf7a" : "#e34948";
-    line.textContent = (d.type === "add" ? "+ " : "- ") + d.line;
-    pre.appendChild(line);
-  });
-  if (!added && !removed) { var none = document.createElement("div"); none.style.color = "var(--muted)"; none.textContent = "(no line-level changes)"; pre.appendChild(none); }
-  box.appendChild(pre);
-  var actions = document.createElement("div"); actions.className = "modal-actions";
-  var cancelBtn = document.createElement("button"); cancelBtn.textContent = "Cancel";
-  cancelBtn.addEventListener("click", closeModal);
-  var okBtn = document.createElement("button"); okBtn.className = "primary"; okBtn.textContent = "Save to GitHub";
-  okBtn.addEventListener("click", function () { closeModal(); onConfirm(); });
-  actions.appendChild(cancelBtn); actions.appendChild(okBtn);
-  box.appendChild(actions);
-  back.appendChild(box);
-  back.addEventListener("mousedown", function (e) { if (e.target === back) closeModal(); });
-  root.innerHTML = ""; root.appendChild(back);
-  okBtn.focus();
-}
-
-function saveToGithub() {
-  var newContent = serialize(currentModel);
-  if (!ghExists) { proceedToSave(); return; } // nothing on GitHub yet — nothing meaningful to diff against
-  if (newContent === lastSyncedContent) { setGhStatus("No changes to save."); return; }
-  showDiffPreview(lastSyncedContent, newContent, proceedToSave);
 }
 
 // ---------- mutation helpers used by the interactive grid ----------
