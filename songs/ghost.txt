@@ -26,7 +26,7 @@ block: VOX | CHORUS 2 | CHORUS 2 | live | VOX CHOR
 block: J GTR | INTRO 2 | VERSE 1 | live | J GTR V1 RIFF | (Bar 5 of Intro 1)
 block: J GTR | INTERLUDE | VERSE 2 | live | J GTR V2 Riff
 block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR CH Riff
-block: J GTR | SOLO | SOLO | live | J GTR Solo | in D
+block: J GTR | SOLO | SOLO | rec | J GTR Solo | in D
 block: J GTR | END | END | live | Bm Strum
 block: BASS | INTRO 1 | VERSE 1 | live | BASS Verse Riff
 block: BASS | VERSE 2 | VERSE 2 | live | BASS Verse Riff 2
