@@ -37,7 +37,6 @@ block: IVAN | INTRO 1 | INTRO 2 | live | Keeping beat
 block: IVAN | VERSE 1 | VERSE 1 | live | Keeping beat
 block: IVAN | INTERLUDE 1 | INTERLUDE 1 | live | Keeping beat
 
-note: Chart corrected 2026-07-29 to match the actual live Ableton arrangement. Structure: Intro is two 8-bar halves (Bass & Drums, then Jack) instead of one 4-bar Intro; Verse 1 is 16 bars (was 24); Chorus 1 is 8 bars (was 16); the old Prechorus section doesn't exist live - Verse 2 goes straight into Chorus 2; Verse 2 is 12 bars (was 24); Chorus 2 stays 16 bars; the old 16-bar Outro is actually three parts live - an 8-bar Solo, a 4-bar Interlude, and a 2-bar Ending.
 note: Tempo corrected 2026-07-29: song runs at 93 BPM (was listed as 82). Chorus 1, Chorus 2, and Solo speed up to 94; everything else (Intro, Verse, Interludes, Ending) stays at 93.
 note: The old PRECHORUS block ("Bridge vocals") has been folded into the end of Verse 2 above pending confirmation of the exact bars it covers.
 note: Bass and drums are mostly blank in the source gsheet (beyond "keeping beat" for drums) - parts not written down yet. BASS row left empty on purpose; fill in when written.
