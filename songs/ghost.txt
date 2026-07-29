@@ -2,15 +2,15 @@ title: GHOST
 time: 4/4
 tempo: 102
 
-section: INTRO 1 | 8 | 3 | Am
-section: INTRO 2 | 8 | 3 | Am C D
-section: VERSE 1 | 16 | 4 | Am / Am C D x2
+section: INTRO 1 | 8 | 3 | Am C D Am
+section: INTRO 2 | 8 | 3 | Am C D Am
+section: VERSE 1 | 16 | 4 | Am C D Am
 section: CHORUS 1 | 16 | 0 | Bm F#m A E - Bm F#m E | 104
-section: INTERLUDE | 8 | 4
-section: VERSE 2 | 16 | 5 | intro shape + verse shape
+section: INTERLUDE | 8 | 4 | Am C D Am
+section: VERSE 2 | 16 | 5 | Am C D Am
 section: CHORUS 2 | 16 | 7 | Bm F#m A E - Bm F#m E | 104
 section: SOLO | 16 | 8 | Bm F#m A E - Bm F#m E
-section: END | 1 | 2 | Bm
+section: END | 2 | 2 | Bm
 
 row: VOX
 row: GTR
@@ -36,7 +36,7 @@ block: JACK | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
 block: JACK | SOLO | SOLO | live | Solo | in D
 block: JACK | END | END | live | Whole-note strum
 block: BASS | INTRO 1 | VERSE 1 | live | Bass Verse Riff
-block: BASS | VERSE 2 | VERSE 2 | live | Bass Verse Riff
+block: BASS | VERSE 2 | VERSE 2 | live | Bass Verse Riff 2
 block: BASS | CHORUS 2 | CHORUS 2 | live | Bass Chorus Riff
 block: BASS | SOLO | SOLO | live | Bass Chorus Riff
 block: BASS | END | END | live | Bass End
@@ -49,3 +49,6 @@ block: DRUMS | END | END | live | Kick & cymbal crash
 block: BVs | CHORUS 2 | CHORUS 2 | live | BVs Chorus
 block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chorus Riff
 block: BVs | CHORUS 1 | CHORUS 1 | live | BVs Chorus
+block: BASS | INTERLUDE | INTERLUDE | live | Bass Riff 2
+
+note: NO LOOPING, Andy on Bass
