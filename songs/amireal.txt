@@ -1,0 +1,29 @@
+title: AM I REAL
+time: 4/4
+tempo: 134
+
+section: INTRO 1 | 8 | 2
+section: INTRO 2 | 8 | 3
+section: VERSE 1 | 16 | 4 | Eaad9 C#m9 Asus2#11
+section: PRECHORUS 1 | 8 | 6 | A2 Baad11
+section: CHORUS 1 | 16 | 8 | C#m Baad11 G#m A | 135
+section: INTERLUDE 1 | 8 | 4
+section: VERSE 2 | 16 | 4 | Eaad9 C#m9 Asus2#11 | 133
+section: PRECHORUS 2 | 16 | 6 | A2 Baad11
+section: CHORUS 2 | 16 | 9 | C#m Baad11 G#m A | 135
+section: INTERLUDE 2 | 8 | 5 | | 135
+section: OUTRO | 8 | 3 | | 135
+section: ENDING | 2 | 2 | | 135
+
+row: VOX
+row: GTR
+row: BASS
+row: DRUMS
+row: SYNTH
+
+note: Structure and tempo pulled directly from the live Ableton set (the "Am I Real" pass runs bars 502-632 in the main arrangement, identified by matching the double intro - solo vocal then full band - and the V-PreCh-Ch-V-PreCh-Ch-Outro form against the Songs Database). Bar counts and per-section tempo are read from the actual project, not estimated.
+note: Small discrepancy worth a listen: Verse 1 reads 134 BPM live, not the 133 previously noted in this page's structure notes. Verse 2 does read exactly 133 as documented. Could be a genuine tempo-automation drift between the two verses, or just how it's currently drawn in Ableton - worth confirming against a recent take.
+note: Chords for Verse/Pre-chorus/Chorus are from this page's existing "CHORDS (quick)" notes. Intro, Interlude, Outro, and Ending have no chords recorded yet - left blank rather than guessed.
+note: No per-instrument parts exist yet for this song in Ableton (this pass in the project is just section markers + click, no recorded guitar/bass/keys/vocal performance) - rows are set up (VOX/GTR/BASS/DRUMS/SYNTH) but empty. Fill in blocks here as the arrangement gets worked out.
+note: Energy (0-10) values are a first-pass subjective estimate following the usual verse-builds-to-chorus arc - adjust to taste, not derived from anything in Ableton.
+note: Migrated from the "Am I Real?" Notion page's structure/tempo notes and Ableton, 2026-07-29.
