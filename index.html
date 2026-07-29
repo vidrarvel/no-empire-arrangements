@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arrangement Editor — No Empire</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface: #fcfcfb; --page: #f9f9f7;
+    --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+    --accent: #2a78d6; --warn-bg: #fdf3e2; --warn-ink: #7a4a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --surface: #1a1a19; --page: #0d0d0d;
+      --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+      --accent: #3987e5; --warn-bg: #332a12; --warn-ink: #f0c675;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: var(--page); color: var(--ink);
+         font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 1650px; margin: 0 auto; }
+  h1 { font-size: 18px; margin: 0 0 2px 0; letter-spacing: 0.02em; }
+  .sub { color: var(--ink-2); font-size: 12.5px; margin-bottom: 14px; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; align-items: center; }
+  .toolbar .divider { width: 1px; align-self: stretch; background: var(--ring); margin: 0 2px; }
+  button, .file-btn { font: inherit; font-size: 12.5px; font-weight: 600; padding: 7px 12px;
+    border-radius: 6px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink);
+    cursor: pointer; }
+  button:hover, .file-btn:hover { border-color: var(--accent); color: var(--accent); }
+  input[type=file] { display: none; }
+  .layout { display: grid; grid-template-columns: minmax(320px, 30%) 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } }
+  textarea { width: 100%; height: 560px; resize: vertical; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--ring); border-radius: 8px; padding: 12px; }
+  details { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; font-size: 12.5px; color: var(--ink-2); }
+  details summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+  details pre { white-space: pre-wrap; font-size: 12px; margin: 8px 0 0 0; color: var(--ink-2); }
+  #warnings { display: none; background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px;
+    padding: 8px 12px; font-size: 12.5px; margin-bottom: 12px; }
+  #warnings.show { display: block; }
+  .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px;
+          padding: 18px 20px; margin-bottom: 14px; }
+  .card h2 { font-size: 20px; margin: 0 0 2px 0; letter-spacing: 0.03em; }
+  .meta { color: var(--ink-2); font-size: 12.5px; margin-bottom: 14px; }
+  .meta b { color: var(--ink); font-weight: 600; }
+  #map { overflow-x: auto; }
+  .tl { min-width: 700px; }
+  .tl-row { display: grid; grid-template-columns: 128px 1fr; align-items: stretch; }
+  .tl-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--ink-2);
+              display: flex; align-items: center; justify-content: flex-end; gap: 5px;
+              padding-right: 10px; text-align: right; line-height: 1.2; }
+  .tl-label small { font-weight: 400; color: var(--muted); display: block; }
+  .tl-cells { display: grid; gap: 2px; }
+  .sec-head { text-align: center; padding: 3px 2px 1px 2px; min-width: 0; position: relative; }
+  .sec-name { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink);
+              white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sec-bars { font-size: 9.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .sec-chords { font-size: 9px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 12px; }
+  .sec-col { border-left: 1px solid var(--grid); }
+  .row-gap { height: 2px; }
+  .track { min-height: 32px; border-radius: 4px; cursor: cell; }
+  .track:hover { background: var(--grid); }
+  .blk { position: relative; border-radius: 4px; padding: 4px 16px 4px 6px; font-size: 10.5px; line-height: 1.2;
+         min-height: 32px; min-width: 0; overflow: hidden; display: flex; flex-direction: column;
+         justify-content: center; cursor: pointer; user-select: none; }
+  .blk .t { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .blk .s { font-size: 9.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0.85; }
+  .blk.state-live { background: color-mix(in oklab, var(--c) 14%, var(--surface)); border-left: 3px solid var(--c); color: var(--ink); }
+  .blk.state-rec   { background: color-mix(in oklab, var(--c) 26%, var(--surface)); border-left: 4px solid var(--c);
+                     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--c) 55%, transparent); color: var(--ink); }
+  .blk.state-loop  { background: color-mix(in oklab, var(--c) 6%, var(--surface)); border-left: 3px dashed var(--c);
+                     color: var(--ink-2); }
+  .blk:hover { filter: brightness(1.06); }
+  .handle { position: absolute; top: 0; bottom: 0; width: 8px; cursor: ew-resize; z-index: 3; }
+  .handle-l { left: 0; } .handle-r { right: 0; }
+  .del-btn { position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; line-height: 14px;
+             text-align: center; border-radius: 3px; background: rgba(0,0,0,0.38); color: #fff;
+             font-size: 10px; opacity: 0; cursor: pointer; z-index: 4; }
+  .blk:hover .del-btn { opacity: 1; }
+  .mini-x { cursor: pointer; color: var(--muted); font-size: 12px; padding: 0 2px; }
+  .mini-x:hover { color: var(--warn-ink); }
+  .sec-del { position: absolute; top: 1px; right: 2px; font-size: 10px; color: var(--muted); cursor: pointer; }
+  .sec-del:hover { color: var(--warn-ink); }
+  #energy-svg { display: block; width: 100%; height: 44px; }
+  .legend-line { font-size: 11.5px; color: var(--ink-2); margin-top: 10px; }
+  h3 { font-size: 12px; letter-spacing: 0.06em; color: var(--ink-2); margin: 0 0 6px 0; text-transform: uppercase; }
+  ul { margin: 4px 0; padding-left: 18px; font-size: 12.5px; color: var(--ink-2); }
+  li { margin: 2px 0; }
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 50;
+    display: flex; align-items: center; justify-content: center; }
+  .modal-box { background: var(--surface); color: var(--ink); border: 1px solid var(--ring);
+    border-radius: 10px; padding: 18px 20px; width: 320px; max-width: calc(100vw - 32px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
+  .modal-box h4 { margin: 0 0 12px 0; font-size: 14px; }
+  .modal-box p { margin: 0 0 14px 0; font-size: 12.5px; color: var(--ink-2); }
+  .modal-field { margin-bottom: 10px; }
+  .modal-field label { display: block; font-size: 11px; color: var(--ink-2); margin-bottom: 3px; }
+  .modal-field input { width: 100%; font: inherit; font-size: 13px; padding: 6px 8px;
+    border-radius: 6px; border: 1px solid var(--ring); background: var(--page); color: var(--ink); }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+  .modal-actions button { font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 12px;
+    border-radius: 6px; border: 1px solid var(--ring); background: var(--page); color: var(--ink); cursor: pointer; }
+  .modal-actions button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+</style>
+</head>
+<body>
+<div id="modalRoot"></div>
+<div class="wrap">
+  <h1>Arrangement Editor</h1>
+  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click to rename. Drag a block's edge to resize. Or just type on the left. No Empire.</div>
+
+  <div class="toolbar">
+    <label class="file-btn">Load source
+      <input type="file" id="fileInput" accept=".txt,.md">
+    </label>
+    <button id="btnDownloadSrc">Download source (.txt)</button>
+    <button id="btnDownloadHtml">Download map (.html)</button>
+    <span class="divider"></span>
+    <button id="btnAddSection">+ Add section</button>
+    <button id="btnAddRow">+ Add row</button>
+    <span class="divider"></span>
+    <button id="btnReset">Reset to example</button>
+    <span class="divider"></span>
+    <button id="btnGithubSave">Save to GitHub</button>
+    <span id="ghStatus" style="font-size:11.5px;color:var(--ink-2);"></span>
+  </div>
+
+  <div id="warnings"></div>
+
+  <div id="mapWrap"></div>
+
+  <div class="layout">
+    <div>
+      <details>
+        <summary>Text syntax (optional — the grid above works without it)</summary>
+        <pre>title: SONG NAME
+time: 4/4
+tempo: 93
+
+section: NAME | bars | energy(0-10) | chords(optional)
+row: ROW_ID | sublabel(optional)
+block: ROW_ID | FROM_SECTION | TO_SECTION | state | label | sublabel(optional)
+
+state is one of:
+  live  — actively playing (default if omitted)
+  rec   — capturing a loop right now
+  loop  — sustaining / playing back automatically
+
+note: free text      (shown in a Notes panel)
+idea: free text      (shown in an Ideas panel)
+# a comment line, ignored</pre>
+      </details>
+      <textarea id="src" spellcheck="false"></textarea>
+    </div>
+    <div id="notesWrap"></div>
+  </div>
+</div>
+
+<script>
+var PALETTE = [
+  ["#2a78d6", "#3987e5"], ["#008300", "#008300"], ["#e87ba4", "#d55181"], ["#eda100", "#c98500"],
+  ["#1baf7a", "#199e70"], ["#eb6834", "#d95926"], ["#4a3aa7", "#9085e9"], ["#e34948", "#e66767"]
+];
+function isDark() { return matchMedia("(prefers-color-scheme: dark)").matches; }
+function colorFor(i) { return PALETTE[i % PALETTE.length][isDark() ? 1 : 0]; }
+var NL = String.fromCharCode(10);
+
+var EXAMPLE = [
+"# THE ROAD — full band arrangement (from the-road.md, migrated 2026-07-17)",
+"title: THE ROAD",
+"time: 4/4",
+"tempo: 93",
+"",
+"section: INTRO | 8 | 3",
+"section: VERSE 1a | 8 | 4",
+"section: VERSE 1b | 8 | 5",
+"section: VERSE 2a | 8 | 5",
+"section: VERSE 2b | 8 | 6",
+"section: CHORUS 1 | 16 | 7",
+"section: FILL | 2 | 4",
+"section: VERSE 3a | 8 | 5",
+"section: VERSE 3b | 8 | 6",
+"section: CHORUS 2 | 16 | 8",
+"section: FILL (END) | 2 | 3",
+"",
+"row: VOX",
+"row: GTR",
+"row: GTR SWELL | looped",
+"row: JACK",
+"row: BASS",
+"row: BASS SYNTH | looped",
+"row: IVAN",
+"",
+"block: VOX | VERSE 1b | VERSE 1b | live | V1",
+"block: VOX | VERSE 2b | VERSE 2b | live | V1 (repeat)",
+"block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus",
+"block: VOX | VERSE 3b | VERSE 3b | live | V2",
+"block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus",
+"",
+"block: GTR | INTRO | VERSE 2b | live | V1 chords",
+"block: GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords",
+"block: GTR | FILL | FILL | live | Fill chord",
+"block: GTR | VERSE 3a | VERSE 3b | live | Fingerpicked",
+"block: GTR | CHORUS 2 | CHORUS 2 | live | Chorus chords",
+"block: GTR | FILL (END) | FILL (END) | live | Fill chord",
+"",
+"block: GTR SWELL | INTRO | INTRO | rec | Gtr swells | captured live",
+"block: GTR SWELL | VERSE 1a | VERSE 1b | loop | Gtr swells | sustaining underneath",
+"",
+"block: BASS SYNTH | VERSE 1a | VERSE 1a | rec | Bass synth | captured live",
+"block: BASS SYNTH | VERSE 1b | CHORUS 1 | loop | Bass synth | prerecorded, comes on for chorus",
+"",
+"block: JACK | INTRO | INTRO | live | Bg riff",
+"block: JACK | VERSE 1a | VERSE 1b | live | Jack Pat 1 | whole note riff",
+"block: JACK | VERSE 2a | VERSE 2b | live | Jack Pat 2 | fingerpicked",
+"block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus chords",
+"block: JACK | FILL | FILL | live | Fill chord",
+"block: JACK | VERSE 3a | VERSE 3b | live | Jack Pat 2 | fingerpicked",
+"block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus chords",
+"block: JACK | FILL (END) | FILL (END) | live | Fill chord",
+"",
+"block: BASS | VERSE 1a | VERSE 2b | live | Bass Pat 1 | verse pattern",
+"block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Ch Pat 1 | chorus pattern",
+"block: BASS | FILL | FILL | live | Fill chord",
+"block: BASS | VERSE 3a | VERSE 3a | live | Bass Pat 1a | let whole notes ring",
+"block: BASS | VERSE 3b | VERSE 3b | live | Bass Pat 1 | verse pattern",
+"block: BASS | CHORUS 2 | CHORUS 2 | live | Bass Ch Pat 1 | chorus pattern",
+"block: BASS | FILL (END) | FILL (END) | live | Fill chord",
+"",
+"block: IVAN | INTRO | INTRO | live | Time on hats",
+"block: IVAN | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove",
+"block: IVAN | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove",
+"",
+"note: Shorten gap between V1 parts.",
+"note: Bass to change to whole notes for post-1st-chorus.",
+"note: Ivan's part may run as one continuous groove from V1 through both choruses (gsheet has it as a single merged cell) — split here at the FILL gap; check with Ivan.",
+"note: Verse 2b vocal is flagged in the source sheet as \"V1 vocals\" again — may be a repeated lyric line rather than distinct V2 lyrics; check.",
+"note: GTR SWELL and BASS SYNTH rows added per Andy's description (intro swell looped, plays back over verses; bass synth looped in verse 1a, plays back and comes on for chorus). Exact end-points (swell stopping at end of Verse 1b, bass synth stopping at end of Chorus 1) are my best-guess mapping onto the real section list — not explicitly stated; check and drag to adjust if wrong.",
+"note: Drag empty cells to add blocks, drag block edges to resize, click to cycle state, double-click to rename.",
+""
+].join(NL);
+
+var uidSeq = 1;
+function nextUid() { return uidSeq++; }
+
+// ---------- parsing (text -> model) ----------
+function parseSource(text) {
+  var lines = text.split(NL);
+  var model = { meta: {}, sections: [], rows: [], blocks: [], notes: [], ideas: [] };
+  var warnings = [];
+  lines.forEach(function (raw, i) {
+    var line = raw.trim();
+    if (!line || line.indexOf("#") === 0) return;
+    var idx = line.indexOf(":");
+    if (idx === -1) { warnings.push("Line " + (i + 1) + ': no ":" found, ignored'); return; }
+    var kw = line.slice(0, idx).trim().toLowerCase();
+    var rest = line.slice(idx + 1);
+    var fields = rest.split("|").map(function (s) { return s.trim(); });
+    if (kw === "title" || kw === "time" || kw === "tempo") {
+      model.meta[kw] = rest.trim();
+    } else if (kw === "section") {
+      var name = fields[0];
+      if (!name) { warnings.push("Line " + (i + 1) + ": section needs a name"); return; }
+      if (model.sections.some(function (s) { return s.name === name; })) warnings.push("Line " + (i + 1) + ': duplicate section name "' + name + '"');
+      model.sections.push({
+        _uid: nextUid(), name: name, bars: parseInt(fields[1], 10) || 4,
+        energy: (fields[2] !== undefined && fields[2] !== "") ? Math.max(0, Math.min(10, parseInt(fields[2], 10))) : 5,
+        chords: fields[3] || ""
+      });
+    } else if (kw === "row") {
+      var id = fields[0];
+      if (!id) { warnings.push("Line " + (i + 1) + ": row needs an id"); return; }
+      model.rows.push({ _uid: nextUid(), id: id, sub: fields[1] || "" });
+    } else if (kw === "block") {
+      var row = fields[0], from = fields[1], to = fields[2], stateRaw = fields[3], label = fields[4], sub = fields[5];
+      var state = (stateRaw || "live").toLowerCase();
+      if (["live", "rec", "loop"].indexOf(state) === -1) { warnings.push("Line " + (i + 1) + ': unknown state "' + stateRaw + '", treated as live'); state = "live"; }
+      model.blocks.push({ _uid: nextUid(), row: row, from: from, to: to, state: state, label: label || "", sub: sub || "" });
+    } else if (kw === "note") {
+      model.notes.push(rest.trim());
+    } else if (kw === "idea") {
+      model.ideas.push(rest.trim());
+    } else {
+      warnings.push("Line " + (i + 1) + ': unknown keyword "' + kw + '", ignored');
+    }
+  });
+  return { model: model, warnings: warnings };
+}
+
+// ---------- serializing (model -> text) ----------
+function serialize(m) {
+  var out = [];
+  if (m.meta.title) out.push("title: " + m.meta.title);
+  if (m.meta.time) out.push("time: " + m.meta.time);
+  if (m.meta.tempo) out.push("tempo: " + m.meta.tempo);
+  out.push("");
+  m.sections.forEach(function (s) {
+    var f = [s.name, s.bars, s.energy];
+    if (s.chords) f.push(s.chords);
+    out.push("section: " + f.join(" | "));
+  });
+  out.push("");
+  m.rows.forEach(function (r) {
+    out.push("row: " + (r.sub ? r.id + " | " + r.sub : r.id));
+  });
+  out.push("");
+  m.blocks.forEach(function (b) {
+    var f = [b.row, b.from, b.to, b.state];
+    if (b.label || b.sub) f.push(b.label || "");
+    if (b.sub) f.push(b.sub);
+    out.push("block: " + f.join(" | "));
+  });
+  if (m.notes.length || m.ideas.length) {
+    out.push("");
+    m.notes.forEach(function (n) { out.push("note: " + n); });
+    m.ideas.forEach(function (n) { out.push("idea: " + n); });
+  }
+  out.push("");
+  return out.join(NL);
+}
+
+var STATE_ICON = { live: "", rec: String.fromCharCode(9210) + " ", loop: String.fromCharCode(8635) + " " };
+var NEXT_STATE = { live: "rec", rec: "loop", loop: "live" };
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+// ---------- current state ----------
+var currentModel = null;
+var currentWarnings = [];
+
+function syncTextarea() {
+  document.getElementById("src").value = serialize(currentModel);
+}
+function syncAndRender() {
+  syncTextarea();
+  render(currentModel, [], true);
+}
+
+// ---------- custom modal (replaces window.prompt/confirm, which sandboxed iframes block) ----------
+function closeModal() {
+  document.getElementById("modalRoot").innerHTML = "";
+}
+function openConfirm(message, onYes, okLabel) {
+  var root = document.getElementById("modalRoot");
+  var back = document.createElement("div"); back.className = "modal-backdrop";
+  var box = document.createElement("div"); box.className = "modal-box";
+  var p = document.createElement("p"); p.textContent = message;
+  box.appendChild(p);
+  var actions = document.createElement("div"); actions.className = "modal-actions";
+  var cancelBtn = document.createElement("button"); cancelBtn.textContent = "Cancel";
+  cancelBtn.addEventListener("click", closeModal);
+  var okBtn = document.createElement("button"); okBtn.className = "primary"; okBtn.textContent = okLabel || "Remove";
+  okBtn.addEventListener("click", function () { closeModal(); onYes(); });
+  actions.appendChild(cancelBtn); actions.appendChild(okBtn);
+  box.appendChild(actions);
+  back.appendChild(box);
+  back.addEventListener("mousedown", function (e) { if (e.target === back) closeModal(); });
+  root.innerHTML = ""; root.appendChild(back);
+  okBtn.focus();
+}
+function openFieldModal(title, fields, onSubmit) {
+  var root = document.getElementById("modalRoot");
+  var back = document.createElement("div"); back.className = "modal-backdrop";
+  var box = document.createElement("div"); box.className = "modal-box";
+  var h = document.createElement("h4"); h.textContent = title; box.appendChild(h);
+  var inputs = {};
+  fields.forEach(function (f) {
+    var wrap = document.createElement("div"); wrap.className = "modal-field";
+    var lab = document.createElement("label"); lab.textContent = f.label; wrap.appendChild(lab);
+    var inp = document.createElement("input"); inp.type = f.type || "text";
+    inp.value = (f.value === undefined || f.value === null) ? "" : String(f.value);
+    wrap.appendChild(inp);
+    box.appendChild(wrap);
+    inputs[f.key] = inp;
+  });
+  var actions = document.createElement("div"); actions.className = "modal-actions";
+  var cancelBtn = document.createElement("button"); cancelBtn.textContent = "Cancel";
+  cancelBtn.addEventListener("click", closeModal);
+  var okBtn = document.createElement("button"); okBtn.className = "primary"; okBtn.textContent = "Save";
+  function submit() {
+    var values = {};
+    fields.forEach(function (f) { values[f.key] = inputs[f.key].value; });
+    closeModal();
+    onSubmit(values);
+  }
+  okBtn.addEventListener("click", submit);
+  actions.appendChild(cancelBtn); actions.appendChild(okBtn);
+  box.appendChild(actions);
+  back.appendChild(box);
+  back.addEventListener("mousedown", function (e) { if (e.target === back) closeModal(); });
+  root.innerHTML = ""; root.appendChild(back);
+  box.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { e.preventDefault(); submit(); }
+    else if (e.key === "Escape") { e.preventDefault(); closeModal(); }
+  });
+  var firstInput = fields.length ? inputs[fields[0].key] : null;
+  if (firstInput) { firstInput.focus(); firstInput.select(); }
+}
+
+// ---------- GitHub persistence (public repo, contents API) ----------
+var GH_OWNER = "vidrarvel";
+var GH_REPO = "no-empire-arrangements";
+var GH_PATH = "songs/the-road.txt";
+var GH_BRANCH = "main";
+var GH_TOKEN_KEY = "ne_arr_github_token";
+var ghSha = null; // set once we know the current file's blob sha, so saves overwrite rather than conflict
+
+function utf8ToBase64(str) {
+  var bytes = new TextEncoder().encode(str);
+  var binary = "";
+  bytes.forEach(function (b) { binary += String.fromCharCode(b); });
+  return btoa(binary);
+}
+function base64ToUtf8(b64) {
+  var binary = atob(b64.replace(/\n/g, ""));
+  var bytes = new Uint8Array(binary.length);
+  for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder("utf-8").decode(bytes);
+}
+function ghApiUrl() {
+  return "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + GH_PATH;
+}
+function setGhStatus(text, isError) {
+  var el = document.getElementById("ghStatus");
+  el.textContent = text;
+  el.style.color = isError ? "var(--warn-ink)" : "var(--ink-2)";
+}
+function getToken() { return localStorage.getItem(GH_TOKEN_KEY) || ""; }
+function setToken(t) { localStorage.setItem(GH_TOKEN_KEY, t); }
+function clearToken() { localStorage.removeItem(GH_TOKEN_KEY); }
+
+function loadFromGithub() {
+  setGhStatus("GitHub: loading…");
+  fetch(ghApiUrl() + "?ref=" + GH_BRANCH, { headers: { "Accept": "application/vnd.github+json" } })
+    .then(function (res) {
+      if (res.status === 404) { setGhStatus("GitHub: no saved file yet — showing example, Save will create it."); return null; }
+      if (!res.ok) { throw new Error("HTTP " + res.status); }
+      return res.json();
+    })
+    .then(function (data) {
+      if (!data) { document.getElementById("src").value = EXAMPLE; rerenderFromText(); return; }
+      ghSha = data.sha;
+      document.getElementById("src").value = base64ToUtf8(data.content);
+      rerenderFromText();
+      setGhStatus("GitHub: loaded " + GH_PATH);
+    })
+    .catch(function (err) {
+      console.error(err);
+      document.getElementById("src").value = EXAMPLE;
+      rerenderFromText();
+      setGhStatus("GitHub: couldn't load (" + err.message + ") — showing example.", true);
+    });
+}
+
+function promptForToken(then) {
+  openFieldModal("Connect to GitHub", [
+    { key: "token", label: "Personal access token (fine-grained, Contents: read/write on " + GH_OWNER + "/" + GH_REPO + ")", value: "", type: "password" }
+  ], function (values) {
+    var t = (values.token || "").trim();
+    if (!t) return;
+    setToken(t);
+    then();
+  });
+}
+
+function doGithubSave() {
+  var token = getToken();
+  var content = serialize(currentModel);
+  setGhStatus("GitHub: saving…");
+  var body = {
+    message: "Update " + GH_PATH + " via Arrangement Editor",
+    content: utf8ToBase64(content),
+    branch: GH_BRANCH
+  };
+  if (ghSha) body.sha = ghSha;
+  fetch(ghApiUrl(), {
+    method: "PUT",
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "Authorization": "token " + token,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  }).then(function (res) {
+    if (res.status === 401 || res.status === 403) {
+      clearToken();
+      setGhStatus("GitHub: token rejected — reconnect and try again.", true);
+      throw new Error("auth failed");
+    }
+    if (!res.ok) return res.json().then(function (j) { throw new Error(j.message || ("HTTP " + res.status)); });
+    return res.json();
+  }).then(function (data) {
+    if (!data) return;
+    ghSha = data.content.sha;
+    setGhStatus("GitHub: saved " + new Date().toLocaleTimeString());
+  }).catch(function (err) {
+    console.error(err);
+    if (err.message !== "auth failed") setGhStatus("GitHub: save failed (" + err.message + ")", true);
+  });
+}
+
+function saveToGithub() {
+  if (!getToken()) { promptForToken(doGithubSave); return; }
+  doGithubSave();
+}
+
+// ---------- mutation helpers used by the interactive grid ----------
+function uniqueName(existing, base) {
+  if (existing.indexOf(base) === -1) return base;
+  var n = 2;
+  while (existing.indexOf(base + " " + n) !== -1) n++;
+  return base + " " + n;
+}
+function addSectionPrompt() {
+  var names = currentModel.sections.map(function (s) { return s.name; });
+  openFieldModal("Add section", [
+    { key: "name", label: "Section name", value: uniqueName(names, "NEW SECTION") },
+    { key: "bars", label: "Bars", value: "8" },
+    { key: "energy", label: "Energy (0-10)", value: "5" },
+    { key: "chords", label: "Chords (optional)", value: "" }
+  ], function (values) {
+    var name = (values.name || "").trim();
+    if (!name) return;
+    name = uniqueName(names, name);
+    var bars = parseInt(values.bars, 10) || 4;
+    var energy = parseInt(values.energy, 10); if (isNaN(energy)) energy = 5;
+    currentModel.sections.push({ _uid: nextUid(), name: name, bars: bars, energy: Math.max(0, Math.min(10, energy)), chords: values.chords || "" });
+    syncAndRender();
+  });
+}
+function addRowPrompt() {
+  var ids = currentModel.rows.map(function (r) { return r.id; });
+  openFieldModal("Add row", [
+    { key: "id", label: "Row name (e.g. GTR, LOOP1, VOX)", value: uniqueName(ids, "NEW ROW") },
+    { key: "sub", label: "Sub-label (optional, e.g. lead gtr)", value: "" }
+  ], function (values) {
+    var id = (values.id || "").trim();
+    if (!id) return;
+    id = uniqueName(ids, id);
+    currentModel.rows.push({ _uid: nextUid(), id: id, sub: values.sub || "" });
+    syncAndRender();
+  });
+}
+function removeRow(uid) {
+  var row = currentModel.rows.find(function (r) { return r._uid === uid; });
+  if (!row) return;
+  openConfirm('Remove row "' + row.id + '" and all its blocks?', function () {
+    currentModel.blocks = currentModel.blocks.filter(function (b) { return b.row !== row.id; });
+    currentModel.rows = currentModel.rows.filter(function (r) { return r._uid !== uid; });
+    syncAndRender();
+  });
+}
+function removeSection(uid) {
+  var sec = currentModel.sections.find(function (s) { return s._uid === uid; });
+  if (!sec) return;
+  openConfirm('Remove section "' + sec.name + '"? Blocks referencing it will also be removed.', function () {
+    currentModel.blocks = currentModel.blocks.filter(function (b) { return b.from !== sec.name && b.to !== sec.name; });
+    currentModel.sections = currentModel.sections.filter(function (s) { return s._uid !== uid; });
+    syncAndRender();
+  });
+}
+function cycleState(uid) {
+  var b = currentModel.blocks.find(function (bl) { return bl._uid === uid; });
+  if (!b) return;
+  b.state = NEXT_STATE[b.state];
+  syncAndRender();
+}
+function renameBlock(uid) {
+  var b = currentModel.blocks.find(function (bl) { return bl._uid === uid; });
+  if (!b) return;
+  openFieldModal("Rename block", [
+    { key: "label", label: "Label", value: b.label },
+    { key: "sub", label: "Sub-label (optional)", value: b.sub }
+  ], function (values) {
+    b.label = values.label || ""; b.sub = values.sub || "";
+    syncAndRender();
+  });
+}
+function deleteBlock(uid) {
+  currentModel.blocks = currentModel.blocks.filter(function (b) { return b._uid !== uid; });
+  syncAndRender();
+}
+function createBlock(rowId, fromIdx, toIdx) {
+  var lo = Math.min(fromIdx, toIdx), hi = Math.max(fromIdx, toIdx);
+  openFieldModal("New block", [
+    { key: "label", label: "Label", value: "" },
+    { key: "sub", label: "Sub-label (optional)", value: "" }
+  ], function (values) {
+    var s = currentModel.sections;
+    currentModel.blocks.push({ _uid: nextUid(), row: rowId, from: s[lo].name, to: s[hi].name, state: "live", label: values.label || "", sub: values.sub || "" });
+    syncAndRender();
+  });
+}
+function resizeBlock(uid, edge, newIdx) {
+  var b = currentModel.blocks.find(function (bl) { return bl._uid === uid; });
+  if (!b) return;
+  var secIndex = {}; currentModel.sections.forEach(function (s, i) { secIndex[s.name] = i; });
+  var fromIdx = secIndex[b.from], toIdx = secIndex[b.to];
+  if (fromIdx === undefined || toIdx === undefined) return;
+  if (edge === "l") { fromIdx = Math.min(newIdx, toIdx); } else { toIdx = Math.max(newIdx, fromIdx); }
+  b.from = currentModel.sections[fromIdx].name;
+  b.to = currentModel.sections[toIdx].name;
+  syncAndRender();
+}
+
+// ---------- drag state for the grid ----------
+var drag = { mode: "idle", row: null, startIdx: null, hoverIdx: null, blockUid: null, edge: null };
+function endDrag() {
+  if (drag.mode === "create" && drag.row != null) {
+    var hi = drag.hoverIdx != null ? drag.hoverIdx : drag.startIdx;
+    createBlock(drag.row, drag.startIdx, hi);
+  } else if ((drag.mode === "resize-l" || drag.mode === "resize-r") && drag.blockUid != null) {
+    var hi2 = drag.hoverIdx != null ? drag.hoverIdx : drag.startIdx;
+    resizeBlock(drag.blockUid, drag.mode === "resize-l" ? "l" : "r", hi2);
+  }
+  drag = { mode: "idle", row: null, startIdx: null, hoverIdx: null, blockUid: null, edge: null };
+}
+window.addEventListener("mouseup", endDrag);
+window.addEventListener("mousemove", function (e) {
+  if (drag.mode === "idle" || drag.row == null) return;
+  var tracks = document.querySelectorAll('.track[data-row]');
+  for (var i = 0; i < tracks.length; i++) {
+    var t = tracks[i];
+    if (t.getAttribute("data-row") !== drag.row) continue;
+    var rect = t.getBoundingClientRect();
+    if (e.clientX >= rect.left && e.clientX <= rect.right) {
+      drag.hoverIdx = parseInt(t.getAttribute("data-idx"), 10);
+      break;
+    }
+  }
+});
+
+// ---------- rendering ----------
+function render(model, warnings, interactive) {
+  currentModel = model;
+  var mapWrap = document.getElementById("mapWrap");
+  var notesWrap = document.getElementById("notesWrap");
+  mapWrap.innerHTML = "";
+  notesWrap.innerHTML = "";
+  var warnBox = document.getElementById("warnings");
+  if (warnings.length) {
+    warnBox.className = "show";
+    warnBox.innerHTML = "⚠ " + warnings.map(esc).join("<br>⚠ ");
+  } else {
+    warnBox.className = ""; warnBox.innerHTML = "";
+  }
+  if (!model.sections.length) {
+    mapWrap.innerHTML = '<div class="card"><div class="meta">Click "+ Add section" (or type a <code>section:</code> line) to start.</div></div>';
+    return;
+  }
+
+  var card = document.createElement("div");
+  card.className = "card";
+  var title = model.meta.title || "UNTITLED";
+  var metaLine = [model.meta.time, model.meta.tempo ? "tempo " + model.meta.tempo : ""].filter(Boolean).join(" &nbsp;·&nbsp; ");
+  var totalBars = model.sections.reduce(function (a, s) { return a + s.bars; }, 0);
+  card.innerHTML = '<h2>' + esc(title) + '</h2><div class="meta">' + metaLine + ' &nbsp;·&nbsp; <b>' + totalBars + '</b> bars total</div><div id="map"></div>';
+  mapWrap.appendChild(card);
+
+  var map = card.querySelector("#map");
+  var S = model.sections;
+  var colTemplate = S.map(function (s) { return "minmax(" + (s.bars <= 2 ? "30px" : "40px") + ", " + s.bars + "fr)"; }).join(" ");
+  var tl = document.createElement("div");
+  tl.className = "tl";
+
+  var acc = 0;
+  var xs = S.map(function (s) { var x0 = acc; acc += s.bars; return [x0 / totalBars, acc / totalBars]; });
+  var W = 1000, H = 44, PAD = 4;
+  function y(e) { return H - PAD - (e / 10) * (H - 2 * PAD); }
+  var d = "";
+  xs.forEach(function (pair, i) {
+    d += (i === 0 ? "M " : "L ") + (pair[0] * W).toFixed(1) + " " + y(S[i].energy).toFixed(1) + " L " + (pair[1] * W).toFixed(1) + " " + y(S[i].energy).toFixed(1) + " ";
+  });
+  var eRow = document.createElement("div");
+  eRow.className = "tl-row";
+  eRow.innerHTML = '<div class="tl-label">ENERGY</div><div><svg id="energy-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">' +
+    '<path d="' + d + ' L ' + W + ' ' + (H - PAD) + ' L 0 ' + (H - PAD) + ' Z" fill="var(--grid)" opacity="0.55"></path>' +
+    '<path d="' + d + '" fill="none" stroke="var(--ink-2)" stroke-width="2"></path></svg></div>';
+  tl.appendChild(eRow);
+
+  var head = document.createElement("div");
+  head.className = "tl-row";
+  head.innerHTML = '<div class="tl-label"></div>';
+  var headCells = document.createElement("div");
+  headCells.className = "tl-cells"; headCells.style.gridTemplateColumns = colTemplate;
+  var anyChords = S.some(function (s) { return !!s.chords; });
+  S.forEach(function (s) {
+    var c = document.createElement("div");
+    c.className = "sec-head sec-col";
+    c.title = s.name + " — " + s.bars + " bars" + (s.chords ? " · " + s.chords : "");
+    c.innerHTML = '<div class="sec-name">' + esc(s.name) + '</div><div class="sec-bars">' + s.bars + '</div>' +
+      (anyChords ? '<div class="sec-chords">' + esc(s.chords || "") + '</div>' : "") +
+      (interactive ? '<span class="sec-del" title="Remove section" data-sec-uid="' + s._uid + '">&times;</span>' : "");
+    headCells.appendChild(c);
+  });
+  head.appendChild(headCells); tl.appendChild(head);
+  if (interactive) {
+    headCells.querySelectorAll(".sec-del").forEach(function (el) {
+      el.addEventListener("click", function (e) { e.stopPropagation(); removeSection(parseInt(el.getAttribute("data-sec-uid"), 10)); });
+    });
+  }
+
+  var secIndex = {};
+  S.forEach(function (s, i) { secIndex[s.name] = i; });
+
+  model.rows.forEach(function (row, ri) {
+    var gap = document.createElement("div"); gap.className = "row-gap"; tl.appendChild(gap);
+    var r = document.createElement("div"); r.className = "tl-row";
+    var lab = document.createElement("div"); lab.className = "tl-label";
+    var labHtml = row.sub ? (esc(row.id) + "<small>" + esc(row.sub) + "</small>") : esc(row.id);
+    lab.innerHTML = labHtml + (interactive ? '<span class="mini-x" title="Remove row" data-row-uid="' + row._uid + '">&times;</span>' : "");
+    r.appendChild(lab);
+    if (interactive) {
+      lab.querySelector(".mini-x").addEventListener("click", function (e) { e.stopPropagation(); removeRow(row._uid); });
+    }
+    var cells = document.createElement("div"); cells.className = "tl-cells";
+    cells.style.gridTemplateColumns = colTemplate; cells.style.minHeight = "32px";
+
+    if (interactive) {
+      S.forEach(function (s, idx) {
+        var track = document.createElement("div");
+        track.className = "track";
+        track.setAttribute("data-row", row.id);
+        track.setAttribute("data-idx", String(idx));
+        track.addEventListener("mousedown", function () { drag = { mode: "create", row: row.id, startIdx: idx, hoverIdx: idx, blockUid: null, edge: null }; });
+        cells.appendChild(track);
+      });
+    }
+
+    var color = colorFor(ri);
+    model.blocks.filter(function (b) { return b.row === row.id; }).forEach(function (b) {
+      var s0 = secIndex[b.from], s1 = secIndex[b.to];
+      if (s0 === undefined || s1 === undefined) return;
+      var el = document.createElement("div");
+      el.className = "blk state-" + b.state;
+      el.style.setProperty("--c", color);
+      el.style.gridColumn = (s0 + 1) + " / " + (s1 + 2);
+      var icon = STATE_ICON[b.state];
+      el.innerHTML = '<div class="t">' + icon + esc(b.label || "(no label)") + '</div>' + (b.sub ? '<div class="s">' + esc(b.sub) + '</div>' : "");
+      el.title = row.id + " · " + S[s0].name + (s1 > s0 ? " – " + S[s1].name : "") + NL +
+        b.label + (b.sub ? " — " + b.sub : "") + NL + "state: " + b.state + " (click to cycle, dbl-click to rename)";
+      if (interactive) {
+        var clickTimer = null;
+        el.addEventListener("click", function () { clickTimer = setTimeout(function () { cycleState(b._uid); }, 220); });
+        el.addEventListener("dblclick", function () { clearTimeout(clickTimer); renameBlock(b._uid); });
+
+        var hl = document.createElement("div"); hl.className = "handle handle-l";
+        hl.addEventListener("mousedown", function (e) { e.stopPropagation(); drag = { mode: "resize-l", row: row.id, startIdx: s0, hoverIdx: s0, blockUid: b._uid, edge: "l" }; });
+        el.appendChild(hl);
+
+        var hr = document.createElement("div"); hr.className = "handle handle-r";
+        hr.addEventListener("mousedown", function (e) { e.stopPropagation(); drag = { mode: "resize-r", row: row.id, startIdx: s1, hoverIdx: s1, blockUid: b._uid, edge: "r" }; });
+        el.appendChild(hr);
+
+        var del = document.createElement("div"); del.className = "del-btn"; del.title = "Delete block"; del.textContent = String.fromCharCode(215);
+        del.addEventListener("mousedown", function (e) { e.stopPropagation(); });
+        del.addEventListener("click", function (e) { e.stopPropagation(); clearTimeout(clickTimer); deleteBlock(b._uid); });
+        el.appendChild(del);
+      }
+      cells.appendChild(el);
+    });
+
+    r.appendChild(cells); tl.appendChild(r);
+  });
+  map.appendChild(tl);
+
+  var legend = document.createElement("div");
+  legend.className = "legend-line";
+  legend.textContent = "(plain) live playing · " + STATE_ICON.rec + "recording a loop · " + STATE_ICON.loop + "loop sustaining — click cycles state, drag creates/resizes";
+  card.appendChild(legend);
+
+  if (model.notes.length || model.ideas.length) {
+    var ni = document.createElement("div");
+    ni.className = "card";
+    ni.style.display = "grid";
+    ni.style.gridTemplateColumns = "repeat(auto-fit, minmax(240px, 1fr))";
+    ni.style.gap = "8px 24px";
+    var html = "";
+    if (model.notes.length) html += "<div><h3>Notes</h3><ul>" + model.notes.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul></div>";
+    if (model.ideas.length) html += "<div><h3>Ideas</h3><ul>" + model.ideas.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul></div>";
+    ni.innerHTML = html;
+    notesWrap.appendChild(ni);
+  }
+}
+
+function rerenderFromText() {
+  var text = document.getElementById("src").value;
+  var parsed = parseSource(text);
+  currentModel = parsed.model; currentWarnings = parsed.warnings;
+  render(currentModel, currentWarnings, true);
+}
+
+function slug(s) { return ((s || "arrangement").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")) || "arrangement"; }
+
+function download(filename, content, mime) {
+  var blob = new Blob([content], { type: mime });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+document.getElementById("btnDownloadSrc").addEventListener("click", function () {
+  download(slug(currentModel.meta.title) + ".txt", serialize(currentModel), "text/plain");
+});
+
+document.getElementById("btnDownloadHtml").addEventListener("click", function () {
+  render(currentModel, [], false);
+  var cardHTML = document.getElementById("mapWrap").innerHTML + document.getElementById("notesWrap").innerHTML;
+  var css = document.querySelector("style").innerHTML;
+  var doc = "<!DOCTYPE html>" + NL +
+    '<html lang="en"><head><meta charset="UTF-8"><title>' + esc(currentModel.meta.title || "Arrangement") + ' — arrangement map</title>' + NL +
+    '<style>body{margin:0;padding:24px;background:var(--page);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;}' + css + '</style></head>' + NL +
+    "<body>" + cardHTML + NL +
+    '<p style="color:var(--muted);font-size:11px;max-width:1400px;margin:12px auto 0 auto;">Generated by the Arrangement Editor · No Empire</p></body></html>';
+  download(slug(currentModel.meta.title) + ".html", doc, "text/html");
+  render(currentModel, [], true);
+});
+
+document.getElementById("btnAddSection").addEventListener("click", addSectionPrompt);
+document.getElementById("btnAddRow").addEventListener("click", addRowPrompt);
+document.getElementById("btnGithubSave").addEventListener("click", saveToGithub);
+
+document.getElementById("btnReset").addEventListener("click", function () {
+  openConfirm("Replace the current arrangement with the example? This discards unsaved edits.", function () {
+    document.getElementById("src").value = EXAMPLE;
+    rerenderFromText();
+  }, "Replace");
+});
+
+document.getElementById("fileInput").addEventListener("change", function (e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function () { document.getElementById("src").value = reader.result; rerenderFromText(); };
+  reader.readAsText(file);
+  e.target.value = "";
+});
+
+document.getElementById("src").addEventListener("input", rerenderFromText);
+loadFromGithub();
+</script>
+</body>
+</html>
