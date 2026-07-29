@@ -439,6 +439,22 @@ function openConfirm(message, onYes, okLabel) {
   root.innerHTML = ""; root.appendChild(back);
   okBtn.focus();
 }
+function openAlert(message, okLabel) {
+  var root = document.getElementById("modalRoot");
+  var back = document.createElement("div"); back.className = "modal-backdrop";
+  var box = document.createElement("div"); box.className = "modal-box";
+  var p = document.createElement("p"); p.textContent = message;
+  box.appendChild(p);
+  var actions = document.createElement("div"); actions.className = "modal-actions";
+  var okBtn = document.createElement("button"); okBtn.className = "primary"; okBtn.textContent = okLabel || "OK";
+  okBtn.addEventListener("click", closeModal);
+  actions.appendChild(okBtn);
+  box.appendChild(actions);
+  back.appendChild(box);
+  back.addEventListener("mousedown", function (e) { if (e.target === back) closeModal(); });
+  root.innerHTML = ""; root.appendChild(back);
+  okBtn.focus();
+}
 function openFieldModal(title, fields, onSubmit) {
   var root = document.getElementById("modalRoot");
   var back = document.createElement("div"); back.className = "modal-backdrop";
@@ -637,10 +653,17 @@ function doGithubSave() {
     console.error(err);
     if (err.message === "auth failed") return;
     if (err.message === "stale sha") {
-      setGhStatus("GitHub: save failed — this file changed on GitHub since you opened the page (someone else saved, or it was edited directly). Reload the page to get the latest version, then try again.", true);
+      setGhStatus("GitHub: save failed — see popup.", true);
+      openConfirm(
+        "Your save did NOT go through: this file changed on GitHub since you opened the page (someone else saved, or it was edited directly). " +
+        "Your edit is still safe in this browser tab — it will not be lost. Reload now, then look for a \"Restore draft\" prompt to bring your edit back, and save again.",
+        function () { window.location.reload(); },
+        "Reload now"
+      );
       return;
     }
     setGhStatus("GitHub: save failed (" + err.message + ")", true);
+    openAlert("Your save did NOT go through: " + err.message + ". Your edit is still here in this tab — don't switch songs or close the tab until it's saved, or it may be lost.");
   });
 }
 
