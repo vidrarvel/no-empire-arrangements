@@ -11,7 +11,6 @@ section: VERSE 2 | 16 | 5 | intro shape + verse shape
 section: CHORUS 2 | 16 | 7 | Bm F#m A E - Bm F#m E | 104
 section: SOLO | 16 | 8 | Bm F#m A E - Bm F#m E
 section: END | 1 | 2 | Bm
-section: ZZTEST DELETE ME | 8 | 5
 
 row: VOX
 row: BG VOX
