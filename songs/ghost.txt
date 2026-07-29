@@ -5,7 +5,7 @@ tempo: 102
 section: INTRO 1 | 8 | 3 | Am
 section: INTRO 2 | 8 | 3 | Am C D
 section: VERSE 1 | 16 | 4 | Am / Am C D x2
-section: CHORUS 1 | 16 | 7 | Bm F#m A E - Bm F#m E | 104
+section: CHORUS 1 | 16 | 0 | Bm F#m A E - Bm F#m E | 104
 section: INTERLUDE | 8 | 4
 section: VERSE 2 | 16 | 5 | intro shape + verse shape
 section: CHORUS 2 | 16 | 7 | Bm F#m A E - Bm F#m E | 104
@@ -48,3 +48,4 @@ block: DRUMS | SOLO | SOLO | live | IVAN Pat 2
 block: DRUMS | END | END | live | Kick & cymbal crash
 block: BG VOX | CHORUS 2 | CHORUS 2 | live | BVs Chorus
 block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chorus Riff
+block: BG VOX | CHORUS 1 | CHORUS 1 | live | BVs Chorus
