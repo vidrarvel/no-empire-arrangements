@@ -37,8 +37,5 @@ block: IVAN | INTRO 1 | INTRO 2 | live | Keeping beat
 block: IVAN | VERSE 1 | VERSE 1 | live | Keeping beat
 block: IVAN | INTERLUDE 1 | INTERLUDE 1 | live | Keeping beat
 
-note: Tempo corrected 2026-07-29: song runs at 93 BPM (was listed as 82). Chorus 1, Chorus 2, and Solo speed up to 94; everything else (Intro, Verse, Interludes, Ending) stays at 93.
-note: The old PRECHORUS block ("Bridge vocals") has been folded into the end of Verse 2 above pending confirmation of the exact bars it covers.
-note: Bass and drums are mostly blank in the source gsheet (beyond "keeping beat" for drums) - parts not written down yet. BASS row left empty on purpose; fill in when written.
 note: End on Em9 chord.
-note: Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
+idea: Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
