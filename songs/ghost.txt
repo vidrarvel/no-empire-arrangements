@@ -13,9 +13,9 @@ section: SOLO | 16 | 8 | Bm F#m A E - Bm F#m E
 section: END | 1 | 2 | Bm
 
 row: VOX
-row: BG VOX
 row: GTR
 row: JACK
+row: BVs
 row: BASS
 row: DRUMS
 
@@ -46,6 +46,6 @@ block: DRUMS | VERSE 2 | VERSE 2 | live | IVAN Pat 1
 block: DRUMS | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
 block: DRUMS | SOLO | SOLO | live | IVAN Pat 2
 block: DRUMS | END | END | live | Kick & cymbal crash
-block: BG VOX | CHORUS 2 | CHORUS 2 | live | BVs Chorus
+block: BVs | CHORUS 2 | CHORUS 2 | live | BVs Chorus
 block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chorus Riff
-block: BG VOX | CHORUS 1 | CHORUS 1 | live | BVs Chorus
+block: BVs | CHORUS 1 | CHORUS 1 | live | BVs Chorus
