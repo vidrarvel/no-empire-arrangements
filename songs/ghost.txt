@@ -43,6 +43,6 @@ block: DRUMS | END | END | live | Kick & cymbal crash
 block: BVs | CHORUS 2 | CHORUS 2 | live | BVs Chorus
 block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chorus Riff
 block: BVs | CHORUS 1 | CHORUS 1 | live | BVs Chorus
-block: BASS | INTERLUDE | INTERLUDE | live | Bass Riff 2
+block: BASS | INTERLUDE | INTERLUDE | live | Bass Verse Riff 2
 
 note: NO LOOPING, Andy on Bass
