@@ -23,26 +23,27 @@ block: VOX | VERSE 1 | VERSE 1 | live | VOX V1
 block: VOX | CHORUS 1 | CHORUS 1 | live | VOX CHOR
 block: VOX | VERSE 2 | VERSE 2 | live | VOX V2
 block: VOX | CHORUS 2 | CHORUS 2 | live | VOX CHOR
-block: J GTR | INTRO 1 | INTRO 2 | live | Whole-note strum | C-D bars
-block: J GTR | VERSE 1 | VERSE 1 | live | JACK Verse Pat 1 | picking
-block: J GTR | VERSE 2 | VERSE 2 | live | JACK Pat 2 | bluesy strumming
-block: J GTR | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
-block: J GTR | SOLO | SOLO | live | Solo | in D
-block: J GTR | END | END | live | Whole-note strum
-block: BASS | INTRO 1 | VERSE 1 | live | Bass Verse Riff
-block: BASS | VERSE 2 | VERSE 2 | live | Bass Verse Riff 2
-block: BASS | CHORUS 2 | CHORUS 2 | live | Bass Chorus Riff
-block: BASS | SOLO | SOLO | live | Bass Chorus Riff
-block: BASS | END | END | live | Bass End
-block: DRUMS | INTRO 1 | INTRO 2 | live | Kick & cymbal crash | C-D bars
-block: DRUMS | VERSE 1 | VERSE 1 | live | IVAN Pat 1 | 8th-note hi-hats, sidestick
-block: DRUMS | VERSE 2 | VERSE 2 | live | IVAN Pat 1
-block: DRUMS | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
-block: DRUMS | SOLO | SOLO | live | IVAN Pat 2
-block: DRUMS | END | END | live | Kick & cymbal crash
+block: J GTR | INTRO 2 | VERSE 1 | live | J GTR V1 RIFF | (Bar 5 of Intro 1)
+block: J GTR | INTERLUDE | VERSE 2 | live | J GTR V2 Riff
+block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR CH Riff
+block: J GTR | SOLO | SOLO | live | J GTR Solo | in D
+block: J GTR | END | END | live | Bm Strum
+block: BASS | INTRO 1 | VERSE 1 | live | BASS Verse Riff
+block: BASS | VERSE 2 | VERSE 2 | live | BASS Verse Riff 2
+block: BASS | CHORUS 2 | CHORUS 2 | live | BASS Chorus Riff
+block: BASS | SOLO | SOLO | live | BASS Chorus Riff
+block: BASS | END | END | live | BASS End
+block: DRUMS | INTRO 2 | INTRO 2 | live | DRUMS IN | (Bar 5 of Intro 1)
+block: DRUMS | VERSE 1 | VERSE 1 | live | DRUMS V1 | 8th-note hi-hats, sidestick
+block: DRUMS | INTERLUDE | VERSE 2 | live | DRUMS V2
+block: DRUMS | CHORUS 2 | CHORUS 2 | live | DRUMS CH2
+block: DRUMS | SOLO | SOLO | live | DRUMS CH2
+block: DRUMS | END | END | live | DRUMS END
 block: BVs | CHORUS 2 | CHORUS 2 | live | BVs Chorus
-block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chorus Riff
+block: BASS | CHORUS 1 | CHORUS 1 | live | BASS Chorus Riff
 block: BVs | CHORUS 1 | CHORUS 1 | live | BVs Chorus
-block: BASS | INTERLUDE | INTERLUDE | live | Bass Verse Riff 2
+block: BASS | INTERLUDE | INTERLUDE | live | BASS Verse Riff 2
+block: J GTR | CHORUS 1 | CHORUS 1 | live | J GTR CH Riff
+block: DRUMS | CHORUS 1 | CHORUS 1 | live | DRUMS CH
 
 note: NO LOOPING, Andy on Bass
