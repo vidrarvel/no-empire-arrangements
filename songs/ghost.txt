@@ -25,27 +25,23 @@ block: VOX | VERSE 2 | VERSE 2 | live | V2 | on the 6-bar lines
 block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
 block: GTR | INTRO 1 | INTRO 2 | live | GTR Verse Rhythm Pat 1 | whole-note strum on the C-D bars
 block: GTR | VERSE 1 | VERSE 1 | live | GTR Verse Rhythm Pat 1 | whole-note strum on 2nd C-D line
-block: GTR | CHORUS 1 | CHORUS 1 | live | GTR Chorus Pat
 block: GTR | VERSE 2 | VERSE 2 | live | GTR Verse Rhythm Pat 2
 block: GTR | CHORUS 2 | CHORUS 2 | live | GTR Chorus Pat
 block: GTR | SOLO | SOLO | live | GTR Chorus Pat
 block: GTR | END | END | live | Whole-note strum
 block: JACK | INTRO 1 | INTRO 2 | live | Whole-note strum | C-D bars
 block: JACK | VERSE 1 | VERSE 1 | live | JACK Verse Pat 1 | picking
-block: JACK | CHORUS 1 | CHORUS 1 | live | JACK Ch Pat 1
 block: JACK | VERSE 2 | VERSE 2 | live | JACK Pat 2 | bluesy strumming
 block: JACK | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
 block: JACK | SOLO | SOLO | live | Solo | in D
 block: JACK | END | END | live | Whole-note strum
 block: BASS | INTRO 1 | VERSE 1 | live | Bass Verse Riff
-block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chor Riff
 block: BASS | VERSE 2 | VERSE 2 | live | Verse Pat 1
 block: BASS | CHORUS 2 | CHORUS 2 | live | Ch Pat 1
 block: BASS | SOLO | SOLO | live | Bass riff
 block: BASS | END | END | live | Fill
 block: DRUMS | INTRO 1 | INTRO 2 | live | Kick & cymbal crash | C-D bars
 block: DRUMS | VERSE 1 | VERSE 1 | live | IVAN Pat 1 | 8th-note hi-hats, sidestick
-block: DRUMS | CHORUS 1 | CHORUS 1 | live | IVAN Pat 2 | ride, sidestick to snare
 block: DRUMS | VERSE 2 | VERSE 2 | live | IVAN Pat 1
 block: DRUMS | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
 block: DRUMS | SOLO | SOLO | live | IVAN Pat 2
