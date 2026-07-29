@@ -33,7 +33,11 @@
     border-radius: 6px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink);
     cursor: pointer; }
   button:hover, .file-btn:hover { border-color: var(--accent); color: var(--accent); }
+  button:disabled { opacity: 0.4; cursor: default; }
+  button:disabled:hover { border-color: var(--ring); color: var(--ink); }
   input[type=file] { display: none; }
+  #songSwitcher { font: inherit; font-size: 12.5px; font-weight: 600; padding: 7px 8px;
+    border-radius: 6px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); cursor: pointer; }
   textarea { width: 100%; height: 320px; resize: vertical; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
     background: var(--surface); color: var(--ink); border: 1px solid var(--ring); border-radius: 8px; padding: 12px; }
   details { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; font-size: 12.5px; color: var(--ink-2); }
@@ -49,13 +53,21 @@
   .meta b { color: var(--ink); font-weight: 600; }
   #map { overflow-x: auto; }
   .tl { min-width: 700px; }
-  .tl-row { display: grid; grid-template-columns: 128px 1fr; align-items: stretch; }
+  .tl-row { display: grid; grid-template-columns: 138px 1fr; align-items: stretch; }
   .tl-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--ink-2);
-              display: flex; align-items: center; justify-content: flex-end; gap: 5px;
+              display: flex; align-items: center; justify-content: flex-end; gap: 4px;
               padding-right: 10px; text-align: right; line-height: 1.2; }
   .tl-label small { font-weight: 400; color: var(--muted); display: block; }
+  .tl-label-text { min-width: 0; }
+  .tl-label-ctrl { flex: 0 0 auto; display: flex; align-items: center; gap: 1px; }
+  .mini-arrow { cursor: pointer; color: var(--muted); font-size: 11px; padding: 0 1px; }
+  .mini-arrow:hover { color: var(--accent); }
   .tl-cells { display: grid; gap: 2px; }
   .sec-head { text-align: center; padding: 3px 2px 1px 2px; min-width: 0; position: relative; }
+  .sec-ctrl { display: flex; align-items: center; justify-content: space-between; font-size: 9px;
+              color: var(--muted); line-height: 1; margin-bottom: 1px; }
+  .sec-ctrl span { cursor: pointer; padding: 0 2px; }
+  .sec-ctrl span:hover { color: var(--warn-ink); }
   .sec-name { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink);
               white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sec-bars { font-size: 9.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -85,8 +97,14 @@
   .blk:hover .del-btn { opacity: 1; }
   .mini-x { cursor: pointer; color: var(--muted); font-size: 12px; padding: 0 2px; }
   .mini-x:hover { color: var(--warn-ink); }
-  .sec-del { position: absolute; top: 1px; right: 2px; font-size: 10px; color: var(--muted); cursor: pointer; }
-  .sec-del:hover { color: var(--warn-ink); }
+  .copy-btn { position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; line-height: 14px;
+             text-align: center; border-radius: 3px; background: rgba(0,0,0,0.38); color: #fff;
+             font-size: 10px; opacity: 0; cursor: pointer; z-index: 4; }
+  .blk:hover .copy-btn { opacity: 1; }
+  .note-list { list-style: none; padding-left: 0; }
+  .note-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; cursor: pointer; }
+  .note-list li:hover { color: var(--ink); }
+  .note-add-btn { margin-top: 6px; font-size: 11px !important; padding: 4px 8px !important; }
   .legend-line { font-size: 11.5px; color: var(--ink-2); margin-top: 10px; }
   h3 { font-size: 12px; letter-spacing: 0.06em; color: var(--ink-2); margin: 0 0 6px 0; text-transform: uppercase; }
   ul { margin: 4px 0; padding-left: 18px; font-size: 12.5px; color: var(--ink-2); }
@@ -100,8 +118,9 @@
   .modal-box p { margin: 0 0 14px 0; font-size: 12.5px; color: var(--ink-2); }
   .modal-field { margin-bottom: 10px; }
   .modal-field label { display: block; font-size: 11px; color: var(--ink-2); margin-bottom: 3px; }
-  .modal-field input { width: 100%; font: inherit; font-size: 13px; padding: 6px 8px;
+  .modal-field input, .modal-field textarea, .modal-field select { width: 100%; font: inherit; font-size: 13px; padding: 6px 8px;
     border-radius: 6px; border: 1px solid var(--ring); background: var(--page); color: var(--ink); }
+  .modal-field textarea { resize: vertical; font-family: inherit; }
   .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
   .modal-actions button { font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 12px;
     border-radius: 6px; border: 1px solid var(--ring); background: var(--page); color: var(--ink); cursor: pointer; }
@@ -112,14 +131,19 @@
 <div id="modalRoot"></div>
 <div class="wrap">
   <h1>Arrangement Editor</h1>
-  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click a block to rename it, double-click a row label to rename the row, double-click a section header to edit its bars/energy/chords/tempo. Drag a block's edge to resize. Or just type below. No Empire.</div>
+  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click a block to rename it, double-click a row label to rename the row, double-click a section header to edit its bars/energy/chords/tempo. Drag a block's edge to resize, hover a block for a copy-to-section button. Use the arrows on row labels / section headers to reorder them. Ctrl+Z / Ctrl+Shift+Z (or the toolbar buttons) to undo/redo. Or just type below. No Empire.</div>
 
   <div class="toolbar">
+    <select id="songSwitcher" title="Switch song"><option>Loading songs…</option></select>
+    <span class="divider"></span>
     <label class="file-btn">Load source
       <input type="file" id="fileInput" accept=".txt,.md">
     </label>
     <button id="btnDownloadSrc">Download source (.txt)</button>
     <button id="btnDownloadHtml">Download map (.html)</button>
+    <span class="divider"></span>
+    <button id="btnUndo" title="Undo (Ctrl+Z)" disabled>&#8630; Undo</button>
+    <button id="btnRedo" title="Redo (Ctrl+Shift+Z)" disabled>&#8631; Redo</button>
     <span class="divider"></span>
     <button id="btnAddSection">+ Add section</button>
     <button id="btnAddRow">+ Add row</button>
@@ -334,8 +358,44 @@ function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").
 var currentModel = null;
 var currentWarnings = [];
 
+// ---------- undo/redo (structured edits only; native undo still works while typing in the textarea) ----------
+var undoStack = [];
+var redoStack = [];
+var UNDO_LIMIT = 50;
+function updateUndoRedoButtons() {
+  var u = document.getElementById("btnUndo"), r = document.getElementById("btnRedo");
+  if (u) u.disabled = !undoStack.length;
+  if (r) r.disabled = !redoStack.length;
+}
+function undo() {
+  if (!undoStack.length) return;
+  var current = document.getElementById("src").value;
+  var prev = undoStack.pop();
+  redoStack.push(current);
+  document.getElementById("src").value = prev;
+  rerenderFromText();
+  updateUndoRedoButtons();
+}
+function redo() {
+  if (!redoStack.length) return;
+  var current = document.getElementById("src").value;
+  var next = redoStack.pop();
+  undoStack.push(current);
+  document.getElementById("src").value = next;
+  rerenderFromText();
+  updateUndoRedoButtons();
+}
+
 function syncTextarea() {
-  document.getElementById("src").value = serialize(currentModel);
+  var newContent = serialize(currentModel);
+  var oldContent = document.getElementById("src").value;
+  if (oldContent !== newContent) {
+    undoStack.push(oldContent);
+    if (undoStack.length > UNDO_LIMIT) undoStack.shift();
+    redoStack = [];
+    updateUndoRedoButtons();
+  }
+  document.getElementById("src").value = newContent;
   saveDraft();
 }
 function syncAndRender() {
@@ -374,8 +434,25 @@ function openFieldModal(title, fields, onSubmit) {
   fields.forEach(function (f) {
     var wrap = document.createElement("div"); wrap.className = "modal-field";
     var lab = document.createElement("label"); lab.textContent = f.label; wrap.appendChild(lab);
-    var inp = document.createElement("input"); inp.type = f.type || "text";
-    inp.value = (f.value === undefined || f.value === null) ? "" : String(f.value);
+    var inp;
+    if (f.type === "textarea") {
+      inp = document.createElement("textarea");
+      inp.rows = f.rows || 3;
+      inp.value = (f.value === undefined || f.value === null) ? "" : String(f.value);
+    } else if (f.type === "select") {
+      inp = document.createElement("select");
+      (f.options || []).forEach(function (opt) {
+        var o = document.createElement("option");
+        var val = (opt && typeof opt === "object") ? opt.value : opt;
+        var lbl = (opt && typeof opt === "object") ? opt.label : opt;
+        o.value = val; o.textContent = lbl;
+        inp.appendChild(o);
+      });
+      inp.value = (f.value === undefined || f.value === null) ? "" : String(f.value);
+    } else {
+      inp = document.createElement("input"); inp.type = f.type || "text";
+      inp.value = (f.value === undefined || f.value === null) ? "" : String(f.value);
+    }
     wrap.appendChild(inp);
     box.appendChild(wrap);
     inputs[f.key] = inp;
@@ -397,11 +474,13 @@ function openFieldModal(title, fields, onSubmit) {
   back.addEventListener("mousedown", function (e) { if (e.target === back) closeModal(); });
   root.innerHTML = ""; root.appendChild(back);
   box.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") { e.preventDefault(); submit(); }
-    else if (e.key === "Escape") { e.preventDefault(); closeModal(); }
+    if (e.key === "Enter") {
+      if (e.target.tagName === "TEXTAREA" && !(e.ctrlKey || e.metaKey)) return; // allow newline in textarea
+      e.preventDefault(); submit();
+    } else if (e.key === "Escape") { e.preventDefault(); closeModal(); }
   });
   var firstInput = fields.length ? inputs[fields[0].key] : null;
-  if (firstInput) { firstInput.focus(); firstInput.select(); }
+  if (firstInput) { firstInput.focus(); if (typeof firstInput.select === "function") firstInput.select(); }
 }
 
 // ---------- GitHub persistence (public repo, contents API) ----------
@@ -412,7 +491,8 @@ var GH_PATH = "songs/" + GH_SONG + ".txt";
 var GH_BRANCH = "main";
 var GH_TOKEN_KEY = "ne_arr_github_token";
 var ghSha = null; // set once we know the current file's blob sha, so saves overwrite rather than conflict
-var lastSyncedContent = null; // content as last confirmed on GitHub (for unsaved-change detection)
+var lastSyncedContent = null; // content as last confirmed on GitHub (for unsaved-change detection + diff preview)
+var ghExists = false; // whether GH_PATH currently exists on GitHub (false = first save will create it, skip diff)
 function draftKey() { return "ne_arr_draft_" + GH_SONG; }
 function saveDraft() {
   try { localStorage.setItem(draftKey(), JSON.stringify({ content: document.getElementById("src").value, ts: Date.now() })); } catch (e) { /* ignore quota/privacy-mode errors */ }
@@ -472,8 +552,8 @@ function loadFromGithub() {
     })
     .then(function (data) {
       var loaded = data ? base64ToUtf8(data.content) : EXAMPLE;
-      if (data) ghSha = data.sha;
-      lastSyncedContent = loaded;
+      if (data) { ghSha = data.sha; ghExists = true; lastSyncedContent = loaded; }
+      else { ghExists = false; lastSyncedContent = null; }
       document.getElementById("src").value = loaded;
       rerenderFromText();
       if (data) setGhStatus("GitHub: loaded " + GH_PATH);
@@ -481,7 +561,8 @@ function loadFromGithub() {
     })
     .catch(function (err) {
       console.error(err);
-      lastSyncedContent = EXAMPLE;
+      ghExists = false;
+      lastSyncedContent = null;
       document.getElementById("src").value = EXAMPLE;
       rerenderFromText();
       setGhStatus("GitHub: couldn't load (" + err.message + ") — showing example.", true);
@@ -530,6 +611,7 @@ function doGithubSave() {
     if (!data) return;
     ghSha = data.content.sha;
     lastSyncedContent = content;
+    ghExists = true;
     clearDraft();
     setGhStatus("GitHub: saved " + new Date().toLocaleTimeString());
   }).catch(function (err) {
@@ -538,9 +620,75 @@ function doGithubSave() {
   });
 }
 
-function saveToGithub() {
+function proceedToSave() {
   if (!getToken()) { promptForToken(doGithubSave); return; }
   doGithubSave();
+}
+
+// ---------- diff preview before save ----------
+function diffLines(oldText, newText) {
+  var a = oldText.split(NL), b = newText.split(NL);
+  var n = a.length, m = b.length;
+  var dp = new Array(n + 1);
+  for (var i = 0; i <= n; i++) { dp[i] = new Array(m + 1).fill(0); }
+  for (i = n - 1; i >= 0; i--) {
+    for (var j = m - 1; j >= 0; j--) {
+      dp[i][j] = (a[i] === b[j]) ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    }
+  }
+  var result = [];
+  i = 0; var j2 = 0;
+  while (i < n && j2 < m) {
+    if (a[i] === b[j2]) { result.push({ type: "same", line: a[i] }); i++; j2++; }
+    else if (dp[i + 1][j2] >= dp[i][j2 + 1]) { result.push({ type: "del", line: a[i] }); i++; }
+    else { result.push({ type: "add", line: b[j2] }); j2++; }
+  }
+  while (i < n) { result.push({ type: "del", line: a[i] }); i++; }
+  while (j2 < m) { result.push({ type: "add", line: b[j2] }); j2++; }
+  return result;
+}
+function showDiffPreview(oldContent, newContent, onConfirm) {
+  var diff = diffLines(oldContent, newContent);
+  var added = diff.filter(function (d) { return d.type === "add"; }).length;
+  var removed = diff.filter(function (d) { return d.type === "del"; }).length;
+  var root = document.getElementById("modalRoot");
+  var back = document.createElement("div"); back.className = "modal-backdrop";
+  var box = document.createElement("div"); box.className = "modal-box";
+  box.style.width = "480px"; box.style.maxHeight = "70vh"; box.style.overflow = "auto";
+  var h = document.createElement("h4"); h.textContent = "Review changes before saving"; box.appendChild(h);
+  var p = document.createElement("p"); p.textContent = "+" + added + " / -" + removed + " line(s) vs. what's currently on GitHub.";
+  box.appendChild(p);
+  var pre = document.createElement("div");
+  pre.style.fontSize = "11px"; pre.style.fontFamily = "ui-monospace, SFMono-Regular, Menlo, monospace";
+  pre.style.whiteSpace = "pre-wrap"; pre.style.maxHeight = "320px"; pre.style.overflow = "auto";
+  pre.style.background = "var(--page)"; pre.style.border = "1px solid var(--ring)"; pre.style.borderRadius = "6px"; pre.style.padding = "8px";
+  diff.forEach(function (d) {
+    if (d.type === "same") return;
+    var line = document.createElement("div");
+    line.style.color = d.type === "add" ? "#1baf7a" : "#e34948";
+    line.textContent = (d.type === "add" ? "+ " : "- ") + d.line;
+    pre.appendChild(line);
+  });
+  if (!added && !removed) { var none = document.createElement("div"); none.style.color = "var(--muted)"; none.textContent = "(no line-level changes)"; pre.appendChild(none); }
+  box.appendChild(pre);
+  var actions = document.createElement("div"); actions.className = "modal-actions";
+  var cancelBtn = document.createElement("button"); cancelBtn.textContent = "Cancel";
+  cancelBtn.addEventListener("click", closeModal);
+  var okBtn = document.createElement("button"); okBtn.className = "primary"; okBtn.textContent = "Save to GitHub";
+  okBtn.addEventListener("click", function () { closeModal(); onConfirm(); });
+  actions.appendChild(cancelBtn); actions.appendChild(okBtn);
+  box.appendChild(actions);
+  back.appendChild(box);
+  back.addEventListener("mousedown", function (e) { if (e.target === back) closeModal(); });
+  root.innerHTML = ""; root.appendChild(back);
+  okBtn.focus();
+}
+
+function saveToGithub() {
+  var newContent = serialize(currentModel);
+  if (!ghExists) { proceedToSave(); return; } // nothing on GitHub yet — nothing meaningful to diff against
+  if (newContent === lastSyncedContent) { setGhStatus("No changes to save."); return; }
+  showDiffPreview(lastSyncedContent, newContent, proceedToSave);
 }
 
 // ---------- mutation helpers used by the interactive grid ----------
@@ -581,6 +729,16 @@ function addRowPrompt() {
     currentModel.rows.push({ _uid: nextUid(), id: id, sub: values.sub || "" });
     syncAndRender();
   });
+}
+function moveRow(uid, dir) {
+  var idx = currentModel.rows.findIndex(function (r) { return r._uid === uid; });
+  if (idx === -1) return;
+  var newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= currentModel.rows.length) return;
+  var tmp = currentModel.rows[idx];
+  currentModel.rows[idx] = currentModel.rows[newIdx];
+  currentModel.rows[newIdx] = tmp;
+  syncAndRender();
 }
 function removeRow(uid) {
   var row = currentModel.rows.find(function (r) { return r._uid === uid; });
@@ -643,6 +801,16 @@ function editSectionPrompt(uid) {
     syncAndRender();
   });
 }
+function moveSection(uid, dir) {
+  var idx = currentModel.sections.findIndex(function (s) { return s._uid === uid; });
+  if (idx === -1) return;
+  var newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= currentModel.sections.length) return;
+  var tmp = currentModel.sections[idx];
+  currentModel.sections[idx] = currentModel.sections[newIdx];
+  currentModel.sections[newIdx] = tmp;
+  syncAndRender();
+}
 function removeSection(uid) {
   var sec = currentModel.sections.find(function (s) { return s._uid === uid; });
   if (!sec) return;
@@ -694,6 +862,51 @@ function resizeBlock(uid, edge, newIdx) {
   b.from = currentModel.sections[fromIdx].name;
   b.to = currentModel.sections[toIdx].name;
   syncAndRender();
+}
+function copyBlockPrompt(uid) {
+  var b = currentModel.blocks.find(function (bl) { return bl._uid === uid; });
+  if (!b) return;
+  var opts = currentModel.sections.map(function (s) { return { value: s.name, label: s.name }; });
+  openFieldModal("Copy block to section", [
+    { key: "target", label: "Target section (copy becomes a single-section block there)", value: b.from, type: "select", options: opts }
+  ], function (values) {
+    var target = values.target;
+    if (!target) return;
+    currentModel.blocks.push({ _uid: nextUid(), row: b.row, from: target, to: target, state: b.state, label: b.label, sub: b.sub });
+    syncAndRender();
+  });
+}
+
+// ---------- notes / ideas editor ----------
+function addNoteOrIdeaPrompt(kind) {
+  openFieldModal(kind === "note" ? "Add note" : "Add idea", [
+    { key: "text", label: "Text", value: "", type: "textarea" }
+  ], function (values) {
+    var text = (values.text || "").trim();
+    if (!text) return;
+    currentModel[kind === "note" ? "notes" : "ideas"].push(text);
+    syncAndRender();
+  });
+}
+function editNoteOrIdea(kind, idx) {
+  var arr = currentModel[kind === "note" ? "notes" : "ideas"];
+  if (idx < 0 || idx >= arr.length) return;
+  openFieldModal(kind === "note" ? "Edit note" : "Edit idea", [
+    { key: "text", label: "Text", value: arr[idx], type: "textarea" }
+  ], function (values) {
+    var text = (values.text || "").trim();
+    if (!text) return;
+    arr[idx] = text;
+    syncAndRender();
+  });
+}
+function deleteNoteOrIdea(kind, idx) {
+  var arr = currentModel[kind === "note" ? "notes" : "ideas"];
+  if (idx < 0 || idx >= arr.length) return;
+  openConfirm("Delete this " + kind + "?", function () {
+    arr.splice(idx, 1);
+    syncAndRender();
+  });
 }
 
 // ---------- drag state for the grid ----------
@@ -763,14 +976,18 @@ function render(model, warnings, interactive) {
   var headCells = document.createElement("div");
   headCells.className = "tl-cells"; headCells.style.gridTemplateColumns = colTemplate;
   var anyChords = S.some(function (s) { return !!s.chords; });
-  S.forEach(function (s) {
+  S.forEach(function (s, si) {
     var c = document.createElement("div");
     c.className = "sec-head sec-col";
     c.title = s.name + " — " + s.bars + " bars, energy " + s.energy + (s.tempo ? " · " + s.tempo + " bpm" : "") + (s.chords ? " · " + s.chords : "") + (interactive ? " (double-click to edit)" : "");
     c.setAttribute("data-sec-uid", String(s._uid));
-    c.innerHTML = '<div class="sec-name">' + esc(s.name) + '</div><div class="sec-bars">' + s.bars + (s.tempo ? ' <span class="sec-tempo">· ' + s.tempo + '</span>' : '') + '</div>' +
-      (anyChords ? '<div class="sec-chords">' + esc(s.chords || "") + '</div>' : "") +
-      (interactive ? '<span class="sec-del" title="Remove section" data-sec-uid="' + s._uid + '">&times;</span>' : "");
+    var leftHidden = si === 0, rightHidden = si === S.length - 1;
+    c.innerHTML =
+      (interactive ? '<div class="sec-ctrl"><span class="sec-arrow" style="visibility:' + (leftHidden ? "hidden" : "visible") + '" title="Move left" data-sec-uid="' + s._uid + '" data-dir="-1">&larr;</span>' +
+        '<span class="sec-del" title="Remove section" data-sec-uid="' + s._uid + '">&times;</span>' +
+        '<span class="sec-arrow" style="visibility:' + (rightHidden ? "hidden" : "visible") + '" title="Move right" data-sec-uid="' + s._uid + '" data-dir="1">&rarr;</span></div>' : "") +
+      '<div class="sec-name">' + esc(s.name) + '</div><div class="sec-bars">' + s.bars + (s.tempo ? ' <span class="sec-tempo">· ' + s.tempo + '</span>' : '') + '</div>' +
+      (anyChords ? '<div class="sec-chords">' + esc(s.chords || "") + '</div>' : "");
     headCells.appendChild(c);
   });
   head.appendChild(headCells); tl.appendChild(head);
@@ -783,6 +1000,10 @@ function render(model, warnings, interactive) {
       el.addEventListener("click", function (e) { e.stopPropagation(); removeSection(parseInt(el.getAttribute("data-sec-uid"), 10)); });
       el.addEventListener("dblclick", function (e) { e.stopPropagation(); });
     });
+    headCells.querySelectorAll(".sec-arrow").forEach(function (el) {
+      el.addEventListener("click", function (e) { e.stopPropagation(); moveSection(parseInt(el.getAttribute("data-sec-uid"), 10), parseInt(el.getAttribute("data-dir"), 10)); });
+      el.addEventListener("dblclick", function (e) { e.stopPropagation(); });
+    });
   }
 
   var secIndex = {};
@@ -793,11 +1014,20 @@ function render(model, warnings, interactive) {
     var r = document.createElement("div"); r.className = "tl-row";
     var lab = document.createElement("div"); lab.className = "tl-label";
     var labHtml = row.sub ? (esc(row.id) + "<small>" + esc(row.sub) + "</small>") : esc(row.id);
-    lab.innerHTML = labHtml + (interactive ? '<span class="mini-x" title="Remove row" data-row-uid="' + row._uid + '">&times;</span>' : "");
+    var upHidden = ri === 0, downHidden = ri === model.rows.length - 1;
+    lab.innerHTML = '<div class="tl-label-text">' + labHtml + '</div>' + (interactive ?
+      '<div class="tl-label-ctrl">' +
+      '<span class="mini-arrow" style="visibility:' + (upHidden ? "hidden" : "visible") + '" title="Move up" data-row-uid="' + row._uid + '" data-dir="-1">&uarr;</span>' +
+      '<span class="mini-arrow" style="visibility:' + (downHidden ? "hidden" : "visible") + '" title="Move down" data-row-uid="' + row._uid + '" data-dir="1">&darr;</span>' +
+      '<span class="mini-x" title="Remove row" data-row-uid="' + row._uid + '">&times;</span></div>' : "");
     r.appendChild(lab);
     if (interactive) {
       lab.querySelector(".mini-x").addEventListener("click", function (e) { e.stopPropagation(); removeRow(row._uid); });
       lab.querySelector(".mini-x").addEventListener("dblclick", function (e) { e.stopPropagation(); });
+      lab.querySelectorAll(".mini-arrow").forEach(function (el) {
+        el.addEventListener("click", function (e) { e.stopPropagation(); moveRow(row._uid, parseInt(el.getAttribute("data-dir"), 10)); });
+        el.addEventListener("dblclick", function (e) { e.stopPropagation(); });
+      });
       lab.title = "Double-click to rename";
       lab.addEventListener("dblclick", function () { renameRowPrompt(row._uid); });
     }
@@ -841,6 +1071,11 @@ function render(model, warnings, interactive) {
         hr.addEventListener("mousedown", function (e) { e.stopPropagation(); drag = { mode: "resize-r", row: row.id, startIdx: s1, hoverIdx: s1, blockUid: b._uid, edge: "r" }; });
         el.appendChild(hr);
 
+        var copyBtn = document.createElement("div"); copyBtn.className = "copy-btn"; copyBtn.title = "Copy to another section"; copyBtn.textContent = String.fromCharCode(0x29C9);
+        copyBtn.addEventListener("mousedown", function (e) { e.stopPropagation(); });
+        copyBtn.addEventListener("click", function (e) { e.stopPropagation(); clearTimeout(clickTimer); copyBlockPrompt(b._uid); });
+        el.appendChild(copyBtn);
+
         var del = document.createElement("div"); del.className = "del-btn"; del.title = "Delete block"; del.textContent = String.fromCharCode(215);
         del.addEventListener("mousedown", function (e) { e.stopPropagation(); });
         del.addEventListener("click", function (e) { e.stopPropagation(); clearTimeout(clickTimer); deleteBlock(b._uid); });
@@ -853,17 +1088,45 @@ function render(model, warnings, interactive) {
   });
   map.appendChild(tl);
 
-  if (model.notes.length || model.ideas.length) {
+  if (interactive || model.notes.length || model.ideas.length) {
     var ni = document.createElement("div");
     ni.className = "card";
     ni.style.display = "grid";
     ni.style.gridTemplateColumns = "repeat(auto-fit, minmax(240px, 1fr))";
     ni.style.gap = "8px 24px";
+    function notesColHtml(title, kind, items) {
+      var h = '<div><h3>' + title + '</h3><ul class="note-list">';
+      items.forEach(function (n, idx) {
+        h += '<li data-kind="' + kind + '" data-idx="' + idx + '">' + '<span class="note-text">' + esc(n) + '</span>' +
+          (interactive ? '<span class="mini-x" data-kind="' + kind + '" data-idx="' + idx + '" title="Delete">&times;</span>' : '') +
+          '</li>';
+      });
+      h += '</ul>' + (interactive ? '<button class="note-add-btn" type="button" data-kind="' + kind + '">+ Add ' + (kind === "note" ? "note" : "idea") + '</button>' : '') + '</div>';
+      return h;
+    }
     var html = "";
-    if (model.notes.length) html += "<div><h3>Notes</h3><ul>" + model.notes.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul></div>";
-    if (model.ideas.length) html += "<div><h3>Ideas</h3><ul>" + model.ideas.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul></div>";
+    if (interactive || model.notes.length) html += notesColHtml("Notes", "note", model.notes);
+    if (interactive || model.ideas.length) html += notesColHtml("Ideas", "idea", model.ideas);
     ni.innerHTML = html;
     notesWrap.appendChild(ni);
+    if (interactive) {
+      ni.querySelectorAll(".note-list li").forEach(function (li) {
+        li.title = "Double-click to edit";
+        li.addEventListener("dblclick", function () {
+          editNoteOrIdea(li.getAttribute("data-kind"), parseInt(li.getAttribute("data-idx"), 10));
+        });
+      });
+      ni.querySelectorAll(".mini-x").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.stopPropagation();
+          deleteNoteOrIdea(el.getAttribute("data-kind"), parseInt(el.getAttribute("data-idx"), 10));
+        });
+        el.addEventListener("dblclick", function (e) { e.stopPropagation(); });
+      });
+      ni.querySelectorAll(".note-add-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () { addNoteOrIdeaPrompt(btn.getAttribute("data-kind")); });
+      });
+    }
   }
 }
 
@@ -905,6 +1168,62 @@ document.getElementById("btnDownloadHtml").addEventListener("click", function ()
 document.getElementById("btnAddSection").addEventListener("click", addSectionPrompt);
 document.getElementById("btnAddRow").addEventListener("click", addRowPrompt);
 document.getElementById("btnGithubSave").addEventListener("click", saveToGithub);
+document.getElementById("btnUndo").addEventListener("click", undo);
+document.getElementById("btnRedo").addEventListener("click", redo);
+
+window.addEventListener("keydown", function (e) {
+  var mod = e.ctrlKey || e.metaKey;
+  if (!mod) return;
+  var key = e.key.toLowerCase();
+  if (key !== "z" && key !== "y") return;
+  var active = document.activeElement;
+  var tag = active && active.tagName;
+  if (tag === "TEXTAREA" || tag === "INPUT" || tag === "SELECT") return; // let native undo happen there
+  if (document.getElementById("modalRoot").firstChild) return; // don't interfere while a modal is open
+  if (key === "y" || (key === "z" && e.shiftKey)) { e.preventDefault(); redo(); }
+  else { e.preventDefault(); undo(); }
+});
+
+// ---------- song switcher ----------
+function loadSongList() {
+  var sel = document.getElementById("songSwitcher");
+  var url = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/songs?ref=" + GH_BRANCH;
+  var headers = { "Accept": "application/vnd.github+json" };
+  var token = getToken();
+  if (token) headers["Authorization"] = "token " + token;
+  fetch(url, { headers: headers })
+    .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
+    .then(function (list) {
+      if (!Array.isArray(list)) return;
+      sel.innerHTML = "";
+      var names = list.filter(function (f) { return f.type === "file" && /\.txt$/i.test(f.name); })
+        .map(function (f) { return f.name.replace(/\.txt$/i, ""); })
+        .sort();
+      names.forEach(function (name) {
+        var o = document.createElement("option");
+        o.value = name; o.textContent = name;
+        if (name === GH_SONG) o.selected = true;
+        sel.appendChild(o);
+      });
+      if (names.indexOf(GH_SONG) === -1) {
+        var cur = document.createElement("option");
+        cur.value = GH_SONG; cur.textContent = GH_SONG + " (new)"; cur.selected = true;
+        sel.insertBefore(cur, sel.firstChild);
+      }
+    })
+    .catch(function (err) {
+      console.error("song list load failed", err);
+      sel.innerHTML = '<option value="' + esc(GH_SONG) + '" selected>' + esc(GH_SONG) + "</option>";
+    });
+}
+document.getElementById("songSwitcher").addEventListener("change", function (e) {
+  var val = e.target.value;
+  if (!val || val === GH_SONG) return;
+  var params = new URLSearchParams(window.location.search);
+  params.set("song", val);
+  window.location.search = params.toString();
+});
+loadSongList();
 
 document.getElementById("btnReset").addEventListener("click", function () {
   openConfirm("Replace the current arrangement with the example? This discards unsaved edits.", function () {
