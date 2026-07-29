@@ -18,7 +18,6 @@ row: VOX
 row: GTR
 row: GTR SWELL | looped
 row: JACK
-row: BASS
 row: BASS SYNTH | looped
 row: IVAN
 
@@ -45,12 +44,6 @@ block: JACK | FILL | FILL | live | Fill chord
 block: JACK | VERSE 3a | VERSE 3b | live | Jack Pat 2 | fingerpicked
 block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus chords
 block: JACK | FILL (END) | FILL (END) | live | Fill chord
-block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Ch Pat 1 | chorus pattern
-block: BASS | FILL | FILL | live | Fill chord
-block: BASS | VERSE 3a | VERSE 3a | live | Bass Pat 1a | let whole notes ring
-block: BASS | VERSE 3b | VERSE 3b | live | Bass Pat 1 | verse pattern
-block: BASS | CHORUS 2 | CHORUS 2 | live | Bass Ch Pat 1 | chorus pattern
-block: BASS | FILL (END) | FILL (END) | live | Fill chord
 block: IVAN | INTRO | INTRO | live | Time on hats
 block: IVAN | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove
 block: IVAN | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
