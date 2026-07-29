@@ -36,10 +36,10 @@ block: JACK | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
 block: JACK | SOLO | SOLO | live | Solo | in D
 block: JACK | END | END | live | Whole-note strum
 block: BASS | INTRO 1 | VERSE 1 | live | Bass Verse Riff
-block: BASS | VERSE 2 | VERSE 2 | live | Verse Pat 1
-block: BASS | CHORUS 2 | CHORUS 2 | live | Ch Pat 1
-block: BASS | SOLO | SOLO | live | Bass riff
-block: BASS | END | END | live | Fill
+block: BASS | VERSE 2 | VERSE 2 | live | Bass Verse Riff
+block: BASS | CHORUS 2 | CHORUS 2 | live | Bass Chorus Riff
+block: BASS | SOLO | SOLO | live | Bass Chorus Riff
+block: BASS | END | END | live | Bass End
 block: DRUMS | INTRO 1 | INTRO 2 | live | Kick & cymbal crash | C-D bars
 block: DRUMS | VERSE 1 | VERSE 1 | live | IVAN Pat 1 | 8th-note hi-hats, sidestick
 block: DRUMS | VERSE 2 | VERSE 2 | live | IVAN Pat 1
@@ -47,3 +47,4 @@ block: DRUMS | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
 block: DRUMS | SOLO | SOLO | live | IVAN Pat 2
 block: DRUMS | END | END | live | Kick & cymbal crash
 block: BG VOX | CHORUS 2 | CHORUS 2 | live | BVs Chorus
+block: BASS | CHORUS 1 | CHORUS 1 | live | Bass Chorus Riff
