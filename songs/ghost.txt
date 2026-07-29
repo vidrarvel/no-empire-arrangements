@@ -13,28 +13,28 @@ section: SOLO | 16 | 8 | Bm F#m A E - Bm F#m E
 section: END | 2 | 2 | Bm
 
 row: VOX
-row: GTR
-row: JACK
+row: A GTR
+row: J GTR
 row: BVs
-row: BASS
+row: BASS | Andy
 row: DRUMS
 
 block: VOX | VERSE 1 | VERSE 1 | live | V1 | on the two 6-bar lines
 block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
 block: VOX | VERSE 2 | VERSE 2 | live | V2 | on the 6-bar lines
 block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
-block: GTR | INTRO 1 | INTRO 2 | live | GTR Verse Rhythm Pat 1 | whole-note strum on the C-D bars
-block: GTR | VERSE 1 | VERSE 1 | live | GTR Verse Rhythm Pat 1 | whole-note strum on 2nd C-D line
-block: GTR | VERSE 2 | VERSE 2 | live | GTR Verse Rhythm Pat 2
-block: GTR | CHORUS 2 | CHORUS 2 | live | GTR Chorus Pat
-block: GTR | SOLO | SOLO | live | GTR Chorus Pat
-block: GTR | END | END | live | Whole-note strum
-block: JACK | INTRO 1 | INTRO 2 | live | Whole-note strum | C-D bars
-block: JACK | VERSE 1 | VERSE 1 | live | JACK Verse Pat 1 | picking
-block: JACK | VERSE 2 | VERSE 2 | live | JACK Pat 2 | bluesy strumming
-block: JACK | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
-block: JACK | SOLO | SOLO | live | Solo | in D
-block: JACK | END | END | live | Whole-note strum
+block: A GTR | INTRO 1 | INTRO 2 | live | GTR Verse Rhythm Pat 1 | whole-note strum on the C-D bars
+block: A GTR | VERSE 1 | VERSE 1 | live | GTR Verse Rhythm Pat 1 | whole-note strum on 2nd C-D line
+block: A GTR | VERSE 2 | VERSE 2 | live | GTR Verse Rhythm Pat 2
+block: A GTR | CHORUS 2 | CHORUS 2 | live | GTR Chorus Pat
+block: A GTR | SOLO | SOLO | live | GTR Chorus Pat
+block: A GTR | END | END | live | Whole-note strum
+block: J GTR | INTRO 1 | INTRO 2 | live | Whole-note strum | C-D bars
+block: J GTR | VERSE 1 | VERSE 1 | live | JACK Verse Pat 1 | picking
+block: J GTR | VERSE 2 | VERSE 2 | live | JACK Pat 2 | bluesy strumming
+block: J GTR | CHORUS 2 | CHORUS 2 | live | JACK Ch Pat 1
+block: J GTR | SOLO | SOLO | live | Solo | in D
+block: J GTR | END | END | live | Whole-note strum
 block: BASS | INTRO 1 | VERSE 1 | live | Bass Verse Riff
 block: BASS | VERSE 2 | VERSE 2 | live | Bass Verse Riff 2
 block: BASS | CHORUS 2 | CHORUS 2 | live | Bass Chorus Riff
