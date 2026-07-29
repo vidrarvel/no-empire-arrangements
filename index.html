@@ -330,6 +330,7 @@ var currentWarnings = [];
 
 function syncTextarea() {
   document.getElementById("src").value = serialize(currentModel);
+  saveDraft();
 }
 function syncAndRender() {
   syncTextarea();
@@ -405,6 +406,30 @@ var GH_PATH = "songs/" + GH_SONG + ".txt";
 var GH_BRANCH = "main";
 var GH_TOKEN_KEY = "ne_arr_github_token";
 var ghSha = null; // set once we know the current file's blob sha, so saves overwrite rather than conflict
+var lastSyncedContent = null; // content as last confirmed on GitHub (for unsaved-change detection)
+function draftKey() { return "ne_arr_draft_" + GH_SONG; }
+function saveDraft() {
+  try { localStorage.setItem(draftKey(), JSON.stringify({ content: document.getElementById("src").value, ts: Date.now() })); } catch (e) { /* ignore quota/privacy-mode errors */ }
+}
+function clearDraft() {
+  try { localStorage.removeItem(draftKey()); } catch (e) {}
+}
+function readDraft() {
+  try { var raw = localStorage.getItem(draftKey()); return raw ? JSON.parse(raw) : null; } catch (e) { return null; }
+}
+function maybeOfferDraftRestore(draft, loadedContent) {
+  if (!draft || !draft.content || draft.content === loadedContent) return;
+  var when = new Date(draft.ts).toLocaleString();
+  openConfirm(
+    "Found an unsaved draft from " + when + " that never made it to GitHub (probably a closed tab before Save). Restore it?",
+    function () {
+      document.getElementById("src").value = draft.content;
+      rerenderFromText();
+      setGhStatus("Restored unsaved draft from " + when + " — click Save to GitHub to keep it.");
+    },
+    "Restore draft"
+  );
+}
 
 function utf8ToBase64(str) {
   var bytes = new TextEncoder().encode(str);
@@ -431,25 +456,30 @@ function setToken(t) { localStorage.setItem(GH_TOKEN_KEY, t); }
 function clearToken() { localStorage.removeItem(GH_TOKEN_KEY); }
 
 function loadFromGithub() {
-  setGhStatus("GitHub: loading…");
+  setGhStatus("GitHub: loading\u2026");
+  var draftBeforeLoad = readDraft();
   fetch(ghApiUrl() + "?ref=" + GH_BRANCH, { headers: { "Accept": "application/vnd.github+json" } })
     .then(function (res) {
-      if (res.status === 404) { setGhStatus("GitHub: no saved file yet — showing example, Save will create it."); return null; }
+      if (res.status === 404) { setGhStatus("GitHub: no saved file yet \u2014 showing example, Save will create it."); return null; }
       if (!res.ok) { throw new Error("HTTP " + res.status); }
       return res.json();
     })
     .then(function (data) {
-      if (!data) { document.getElementById("src").value = EXAMPLE; rerenderFromText(); return; }
-      ghSha = data.sha;
-      document.getElementById("src").value = base64ToUtf8(data.content);
+      var loaded = data ? base64ToUtf8(data.content) : EXAMPLE;
+      if (data) ghSha = data.sha;
+      lastSyncedContent = loaded;
+      document.getElementById("src").value = loaded;
       rerenderFromText();
-      setGhStatus("GitHub: loaded " + GH_PATH);
+      if (data) setGhStatus("GitHub: loaded " + GH_PATH);
+      maybeOfferDraftRestore(draftBeforeLoad, loaded);
     })
     .catch(function (err) {
       console.error(err);
+      lastSyncedContent = EXAMPLE;
       document.getElementById("src").value = EXAMPLE;
       rerenderFromText();
-      setGhStatus("GitHub: couldn't load (" + err.message + ") — showing example.", true);
+      setGhStatus("GitHub: couldn't load (" + err.message + ") \u2014 showing example.", true);
+      maybeOfferDraftRestore(draftBeforeLoad, EXAMPLE);
     });
 }
 
@@ -493,6 +523,8 @@ function doGithubSave() {
   }).then(function (data) {
     if (!data) return;
     ghSha = data.content.sha;
+    lastSyncedContent = content;
+    clearDraft();
     setGhStatus("GitHub: saved " + new Date().toLocaleTimeString());
   }).catch(function (err) {
     console.error(err);
@@ -812,6 +844,7 @@ function rerenderFromText() {
   var parsed = parseSource(text);
   currentModel = parsed.model; currentWarnings = parsed.warnings;
   render(currentModel, currentWarnings, true);
+  saveDraft();
 }
 
 function slug(s) { return ((s || "arrangement").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")) || "arrangement"; }
@@ -862,6 +895,12 @@ document.getElementById("fileInput").addEventListener("change", function (e) {
 });
 
 document.getElementById("src").addEventListener("input", rerenderFromText);
+window.addEventListener("beforeunload", function (e) {
+  if (document.getElementById("src").value !== lastSyncedContent) {
+    e.preventDefault();
+    e.returnValue = "";
+  }
+});
 loadFromGithub();
 </script>
 </body>
