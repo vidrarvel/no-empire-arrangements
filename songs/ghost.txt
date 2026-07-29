@@ -51,6 +51,7 @@ block: IVAN | VERSE 2 | VERSE 2 | live | IVAN Pat 1
 block: IVAN | CHORUS 2 | CHORUS 2 | live | IVAN Pat 2
 block: IVAN | SOLO | SOLO | live | IVAN Pat 2
 block: IVAN | END | END | live | Kick & cymbal crash
+block: BG VOX | CHORUS 1 | CHORUS 1 | live | BVs
 
 note: Verse chord shape - 2 bars Am, then Am, C, D over 6-bar lines; vox sits on the 6-bar lines.
 note: Source sheet lists both "Chorus Pat 1" and "Chorus Rhythm Pat" for GTR chorus sections - treated as one pattern (GTR Chorus Pat) here; check if these were meant to differ.
