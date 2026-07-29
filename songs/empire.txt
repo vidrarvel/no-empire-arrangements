@@ -2,15 +2,15 @@ title: EMPIRE
 time: 4/4
 tempo: 93bpm
 
-section: INTRO 1 | 8 | 3 | Em D C
-section: INTRO 2 | 8 | 4 | Em D C
-section: VERSE 1 | 16 | 4 | Em D C
+section: INTRO 1 | 8 | 3 | Em D C (x2)
+section: INTRO 2 | 8 | 4 | Em D C (x2)
+section: VERSE 1 | 16 | 4 | Em D C (x4)
 section: CHORUS 1 | 8 | 7 | C - Am | 94
-section: INTERLUDE 1 | 8 | 4 | Em D C
-section: VERSE 2 | 12 | 5 | Em D C
+section: INTERLUDE 1 | 8 | 4 | Em D C (x2)
+section: VERSE 2 | 12 | 5 | Em D C (x4)
 section: CHORUS 2 | 16 | 8 | C - Am | 94
 section: SOLO | 8 | 8 | C - Am | 94
-section: INTERLUDE 2 | 4 | 4 | Em D C
+section: INTERLUDE 2 | 4 | 4 | Em D C (x2)
 section: ENDING | 2 | 3 | Em
 
 row: A VOX
@@ -25,8 +25,7 @@ block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
 block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
 block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
 block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
-block: J GTR | INTRO 2 | INTRO 2 | live | Intro riff
-block: J GTR | VERSE 1 | VERSE 1 | live | Intro riff
+block: J GTR | INTRO 1 | INTRO 2 | live | J GTR Intro riff
 block: J GTR | CHORUS 1 | CHORUS 1 | live | Chorus
 block: J GTR | INTERLUDE 1 | INTERLUDE 1 | live | Intro riff
 block: J GTR | VERSE 2 | VERSE 2 | live | Intro riff
@@ -39,6 +38,7 @@ block: A GTR | CHORUS 1 | CHORUS 1 | live | A GTR CH | chords
 block: A GTR | INTERLUDE 1 | VERSE 2 | live | A GTR V2 | chords
 block: A GTR | CHORUS 2 | SOLO | live | A GTR CH | chords
 block: A GTR | INTERLUDE 2 | INTERLUDE 2 | live | A GTR V2 | chords
+block: J GTR | VERSE 1 | VERSE 1 | live | J GTR Verse riff
 
 note: - End on Em9 chord.
 idea: - Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
