@@ -1,0 +1,68 @@
+title: PICTUREHOUSE
+time: 4/4
+tempo: 70
+
+section: INTRO | 8 | 2
+section: VERSE 1 | 8 | 3
+section: LINK | 4 | 4
+section: VERSE 2 | 8 | 5
+section: CHORUS 1 | 8 | 7
+section: CHORUS 2 | 8 | 8
+section: SOLO A | 8 | 8
+section: SOLO B | 8 | 9
+section: BREAK | 1 | 2
+section: VERSE 3 (OUTRO) | 8 | 3
+
+row: VOX
+row: PIANO
+row: GTR
+row: TRACK
+row: JACK
+row: CAMERON
+row: IVAN
+
+block: VOX | VERSE 1 | VERSE 1 | live | V1
+block: VOX | VERSE 2 | VERSE 2 | live | V2
+block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
+block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: VOX | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | V3
+block: PIANO | INTRO | INTRO | live | Verse chords | solo piano
+block: PIANO | VERSE 1 | VERSE 1 | rec | Verse chords | recording the loop
+block: PIANO | LINK | LINK | live | Fill
+block: PIANO | VERSE 2 | VERSE 2 | loop | Verse chords | looped playback
+block: PIANO | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | Verse chords | gsheet had this on the GTR row, but notes + looping sheet say piano - check
+block: GTR | VERSE 2 | VERSE 2 | live | Verse riff
+block: GTR | CHORUS 1 | CHORUS 1 | live | GTR Pat 1
+block: GTR | CHORUS 2 | CHORUS 2 | live | GTR Pat 2
+block: GTR | SOLO A | SOLO A | live | GTR Pat 2 | distorted
+block: GTR | SOLO B | SOLO B | live | GTR Pat 3
+block: TRACK | CHORUS 2 | CHORUS 2 | live | Glock riff
+block: TRACK | SOLO B | SOLO B | live | Glock riff
+block: JACK | LINK | LINK | live | JACK Ver Pat 1 | band enters here
+block: JACK | VERSE 2 | VERSE 2 | live | JACK Ver Pat 1
+block: JACK | CHORUS 1 | CHORUS 1 | live | JACK Ch Riff Pat 1
+block: JACK | CHORUS 2 | CHORUS 2 | live | JACK Ch Riff Pat 1
+block: JACK | SOLO A | SOLO B | live | Solo
+block: CAMERON | VERSE 1 | VERSE 1 | live | CAM Verse Pat 1 | joins 2nd line, when vox comes in
+block: CAMERON | LINK | LINK | live | Fill
+block: CAMERON | VERSE 2 | VERSE 2 | live | CAM Verse Pat 1
+block: CAMERON | CHORUS 1 | CHORUS 1 | live | CAM Ch Pat 1
+block: CAMERON | CHORUS 2 | CHORUS 2 | live | CAM Ch Pat 1a
+block: CAMERON | SOLO A | SOLO B | live | CAM Ch Pat 1a
+block: IVAN | LINK | LINK | live | IVAN Pat 1 | in
+block: IVAN | VERSE 2 | VERSE 2 | live | IVAN Pat 1
+block: IVAN | CHORUS 1 | CHORUS 1 | live | IVAN Pat 1a
+block: IVAN | CHORUS 2 | CHORUS 2 | live | IVAN Pat 1a
+block: IVAN | SOLO A | SOLO A | live | IVAN Pat 1b
+block: IVAN | SOLO B | SOLO B | live | IVAN Pat 1c
+block: IVAN | BREAK | BREAK | live | Count / drums hold
+block: IVAN | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | IVAN Heartbeat
+
+note: Tempo ramps - 65 (piano solo, INTRO/VERSE 1) to 67 (whole band, LINK/VERSE 2) to 70 (CHORUS onward). Global tempo field set to 70 (main/final tempo); check section-by-section if you want exact per-section values.
+note: Solo into outro - Jack + Andy cut out, bass + drums hold, 1 bar of drums into piano. Jack shouldn't cut out before drums.
+note: Drums to be like a heartbeat - kick in at solo end, 8th notes.
+note: V2 piano - consider changing pattern to whole notes.
+note: Jack to build up more during 2nd chorus.
+note: Ivan to extend the fill going into the solo.
+note: Ivan to hold off ride in V2 (switch to hat instead).
+note: Migrated from picturehouse.md (source: "Song Arrangements" gsheet, migrated 2026-07-17).
