@@ -1,0 +1,58 @@
+title: THE ROAD
+time: 4/4
+tempo: 93
+
+section: INTRO | 8 | 3
+section: VERSE 1a | 8 | 4
+section: VERSE 1b | 8 | 5
+section: VERSE 2a | 8 | 5
+section: VERSE 2b | 8 | 6
+section: CHORUS 1 | 16 | 7
+section: FILL | 2 | 4
+section: VERSE 3a | 8 | 5
+section: VERSE 3b | 8 | 6
+section: CHORUS 2 | 16 | 8
+section: FILL (END) | 2 | 3
+
+row: VOX
+row: GTR
+row: GTR SWELL | looped
+row: JACK
+row: BASS SYNTH | looped
+row: IVAN
+
+block: VOX | VERSE 1b | VERSE 1b | live | V1
+block: VOX | VERSE 2b | VERSE 2b | live | V1 (repeat)
+block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
+block: VOX | VERSE 3b | VERSE 3b | live | V2
+block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: GTR | INTRO | VERSE 2b | live | V1 chords
+block: GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
+block: GTR | FILL | FILL | live | Fill chord
+block: GTR | VERSE 3a | VERSE 3b | live | Fingerpicked
+block: GTR | CHORUS 2 | CHORUS 2 | live | Chorus chords
+block: GTR | FILL (END) | FILL (END) | live | Fill chord
+block: GTR SWELL | INTRO | INTRO | rec | Gtr swells | captured live
+block: GTR SWELL | VERSE 1a | VERSE 1b | loop | Gtr swells | sustaining underneath
+block: BASS SYNTH | VERSE 1a | VERSE 1a | rec | Bass synth | captured live
+block: BASS SYNTH | VERSE 1b | CHORUS 1 | loop | Bass synth | prerecorded, comes on for chorus
+block: JACK | INTRO | INTRO | live | Bg riff
+block: JACK | VERSE 1a | VERSE 1b | live | Jack Pat 1 | whole note riff
+block: JACK | VERSE 2a | VERSE 2b | live | Jack Pat 2 | fingerpicked
+block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus chords
+block: JACK | FILL | FILL | live | Fill chord
+block: JACK | VERSE 3a | VERSE 3b | live | Jack Pat 2 | fingerpicked
+block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus chords
+block: JACK | FILL (END) | FILL (END) | live | Fill chord
+block: IVAN | INTRO | INTRO | live | Time on hats
+block: IVAN | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove
+block: IVAN | FILL | FILL | live | Drum fill
+block: IVAN | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
+block: IVAN | FILL (END) | FILL (END) | live | Drum fill
+
+note: Shorten gap between V1 parts.
+note: Bass to change to whole notes for post-1st-chorus.
+note: Ivan's part may run as one continuous groove from V1 through both choruses (gsheet has it as a single merged cell) — split here at the FILL gap; check with Ivan.
+note: Verse 2b vocal is flagged in the source sheet as "V1 vocals" again — may be a repeated lyric line rather than distinct V2 lyrics; check.
+note: GTR SWELL and BASS SYNTH rows added per Andy's description (intro swell looped, plays back over verses; bass synth looped in verse 1a, plays back and comes on for chorus). Exact end-points (swell stopping at end of Verse 1b, bass synth stopping at end of Chorus 1) are my best-guess mapping onto the real section list — not explicitly stated; check and drag to adjust if wrong.
+note: Drag empty cells to add blocks, drag block edges to resize, click to cycle state, double-click to rename.
