@@ -34,9 +34,7 @@
     cursor: pointer; }
   button:hover, .file-btn:hover { border-color: var(--accent); color: var(--accent); }
   input[type=file] { display: none; }
-  .layout { display: grid; grid-template-columns: minmax(320px, 30%) 1fr; gap: 16px; align-items: start; }
-  @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } }
-  textarea { width: 100%; height: 560px; resize: vertical; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  textarea { width: 100%; height: 320px; resize: vertical; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
     background: var(--surface); color: var(--ink); border: 1px solid var(--ring); border-radius: 8px; padding: 12px; }
   details { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; font-size: 12.5px; color: var(--ink-2); }
   details summary { cursor: pointer; font-weight: 600; color: var(--ink); }
@@ -113,7 +111,7 @@
 <div id="modalRoot"></div>
 <div class="wrap">
   <h1>Arrangement Editor</h1>
-  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click to rename. Drag a block's edge to resize. Or just type on the left. No Empire.</div>
+  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click a block to rename it, double-click a row label to rename the row. Drag a block's edge to resize. Or just type below. No Empire.</div>
 
   <div class="toolbar">
     <label class="file-btn">Load source
@@ -135,11 +133,11 @@
 
   <div id="mapWrap"></div>
 
-  <div class="layout">
-    <div>
-      <details>
-        <summary>Text syntax (optional — the grid above works without it)</summary>
-        <pre>title: SONG NAME
+  <div id="notesWrap"></div>
+
+  <details>
+    <summary>Text syntax (optional — the grid above works without it)</summary>
+    <pre>title: SONG NAME
 time: 4/4
 tempo: 93
 
@@ -155,11 +153,8 @@ state is one of:
 note: free text      (shown in a Notes panel)
 idea: free text      (shown in an Ideas panel)
 # a comment line, ignored</pre>
-      </details>
-      <textarea id="src" spellcheck="false"></textarea>
-    </div>
-    <div id="notesWrap"></div>
-  </div>
+  </details>
+  <textarea id="src" spellcheck="false"></textarea>
 </div>
 
 <script>
@@ -555,6 +550,26 @@ function removeRow(uid) {
     syncAndRender();
   });
 }
+function renameRowPrompt(uid) {
+  var row = currentModel.rows.find(function (r) { return r._uid === uid; });
+  if (!row) return;
+  var oldId = row.id;
+  var otherIds = currentModel.rows.filter(function (r) { return r._uid !== uid; }).map(function (r) { return r.id; });
+  openFieldModal("Rename row", [
+    { key: "id", label: "Row name", value: row.id },
+    { key: "sub", label: "Sub-label (optional)", value: row.sub }
+  ], function (values) {
+    var newId = (values.id || "").trim();
+    if (!newId) return;
+    if (otherIds.indexOf(newId) !== -1) newId = uniqueName(otherIds, newId);
+    row.id = newId;
+    row.sub = values.sub || "";
+    if (newId !== oldId) {
+      currentModel.blocks.forEach(function (b) { if (b.row === oldId) b.row = newId; });
+    }
+    syncAndRender();
+  });
+}
 function removeSection(uid) {
   var sec = currentModel.sections.find(function (s) { return s._uid === uid; });
   if (!sec) return;
@@ -717,6 +732,9 @@ function render(model, warnings, interactive) {
     r.appendChild(lab);
     if (interactive) {
       lab.querySelector(".mini-x").addEventListener("click", function (e) { e.stopPropagation(); removeRow(row._uid); });
+      lab.querySelector(".mini-x").addEventListener("dblclick", function (e) { e.stopPropagation(); });
+      lab.title = "Double-click to rename";
+      lab.addEventListener("dblclick", function () { renameRowPrompt(row._uid); });
     }
     var cells = document.createElement("div"); cells.className = "tl-cells";
     cells.style.gridTemplateColumns = colTemplate; cells.style.minHeight = "32px";
