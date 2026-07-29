@@ -13,29 +13,31 @@ section: SOLO | 8 | 8 | C - Am | 94
 section: INTERLUDE 2 | 4 | 4 | Em D C
 section: ENDING | 2 | 3 | Em D C
 
-row: VOX
-row: GTR
-row: JACK
+row: A VOX
+row: A GTR
+row: J GTR
+row: BVs
 row: BASS
-row: IVAN
+row: BASS SYNTH | Andy
+row: DRUMS
 
-block: VOX | VERSE 1 | VERSE 1 | live | V1 | vocals out for one 4-bar line mid-verse
-block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
-block: VOX | VERSE 2 | VERSE 2 | live | V2 + bridge vocals into Chorus 2 (was a separate PRECHORUS section - folded in, verify exact bars)
-block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
-block: GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
-block: GTR | INTERLUDE 1 | INTERLUDE 1 | live | Strumming off-beat
-block: GTR | VERSE 2 | VERSE 2 | live | Strumming off-beat
-block: JACK | INTRO 2 | INTRO 2 | live | Intro riff
-block: JACK | VERSE 1 | VERSE 1 | live | Intro riff
-block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus
-block: JACK | INTERLUDE 1 | INTERLUDE 1 | live | Intro riff
-block: JACK | VERSE 2 | VERSE 2 | live | Intro riff
-block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus
-block: JACK | SOLO | SOLO | live | Solo
-block: IVAN | INTRO 1 | INTRO 2 | live | Keeping beat
-block: IVAN | VERSE 1 | VERSE 1 | live | Keeping beat
-block: IVAN | INTERLUDE 1 | INTERLUDE 1 | live | Keeping beat
+block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
+block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
+block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
+block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
+block: A GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
+block: A GTR | INTERLUDE 1 | INTERLUDE 1 | live | Strumming off-beat
+block: A GTR | VERSE 2 | VERSE 2 | live | Strumming off-beat
+block: J GTR | INTRO 2 | INTRO 2 | live | Intro riff
+block: J GTR | VERSE 1 | VERSE 1 | live | Intro riff
+block: J GTR | CHORUS 1 | CHORUS 1 | live | Chorus
+block: J GTR | INTERLUDE 1 | INTERLUDE 1 | live | Intro riff
+block: J GTR | VERSE 2 | VERSE 2 | live | Intro riff
+block: J GTR | CHORUS 2 | CHORUS 2 | live | Chorus
+block: J GTR | SOLO | SOLO | live | Solo
+block: BASS SYNTH | INTRO 1 | INTRO 1 | rec | BASS SYN  | loop drone note/pad
+block: BASS SYNTH | INTRO 2 | INTRO 2 | loop | BASS SYN  | loop drone note/pad
 
-note: End on Em9 chord.
-idea: Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
+note: - End on Em9 chord.
+idea: - Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
+idea: - better at 82bpm (spacier) or 93bpm (energy)??
