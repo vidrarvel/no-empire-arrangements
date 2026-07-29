@@ -19,10 +19,10 @@ row: BVs
 row: BASS | Andy
 row: DRUMS
 
-block: VOX | VERSE 1 | VERSE 1 | live | V1 | on the two 6-bar lines
-block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
-block: VOX | VERSE 2 | VERSE 2 | live | V2 | on the 6-bar lines
-block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: VOX | VERSE 1 | VERSE 1 | live | VOX V1
+block: VOX | CHORUS 1 | CHORUS 1 | live | VOX CHOR
+block: VOX | VERSE 2 | VERSE 2 | live | VOX V2
+block: VOX | CHORUS 2 | CHORUS 2 | live | VOX CHOR
 block: A GTR | INTRO 1 | INTRO 2 | live | GTR Verse Rhythm Pat 1 | whole-note strum on the C-D bars
 block: A GTR | VERSE 1 | VERSE 1 | live | GTR Verse Rhythm Pat 1 | whole-note strum on 2nd C-D line
 block: A GTR | VERSE 2 | VERSE 2 | live | GTR Verse Rhythm Pat 2
