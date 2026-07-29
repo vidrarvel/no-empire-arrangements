@@ -46,7 +46,9 @@ block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus chords
 block: JACK | FILL (END) | FILL (END) | live | Fill chord
 block: IVAN | INTRO | INTRO | live | Time on hats
 block: IVAN | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove
+block: IVAN | FILL | FILL | live | Drum fill
 block: IVAN | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
+block: IVAN | FILL (END) | FILL (END) | live | Drum fill
 
 note: Shorten gap between V1 parts.
 note: Bass to change to whole notes for post-1st-chorus.
