@@ -59,13 +59,15 @@
               padding-left: 8px; padding-right: 10px; text-align: right; line-height: 1.2; }
   .tl-label small { font-weight: 400; color: var(--muted); display: block; }
   .tl-label-text { min-width: 0; }
-  .tl-label-ctrl { flex: 0 0 auto; display: flex; align-items: center; gap: 1px; }
+  .tl-label-ctrl { flex: 0 0 auto; display: flex; align-items: center; gap: 1px; opacity: 0; }
+  .tl-label:hover .tl-label-ctrl { opacity: 1; }
   .mini-arrow { cursor: pointer; color: var(--muted); font-size: 11px; padding: 0 1px; }
   .mini-arrow:hover { color: var(--accent); }
   .tl-cells { display: grid; gap: 2px; }
   .sec-head { text-align: center; padding: 3px 2px 1px 2px; min-width: 0; position: relative; }
   .sec-ctrl { display: flex; align-items: center; justify-content: space-between; font-size: 9px;
-              color: var(--muted); line-height: 1; margin-bottom: 1px; }
+              color: var(--muted); line-height: 1; margin-bottom: 1px; opacity: 0; }
+  .sec-head:hover .sec-ctrl { opacity: 1; }
   .sec-ctrl span { cursor: pointer; padding: 0 2px; }
   .sec-ctrl span:hover { color: var(--warn-ink); }
   .sec-name { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink);
