@@ -96,6 +96,8 @@
                      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--c) 55%, transparent); color: var(--ink); }
   .blk.state-loop  { background: color-mix(in oklab, var(--c) 6%, var(--surface)); border-left: 3px dashed var(--c);
                      color: var(--ink-2); }
+  .blk.state-play  { background: color-mix(in oklab, var(--c) 6%, var(--surface)); border-left: 3px dotted var(--c);
+                     color: var(--ink-2); }
   .rec-icon { color: #e5484d; }
   .blk:hover { filter: brightness(1.06); }
   .handle { position: absolute; top: 0; bottom: 0; width: 8px; cursor: ew-resize; z-index: 3; }
@@ -140,7 +142,7 @@
 <div id="modalRoot"></div>
 <div class="wrap">
   <h1>Arrangement Editor</h1>
-  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop. Double-click a block to rename it, double-click a row label to rename the row, double-click a section header to edit its bars/energy/chords/tempo. Drag a block's edge to resize, hover a block for a copy-to-section button. Use the arrows on row labels / section headers to reorder them. Ctrl+Z / Ctrl+Shift+Z (or the toolbar buttons) to undo/redo. Or just type below. No Empire.</div>
+  <div class="sub">Drag across empty cells to add a block. Click a block to cycle Live -&gt; Rec -&gt; Loop -&gt; Play. Double-click a block to rename it, double-click a row label to rename the row, double-click a section header to edit its bars/energy/chords/tempo. Drag a block's edge to resize, hover a block for a copy-to-section button. Use the arrows on row labels / section headers to reorder them. Ctrl+Z / Ctrl+Shift+Z (or the toolbar buttons) to undo/redo. Or just type below. No Empire.</div>
 
   <div id="warnings"></div>
 
@@ -161,7 +163,8 @@ block: ROW_ID | FROM_SECTION | TO_SECTION | state | label | sublabel(optional)
 state is one of:
   live  — actively playing (default if omitted)
   rec   — capturing a loop right now
-  loop  — sustaining / playing back automatically
+  loop  — sustaining / playing back automatically (just captured live)
+  play  — triggering a pre-recorded backing loop (not captured in this performance)
 
 note: free text      (shown in a Notes panel)
 idea: free text      (shown in an Ideas panel)
@@ -318,7 +321,7 @@ function parseSource(text) {
     } else if (kw === "block") {
       var row = fields[0], from = fields[1], to = fields[2], stateRaw = fields[3], label = fields[4], sub = fields[5];
       var state = (stateRaw || "live").toLowerCase();
-      if (["live", "rec", "loop"].indexOf(state) === -1) { warnings.push("Line " + (i + 1) + ': unknown state "' + stateRaw + '", treated as live'); state = "live"; }
+      if (["live", "rec", "loop", "play"].indexOf(state) === -1) { warnings.push("Line " + (i + 1) + ': unknown state "' + stateRaw + '", treated as live'); state = "live"; }
       model.blocks.push({ _uid: nextUid(), row: row, from: from, to: to, state: state, label: label || "", sub: sub || "" });
     } else if (kw === "note") {
       model.notes.push(rest.trim());
@@ -364,8 +367,8 @@ function serialize(m) {
   return out.join(NL);
 }
 
-var STATE_ICON = { live: "", rec: String.fromCharCode(9210) + " ", loop: String.fromCharCode(8635) + " " };
-var NEXT_STATE = { live: "rec", rec: "loop", loop: "live" };
+var STATE_ICON = { live: "", rec: String.fromCharCode(9210) + " ", loop: String.fromCharCode(8635) + " ", play: String.fromCodePoint(128189) + " " };
+var NEXT_STATE = { live: "rec", rec: "loop", loop: "play", play: "live" };
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
 // ---------- current state ----------
