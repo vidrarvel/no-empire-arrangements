@@ -15,7 +15,7 @@ section: END | 2 | 2 | Bm
 row: A VOX
 row: A GTR
 row: J GTR
-row: BVs
+row: J VOX
 row: BASS | Andy
 row: DRUMS
 
@@ -39,9 +39,9 @@ block: DRUMS | INTERLUDE | VERSE 2 | live | DRUMS V2
 block: DRUMS | CHORUS 2 | CHORUS 2 | live | DRUMS CH2
 block: DRUMS | SOLO | SOLO | live | DRUMS CH2
 block: DRUMS | END | END | live | DRUMS END
-block: BVs | CHORUS 2 | CHORUS 2 | live | BVs Chorus
+block: J VOX | CHORUS 2 | CHORUS 2 | live | BVs Chorus
 block: BASS | CHORUS 1 | CHORUS 1 | live | BASS Chorus Riff
-block: BVs | CHORUS 1 | CHORUS 1 | live | BVs Chorus
+block: J VOX | CHORUS 1 | CHORUS 1 | live | BVs Chorus
 block: BASS | INTERLUDE | INTERLUDE | live | BASS Verse Riff 2
 block: J GTR | CHORUS 1 | CHORUS 1 | live | J GTR CH Riff
 block: DRUMS | CHORUS 1 | CHORUS 1 | live | DRUMS CH
