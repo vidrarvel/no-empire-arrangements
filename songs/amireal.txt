@@ -15,9 +15,11 @@ section: INTERLUDE 2 | 8 | 5 |  | 135
 section: OUTRO | 8 | 3 |  | 135
 section: ENDING | 2 | 2 |  | 135
 
-row: VOX
-row: GTR
+row: A VOX
+row: A GTR
+row: SYNTH
+row: J GTR
+row: J VOX
 row: BASS
 row: DRUMS
-row: SYNTH
 
