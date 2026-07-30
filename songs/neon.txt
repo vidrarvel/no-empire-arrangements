@@ -26,7 +26,7 @@ block: A VOX | VERSE 1a | VERSE 1b | live | V1
 block: A VOX | VERSE 2 | VERSE 2 | live | V2
 block: A VOX | CHORUS 1 | CHORUS 1 | live | Chorus
 block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
-block: BASS SYNTH | INTRO | INTRO | live | Synth Em
+block: BASS SYNTH | INTRO | INTRO | rec | BASS SYN/PAD
 block: BASS SYNTH | CHORUS 1 | CHORUS 1 | live | Synth E
 block: BASS SYNTH | INTERLUDE | INTERLUDE | live | Synth E
 block: BASS SYNTH | VERSE 2 | VERSE 2 | live | Synth Em
