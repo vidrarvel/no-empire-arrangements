@@ -14,40 +14,40 @@ section: VERSE 3b | 8 | 6
 section: CHORUS 2 | 16 | 8
 section: FILL (END) | 2 | 3
 
-row: VOX
-row: GTR
+row: A VOX
+row: A GTR
 row: GTR SWELL | looped
-row: JACK
+row: J GTR
 row: BASS SYNTH | looped
-row: IVAN
+row: DRUMS
 
-block: VOX | VERSE 1b | VERSE 1b | live | V1
-block: VOX | VERSE 2b | VERSE 2b | live | V1 (repeat)
-block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
-block: VOX | VERSE 3b | VERSE 3b | live | V2
-block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
-block: GTR | INTRO | VERSE 2b | live | V1 chords
-block: GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
-block: GTR | FILL | FILL | live | Fill chord
-block: GTR | VERSE 3a | VERSE 3b | live | Fingerpicked
-block: GTR | CHORUS 2 | CHORUS 2 | live | Chorus chords
-block: GTR | FILL (END) | FILL (END) | live | Fill chord
+block: A VOX | VERSE 1b | VERSE 1b | live | V1
+block: A VOX | VERSE 2b | VERSE 2b | live | V1 (repeat)
+block: A VOX | CHORUS 1 | CHORUS 1 | live | Chorus
+block: A VOX | VERSE 3b | VERSE 3b | live | V2
+block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: A GTR | INTRO | VERSE 2b | live | V1 chords
+block: A GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
+block: A GTR | FILL | FILL | live | Fill chord
+block: A GTR | VERSE 3a | VERSE 3b | live | Fingerpicked
+block: A GTR | CHORUS 2 | CHORUS 2 | live | Chorus chords
+block: A GTR | FILL (END) | FILL (END) | live | Fill chord
 block: GTR SWELL | INTRO | INTRO | rec | Gtr swells | captured live
 block: GTR SWELL | VERSE 1a | VERSE 1b | loop | Gtr swells | sustaining underneath
 block: BASS SYNTH | VERSE 1a | VERSE 1a | rec | Bass synth | captured live
 block: BASS SYNTH | VERSE 1b | CHORUS 1 | loop | Bass synth | prerecorded, comes on for chorus
-block: JACK | INTRO | INTRO | live | Bg riff
-block: JACK | VERSE 1a | VERSE 1b | live | Jack Pat 1 | whole note riff
-block: JACK | VERSE 2a | VERSE 2b | live | Jack Pat 2 | fingerpicked
-block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus chords
-block: JACK | FILL | FILL | live | Fill chord
-block: JACK | VERSE 3a | VERSE 3b | live | Jack Pat 2 | fingerpicked
-block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus chords
-block: JACK | FILL (END) | FILL (END) | live | Fill chord
-block: IVAN | INTRO | INTRO | live | Time on hats
-block: IVAN | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove
-block: IVAN | FILL | FILL | live | Drum fill
-block: IVAN | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
-block: IVAN | FILL (END) | FILL (END) | live | Drum fill
+block: J GTR | INTRO | INTRO | live | Bg riff
+block: J GTR | VERSE 1a | VERSE 1b | live | Jack Pat 1 | whole note riff
+block: J GTR | VERSE 2a | VERSE 2b | live | Jack Pat 2 | fingerpicked
+block: J GTR | CHORUS 1 | CHORUS 1 | live | Chorus chords
+block: J GTR | FILL | FILL | live | Fill chord
+block: J GTR | VERSE 3a | VERSE 3b | live | Jack Pat 2 | fingerpicked
+block: J GTR | CHORUS 2 | CHORUS 2 | live | Chorus chords
+block: J GTR | FILL (END) | FILL (END) | live | Fill chord
+block: DRUMS | INTRO | INTRO | live | Time on hats
+block: DRUMS | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove
+block: DRUMS | FILL | FILL | live | Drum fill
+block: DRUMS | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
+block: DRUMS | FILL (END) | FILL (END) | live | Drum fill
 
 note: Bass to change to whole notes for post-1st-chorus.
