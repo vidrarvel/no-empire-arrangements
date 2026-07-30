@@ -52,4 +52,5 @@ block: J VOX | CHORUS 1 | CHORUS 1 | live | J VOX CH | in this fantasy
 block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH
 block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH | in this fantasy
 
+note: - need 2 guitars to fill sound
 idea: - Consider shortening the vocal melody (half syllables) or changing it for V2.
