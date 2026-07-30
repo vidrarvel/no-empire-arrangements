@@ -28,7 +28,7 @@ block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
 block: A VOX | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | A VOX V3
 block: PIANO | INTRO | INTRO | rec | Verse chords | solo piano
 block: PIANO | VERSE 1 | VERSE 2 | loop | Verse chords | looped playback
-block: PIANO | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | Verse chords | gsheet had this on the GTR row, but notes + looping sheet say piano - check
+block: PIANO | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | PIANO VER
 block: A GTR | VERSE 2 | VERSE 2 | live | Verse riff
 block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Pat 1
 block: A GTR | CHORUS 2 | CHORUS 2 | live | GTR Pat 2
