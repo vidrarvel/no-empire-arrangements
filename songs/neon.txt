@@ -32,7 +32,7 @@ block: BASS SYNTH | INTERLUDE | VERSE 2 | loop | BASS SYN VER | verse loop
 block: BASS SYNTH | CHORUS 1 | CHORUS 1 | play | BASS SYN CH | pre-recorded loop
 block: A GTR | INTERLUDE | INTERLUDE | live | A GTR V2 | alt picking
 block: A GTR | CHORUS 2 | OUTRO | live | A GTR CH
-block: BASS SYNTH | CHORUS 2 | CHORUS 2 | play | BASS SYN CH | pre-recorded loop
+block: BASS SYNTH | CHORUS 2 | OUTRO | play | BASS SYN CH | pre-recorded loop
 block: BASS SYNTH | PRECHORUS 1 | PRECHORUS 1 | play | BASS SYN PRE | pre-recorded loop
 block: BASS SYNTH | PRECHORUS 2 | PRECHORUS 2 | play | BASS SYN PRE | pre-recorded loop
 block: A GTR | PRECHORUS 2 | PRECHORUS 2 | live | A GTR PRE
@@ -48,5 +48,8 @@ block: J GTR | INTERLUDE | INTERLUDE | live | J GTR INTER
 block: J GTR | PRECHORUS 2 | PRECHORUS 2 | live | J GTR PRE
 block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR CH
 block: J GTR | OUTRO | OUTRO | live | J GTR OUTRO
+block: J VOX | CHORUS 1 | CHORUS 1 | live | J VOX CH | in this fantasy
+block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH
+block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH | in this fantasy
 
 idea: - Consider shortening the vocal melody (half syllables) or changing it for V2.
