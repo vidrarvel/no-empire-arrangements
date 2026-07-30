@@ -5,7 +5,7 @@ tempo: 70
 section: INTRO 1 | 4 | 2 | C Dm
 section: INTRO 2 | 4 | 2 | C Dm
 section: VERSE 1 | 4 | 3 | C Dm
-section: INTERLUDE | 4 | 4
+section: INTERLUDE | 4 | 4 | C Dm
 section: VERSE 2 | 8 | 5 | C Dm
 section: CHORUS 1 | 8 | 7 | F Dm Am Bb
 section: CHORUS 2 | 8 | 8 | F Dm Am Bb
@@ -20,7 +20,7 @@ row: A GTR
 row: PIANO | Andy
 row: J GTR
 row: J VOX
-row: BASS
+row: BASS | Jack
 row: DRUMS
 
 block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
@@ -32,13 +32,19 @@ block: PIANO | INTRO 1 | INTRO 1 | rec | Verse chords | solo piano
 block: PIANO | INTRO 2 | VERSE 2 | loop | Verse chords | looped playback
 block: PIANO | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | PIANO VER
 block: A GTR | INTERLUDE | VERSE 2 | live | A GTR | 12th fret riff
-block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Pat 1
-block: A GTR | CHORUS 2 | CHORUS 2 | live | GTR Pat 2
-block: A GTR | SOLO A | SOLO A | live | GTR Pat 2 | distorted
-block: A GTR | SOLO B | SOLO B | live | GTR Pat 3
-block: J GTR | CHORUS 1 | CHORUS 1 | live | JACK Ch Riff Pat 1
-block: J GTR | CHORUS 2 | CHORUS 2 | live | JACK Ch Riff Pat 1
+block: A GTR | CHORUS 1 | SOLO B | live | A GTR CH
+block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR CH | buildup
 block: J GTR | SOLO A | SOLO B | live | Solo
+block: DRUMS | INTRO 2 | VERSE 2 | live | DRUMS | mellow
+block: DRUMS | CHORUS 1 | CHORUS 2 | live | DRUMS | picking up
+block: DRUMS | SOLO A | SOLO B | live | DRUMS | hit
+block: DRUMS | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | DRUMS | mellow
+block: DRUMS | ENDING | ENDING | live | DRUMS | heartbeat
+block: BASS | INTRO 2 | VERSE 2 | live | BASS VER
+block: BASS | CHORUS 1 | CHORUS 1 | rec | BASS CH
+block: BASS | CHORUS 2 | SOLO B | loop | BASS CH | loop playback
+block: J GTR | SOLO A | SOLO A | live | J GTR Solo
+block: J GTR | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | J GTR V3
 
 note: - Tempo ramps - 65 (piano solo, INTRO/VERSE 1) to 67 (whole band, LINK/VERSE 2) to 70 (CHORUS onward). Global tempo field set to 70 (main/final tempo)
 note: - Solo into outro - Jack + Andy cut out, bass + drums hold, 1 bar of drums into piano. Jack shouldn't cut out before drums.
