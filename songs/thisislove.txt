@@ -1,0 +1,25 @@
+title: THIS IS LOVE
+time: 4/4
+tempo: 115
+
+section: INTRO | 4 | 3
+section: VERSE 1 | 8 | 4
+section: CHORUS 1 | 8 | 7
+section: VERSE 2 | 8 | 5
+section: CHORUS 2 | 8 | 7
+section: BRIDGE | 8 | 6
+section: VERSE 3 | 12 | 5
+section: VERSE 4 | 8 | 6
+section: CHORUS 3 | 10 | 9
+section: ENDING | 2 | 3
+
+row: A VOX
+row: A GTR
+row: J GTR
+row: J VOX
+row: BASS
+row: DRUMS
+
+note: Key: Gm. Cover song.
+note: New chart, bars taken straight from the live Ableton set (SECTIONS +CLIPCOLORS track, bars 416-494). No lyric clips exist for this one to cross-check (cover, not in the Vocals/LYRICS track) - identified by bar-exact match to the COUNTIN marker at 416. Section names/lengths only - no blocks assigned yet.
+idea: - Confirm section names/energy once the band has run it a few times.

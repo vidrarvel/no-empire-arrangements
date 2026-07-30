@@ -1,0 +1,26 @@
+title: LOST AND FOUND
+time: 4/4
+tempo: 159
+
+section: INTRO | 24 | 3
+section: VERSE 1 | 16 | 4
+section: INTERLUDE 1 | 8 | 4
+section: VERSE 2 | 16 | 5
+section: CHORUS 1 | 31 | 8
+section: INTERLUDE 2 | 8 | 5
+section: VERSE 3 | 16 | 5
+section: CHORUS 2 | 34 | 9
+section: OUTRO | 16 | 4
+section: ENDING | 2 | 2
+
+row: A VOX
+row: A GTR
+row: J GTR
+row: J VOX
+row: BASS
+row: DRUMS
+
+note: Key: G.
+note: New chart, bars taken straight from the live Ableton set (SECTIONS +CLIPCOLORS track, bars 1180-1355, matches lyric "We are the lost and found" at bars 1250-1278 and 1312-1337). Section names/lengths only - no blocks assigned yet.
+note: Two things to flag: there's an unaccounted 2-bar gap between CHORUS 1 and INTERLUDE 2 (bars 1277-1279, no clip there) - left out of the chart rather than guessed at. Also CHORUS 1 (31 bars) and CHORUS 2 (34 bars) are unusually long/uneven versus each other - that's what the clips show, not smoothed out. There's also a separate short, unrelated take earlier in the set (bars 1128-1162, just Intro+Interlude+Verse1, no confirmed lyrics) that isn't part of this pass.
+idea: - Confirm section names/energy once the band has run it a few times.

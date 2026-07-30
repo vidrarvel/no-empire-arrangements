@@ -1,0 +1,27 @@
+title: DREAM OF YOU
+time: 4/4
+tempo: 97
+
+section: INTRO | 4 | 2
+section: VERSE 1 | 8 | 4
+section: INTERLUDE 1 | 4 | 3
+section: VERSE 2 | 8 | 5
+section: HOOK 1 | 4 | 7
+section: INTERLUDE 2 | 4 | 4
+section: VERSE 3 | 8 | 5
+section: HOOK 2 | 8 | 8
+section: BRIDGE | 24 | 6
+section: SOLO | 8 | 7
+section: OUTRO | 16 | 4
+section: ENDING | 2 | 2
+
+row: A VOX
+row: A GTR
+row: J GTR
+row: J VOX
+row: BASS
+row: DRUMS
+
+note: Key: A.
+note: New chart, bars taken straight from the live Ableton set (SECTIONS +CLIPCOLORS track, bars 781-881, matches lyric "Let me dream of you" on both HOOK sections). Section names/lengths only - no blocks assigned yet.
+idea: - Confirm section names/energy once the band has run it a few times.
