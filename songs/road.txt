@@ -22,8 +22,7 @@ row: J VOX
 row: BASS SYNTH | looped
 row: DRUMS
 
-block: A VOX | VERSE 1b | VERSE 1b | live | V1
-block: A VOX | VERSE 2b | VERSE 2b | live | V1 (repeat)
+block: A VOX | VERSE 1a | VERSE 1b | live | A VOX V1
 block: A VOX | CHORUS 1 | CHORUS 1 | live | Chorus
 block: A VOX | VERSE 3b | VERSE 3b | live | V2
 block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
@@ -45,12 +44,8 @@ block: J GTR | FILL | FILL | live | Fill chord
 block: J GTR | VERSE 3a | VERSE 3b | live | Jack Pat 2 | fingerpicked
 block: J GTR | CHORUS 2 | CHORUS 2 | live | Chorus chords
 block: J GTR | FILL (END) | FILL (END) | live | Fill chord
-block: DRUMS | INTRO | INTRO | live | Time on hats
-block: DRUMS | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove
-block: DRUMS | FILL | FILL | live | Drum fill
-block: DRUMS | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
-block: DRUMS | FILL (END) | FILL (END) | live | Drum fill
-block: J VOX | CHORUS 1 | CHORUS 1 | live | J VOX CH
+block: J VOX | CHORUS 1 | CHORUS 1 | live | J VOX CH | (2nd half)
 block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH
+block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH | (2nd half)
 
 note: Bass to change to whole notes for post-1st-chorus.
