@@ -50,9 +50,4 @@ block: IVAN | FILL | FILL | live | Drum fill
 block: IVAN | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
 block: IVAN | FILL (END) | FILL (END) | live | Drum fill
 
-note: Shorten gap between V1 parts.
 note: Bass to change to whole notes for post-1st-chorus.
-note: Ivan's part may run as one continuous groove from V1 through both choruses (gsheet has it as a single merged cell) — split here at the FILL gap; check with Ivan.
-note: Verse 2b vocal is flagged in the source sheet as "V1 vocals" again — may be a repeated lyric line rather than distinct V2 lyrics; check.
-note: GTR SWELL and BASS SYNTH rows added per Andy's description (intro swell looped, plays back over verses; bass synth looped in verse 1a, plays back and comes on for chorus). Exact end-points (swell stopping at end of Verse 1b, bass synth stopping at end of Chorus 1) are my best-guess mapping onto the real section list — not explicitly stated; check and drag to adjust if wrong.
-note: Drag empty cells to add blocks, drag block edges to resize, click to cycle state, double-click to rename.
