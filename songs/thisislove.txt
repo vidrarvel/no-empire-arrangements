@@ -17,9 +17,16 @@ row: A VOX
 row: A GTR
 row: J GTR
 row: J VOX
-row: BASS
+row: BASS | Andy
 row: DRUMS
 
+block: BASS | INTRO | CHORUS 3 | live | BASS
+block: A VOX | VERSE 1 | CHORUS 1 | live | A VOX
+block: DRUMS | VERSE 1 | CHORUS 3 | live | DRUMS
+block: J VOX | VERSE 2 | CHORUS 2 | live | J VOX
+block: A VOX | BRIDGE | CHORUS 3 | live | A VOX
+block: J GTR | VERSE 1 | BRIDGE | live | J GTR
+block: J GTR | VERSE 4 | CHORUS 3 | live | J GTR
+block: J VOX | CHORUS 3 | CHORUS 3 | live | J VOX
+
 note: Key: Gm. Cover song.
-note: New chart, bars taken straight from the live Ableton set (SECTIONS +CLIPCOLORS track, bars 416-494). No lyric clips exist for this one to cross-check (cover, not in the Vocals/LYRICS track) - identified by bar-exact match to the COUNTIN marker at 416. Section names/lengths only - no blocks assigned yet.
-idea: - Confirm section names/energy once the band has run it a few times.
