@@ -2,17 +2,17 @@ title: PICTUREHOUSE
 time: 4/4
 tempo: 70
 
-section: INTRO 1 | 4 | 2
-section: INTRO 2 | 4 | 2
-section: VERSE 1 | 4 | 3
+section: INTRO 1 | 4 | 2 | C Dm
+section: INTRO 2 | 4 | 2 | C Dm
+section: VERSE 1 | 4 | 3 | C Dm
 section: INTERLUDE | 4 | 4
-section: VERSE 2 | 8 | 5
-section: CHORUS 1 | 8 | 7
-section: CHORUS 2 | 8 | 8
-section: SOLO A | 8 | 8
-section: SOLO B | 9 | 9
+section: VERSE 2 | 8 | 5 | C Dm
+section: CHORUS 1 | 8 | 7 | F Dm Am Bb
+section: CHORUS 2 | 8 | 8 | F Dm Am Bb
+section: SOLO A | 8 | 8 | F Dm Am Bb
+section: SOLO B | 9 | 9 | F Dm Am Bb
 section: BREAK | 1 | 2
-section: VERSE 3 (OUTRO) | 11 | 3
+section: VERSE 3 (OUTRO) | 11 | 3 | C Dm
 section: ENDING | 1 | 2
 
 row: A VOX
