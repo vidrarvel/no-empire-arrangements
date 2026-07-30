@@ -48,6 +48,10 @@ block: A VOX | PRECHORUS 1 | PRECHORUS 1 | live | A VOX PRE
 block: A VOX | PRECHORUS 2 | PRECHORUS 2 | live | A VOX PRE 2
 block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
 block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
+block: J VOX | CHORUS 1 | CHORUS 1 | live | J VOX Ch
+block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX Ch
+block: J VOX | OUTRO | OUTRO | live | J VOX Outro
+block: J VOX | PRECHORUS 2 | PRECHORUS 2 | live | J VOX Pre
 
 note: - No Looping (A on Bass)
 idea: - try with Jack singing loose version of verse at start - then into C Am E bit - 21.07.26
