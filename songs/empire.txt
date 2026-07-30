@@ -40,7 +40,6 @@ block: A GTR | CHORUS 2 | SOLO | live | A GTR CH | chords
 block: A GTR | INTERLUDE 2 | INTERLUDE 2 | live | A GTR V2 | chords
 block: J GTR | VERSE 1 | VERSE 1 | live | J GTR Verse riff
 block: J GTR | INTERLUDE 2 | INTERLUDE 2 | live | J GTR Verse riff
-block: DRUMS | INTRO 1 | ENDING | live | DRUMS
 block: BASS SYNTH | VERSE 2 | VERSE 2 | loop | BASS SYN | earlier loop drone note/pad
 block: BASS SYNTH | CHORUS 2 | SOLO | loop | BASS SYN | pre-recorded bass synth
 
