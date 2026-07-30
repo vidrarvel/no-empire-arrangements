@@ -20,10 +20,14 @@ row: A GTR
 row: SYNTH
 row: J GTR
 row: J VOX
-row: BASS
+row: BASS | Andy
 row: DRUMS
 
 block: A VOX | OUTRO | OUTRO | live | A VOX OUTRO | shouted
 block: J GTR | INTERLUDE 2 | INTERLUDE 2 | live | J GTR Riff
+block: J GTR | INTRO 2 | INTRO 2 | live | J GTR Intro
+block: J GTR | VERSE 1 | VERSE 1 | live | J GTR Ver
+block: J GTR | PRECHORUS 1 | PRECHORUS 1 | live | J GTR Pre
+block: J GTR | CHORUS 1 | CHORUS 1 | live | J GTR Ch
 
 note: - No Looping (A on Bass)
