@@ -29,8 +29,8 @@ block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
 block: BASS SYNTH | INTRO | INTRO | rec | BASS SYN/PAD | loop drone note/pad
 block: BASS SYNTH | SOLO | VERSE 1b | loop | BASS SYN | verse loop
 block: BASS SYNTH | VERSE 2 | VERSE 2 | loop | BASS SYN | verse loop
-block: BASS SYNTH | CHORUS 1 | CHORUS 1 | loop | BASS SYN | pre-recorded loop
-block: BASS SYNTH | CHORUS 2 | CHORUS 2 | loop | BASS SYN | pre-recorded loop
+block: BASS SYNTH | CHORUS 1 | CHORUS 1 | play | BASS SYN | pre-recorded loop
+block: BASS SYNTH | CHORUS 2 | CHORUS 2 | play | BASS SYN | pre-recorded loop
 block: A GTR | VERSE 1a | VERSE 1a | live | Em strum
 block: A GTR | VERSE 1b | VERSE 1b | live | GTR Ver Pat 1 | open with big strum
 block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Ch Pat 1

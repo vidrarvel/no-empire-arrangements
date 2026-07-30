@@ -33,7 +33,7 @@ block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR CH riff
 block: J GTR | SOLO | SOLO | live | J GTR Solo
 block: BASS SYNTH | INTRO 1 | INTRO 1 | rec | BASS SYN | loop drone note/pad
 block: BASS SYNTH | INTRO 2 | VERSE 1 | loop | BASS SYN | loop drone note/pad
-block: BASS SYNTH | CHORUS 1 | CHORUS 1 | loop | BASS SYN | pre-recorded bass synth
+block: BASS SYNTH | CHORUS 1 | CHORUS 1 | play | BASS SYN | pre-recorded bass synth
 block: A GTR | CHORUS 1 | CHORUS 1 | live | A GTR CH | chords
 block: A GTR | INTERLUDE 1 | VERSE 2 | live | A GTR V2 | chords
 block: A GTR | CHORUS 2 | SOLO | live | A GTR CH | chords
@@ -41,7 +41,7 @@ block: A GTR | INTERLUDE 2 | INTERLUDE 2 | live | A GTR V2 | chords
 block: J GTR | VERSE 1 | VERSE 1 | live | J GTR Verse riff
 block: J GTR | INTERLUDE 2 | INTERLUDE 2 | live | J GTR Verse riff
 block: BASS SYNTH | VERSE 2 | VERSE 2 | loop | BASS SYN | earlier loop drone note/pad
-block: BASS SYNTH | CHORUS 2 | SOLO | loop | BASS SYN | pre-recorded bass synth
+block: BASS SYNTH | CHORUS 2 | SOLO | play | BASS SYN | pre-recorded bass synth
 
 note: - End on Em9 chord.
 idea: - Vocal arrangement idea - Andy sings alone until 2nd verse, Jack stops for bridge, everyone back in for chorus.
