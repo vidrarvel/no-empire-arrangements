@@ -50,5 +50,7 @@ block: DRUMS | VERSE 1a | CHORUS 1 | live | Ivan Pat 1 | verse groove
 block: DRUMS | FILL | FILL | live | Drum fill
 block: DRUMS | VERSE 3a | CHORUS 2 | live | Ivan Pat 1 | verse groove
 block: DRUMS | FILL (END) | FILL (END) | live | Drum fill
+block: J VOX | CHORUS 1 | CHORUS 1 | live | J VOX CH
+block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH
 
 note: Bass to change to whole notes for post-1st-chorus.
