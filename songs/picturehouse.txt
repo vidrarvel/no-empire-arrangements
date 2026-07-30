@@ -58,11 +58,7 @@ block: IVAN | SOLO B | SOLO B | live | IVAN Pat 1c
 block: IVAN | BREAK | BREAK | live | Count / drums hold
 block: IVAN | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | IVAN Heartbeat
 
-note: Tempo ramps - 65 (piano solo, INTRO/VERSE 1) to 67 (whole band, LINK/VERSE 2) to 70 (CHORUS onward). Global tempo field set to 70 (main/final tempo); check section-by-section if you want exact per-section values.
-note: Solo into outro - Jack + Andy cut out, bass + drums hold, 1 bar of drums into piano. Jack shouldn't cut out before drums.
-note: Drums to be like a heartbeat - kick in at solo end, 8th notes.
-note: V2 piano - consider changing pattern to whole notes.
-note: Jack to build up more during 2nd chorus.
-note: Ivan to extend the fill going into the solo.
-note: Ivan to hold off ride in V2 (switch to hat instead).
-note: Migrated from picturehouse.md (source: "Song Arrangements" gsheet, migrated 2026-07-17).
+note: - Tempo ramps - 65 (piano solo, INTRO/VERSE 1) to 67 (whole band, LINK/VERSE 2) to 70 (CHORUS onward). Global tempo field set to 70 (main/final tempo)
+note: - Solo into outro - Jack + Andy cut out, bass + drums hold, 1 bar of drums into piano. Jack shouldn't cut out before drums.
+idea: - Drums to be like a heartbeat - kick in at solo end, 8th notes.
+idea: - V2 piano - consider changing pattern to whole notes.
