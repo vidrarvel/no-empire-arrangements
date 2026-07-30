@@ -42,5 +42,11 @@ block: BASS | INTERLUDE 1 | INTERLUDE 1 | live | BASS Ver
 block: BASS | VERSE 2 | VERSE 2 | live | BASS Ver
 block: BASS | PRECHORUS 2 | PRECHORUS 2 | live | BASS Pre
 block: BASS | CHORUS 2 | OUTRO | live | BASS Ch
+block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
+block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
+block: A VOX | PRECHORUS 1 | PRECHORUS 1 | live | A VOX PRE
+block: A VOX | PRECHORUS 2 | PRECHORUS 2 | live | A VOX PRE 2
+block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
+block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
 
 note: - No Looping (A on Bass)
