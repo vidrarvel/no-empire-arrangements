@@ -1,19 +1,18 @@
 title: NEON
 time: 4/4
-tempo: 138
+tempo: 142
 
-section: INTRO | 4 | 3 | Em
+section: INTRO | 8 | 3 | Em
+section: SOLO | 16 | 9
 section: VERSE 1a | 8 | 4 | Em
-section: VERSE 1b | 4 | 4 | Em Em Am B
-section: VERSE 1c | 8 | 5 | Em Em Am B
-section: VERSE 1d | 8 | 6 | C Am Em B
+section: VERSE 1b | 8 | 4 | Em Em Am B
+section: PRECHORUS 1 | 8 | 6
 section: CHORUS 1 | 16 | 8 | C#m B F#m G#m
-section: TRANSITION | 4 | 5 | Em Em Am B
-section: VERSE 2a | 8 | 6 | Em Em Am B
-section: VERSE 2b | 8 | 7 | C Am Em B
+section: INTERLUDE | 8 | 5 | Em Em Am B
+section: VERSE 2 | 8 | 6 | Em Em Am B
+section: PRECHORUS 2 | 8 | 7
 section: CHORUS 2 | 16 | 8 | C#m B F#m G#m
-section: SOLO | 16 | 9 | C#m B F#m G#m
-section: CHORUS 3 | 16 | 9 | C#m B F#m G#m
+section: OUTRO | 12 | 5
 
 row: VOX
 row: SYNTH
@@ -22,58 +21,43 @@ row: JACK
 row: BASS
 row: IVAN
 
-block: VOX | VERSE 1c | VERSE 1d | live | V1
-block: VOX | VERSE 2a | VERSE 2b | live | V2
+block: VOX | VERSE 1a | VERSE 1b | live | V1
+block: VOX | VERSE 2 | VERSE 2 | live | V2
 block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
 block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
-block: VOX | CHORUS 3 | CHORUS 3 | live | Chorus
-block: SYNTH | INTRO | VERSE 1b | live | Synth Em
-block: SYNTH | VERSE 1d | VERSE 1d | live | Synth C
+block: SYNTH | INTRO | INTRO | live | Synth Em
 block: SYNTH | CHORUS 1 | CHORUS 1 | live | Synth E
-block: SYNTH | TRANSITION | TRANSITION | live | Synth E
-block: SYNTH | VERSE 2a | VERSE 2a | live | Synth Em
-block: SYNTH | VERSE 2b | VERSE 2b | live | Synth C
+block: SYNTH | INTERLUDE | INTERLUDE | live | Synth E
+block: SYNTH | VERSE 2 | VERSE 2 | live | Synth Em
 block: SYNTH | CHORUS 2 | CHORUS 2 | live | Synth E
-block: SYNTH | SOLO | SOLO | live | Synth E
-block: SYNTH | CHORUS 3 | CHORUS 3 | live | Synth E
 block: GTR | VERSE 1a | VERSE 1a | live | Em strum
-block: GTR | VERSE 1b | VERSE 1d | live | GTR Ver Pat 1 | open with big strum
+block: GTR | VERSE 1b | VERSE 1b | live | GTR Ver Pat 1 | open with big strum
 block: GTR | CHORUS 1 | CHORUS 1 | live | GTR Ch Pat 1
-block: GTR | VERSE 2a | VERSE 2b | live | GTR Ver Pat 1
+block: GTR | VERSE 2 | VERSE 2 | live | GTR Ver Pat 1
 block: GTR | CHORUS 2 | CHORUS 2 | live | GTR Ch Pat 1
-block: GTR | SOLO | SOLO | live | GTR Ch Pat 1
-block: GTR | CHORUS 3 | CHORUS 3 | live | GTR Ch Pat 1
 block: JACK | VERSE 1a | VERSE 1a | live | Ascending riff
 block: JACK | VERSE 1b | VERSE 1b | live | Big strum, let ring out | Em bars
-block: JACK | VERSE 1d | VERSE 1d | live | Arp riff
 block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus arp riff
-block: JACK | TRANSITION | TRANSITION | live | Transition riff
-block: JACK | VERSE 2b | VERSE 2b | live | Arp riff
+block: JACK | INTERLUDE | INTERLUDE | live | Transition riff
+block: JACK | VERSE 2 | VERSE 2 | live | Arp riff
 block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus arp riff
-block: JACK | SOLO | SOLO | live | Solo
-block: JACK | CHORUS 3 | CHORUS 3 | live | Riff out
+block: JACK | OUTRO | OUTRO | live | Riff out
 block: BASS | VERSE 1a | VERSE 1a | live | Doubled 8th roots
 block: BASS | VERSE 1b | VERSE 1b | live | Straight 8th roots
-block: BASS | VERSE 1c | VERSE 1c | live | Whole notes
-block: BASS | VERSE 1d | VERSE 1d | live | Straight 8th notes
 block: BASS | CHORUS 1 | CHORUS 1 | live | Chorus bass
-block: BASS | TRANSITION | TRANSITION | live | Doubled 8th roots
-block: BASS | VERSE 2a | VERSE 2a | live | Whole notes
-block: BASS | VERSE 2b | VERSE 2b | live | Straight 8th notes
+block: BASS | INTERLUDE | INTERLUDE | live | Doubled 8th roots
+block: BASS | VERSE 2 | VERSE 2 | live | Whole notes
 block: BASS | CHORUS 2 | CHORUS 2 | live | Chorus bass
-block: BASS | SOLO | SOLO | live | Chorus bass
-block: BASS | CHORUS 3 | CHORUS 3 | live | Chorus bass
 block: IVAN | INTRO | INTRO | live | Count in | last bar
 block: IVAN | VERSE 1a | VERSE 1a | live | IVAN Pat 1 | on hats
 block: IVAN | VERSE 1b | VERSE 1b | live | IVAN Pat 1a | on ride
-block: IVAN | VERSE 1c | VERSE 1c | live | IVAN Pat 1
-block: IVAN | VERSE 1d | VERSE 1d | live | IVAN Pat 1a
 block: IVAN | CHORUS 1 | CHORUS 1 | live | IVAN Pat 1a
-block: IVAN | TRANSITION | TRANSITION | live | IVAN Pat 1
-block: IVAN | VERSE 2a | VERSE 2a | live | IVAN Pat 1
-block: IVAN | VERSE 2b | VERSE 2b | live | IVAN Pat 1
+block: IVAN | INTERLUDE | INTERLUDE | live | IVAN Pat 1
+block: IVAN | VERSE 2 | VERSE 2 | live | IVAN Pat 1
 block: IVAN | CHORUS 2 | CHORUS 2 | live | IVAN Pat 1a
-block: IVAN | SOLO | SOLO | live | IVAN Pat 1b | more accents & splashes
-block: IVAN | CHORUS 3 | CHORUS 3 | live | IVAN Pat 1b
+block: IVAN | OUTRO | OUTRO | live | IVAN Pat 1b
 
 idea: - Consider shortening the vocal melody (half syllables) or changing it for V2.
+note: Structure rebuilt from the live Ableton set (SECTIONS +CLIPCOLORS track, bars 640-758) per Andy's confirmation this is the correct/current pass. Real changes vs. the old chart: SOLO now sits right after the Intro (bars 650-666, before any vocal comes in), not near the end; VERSE 1 is now just two 8-bar halves (was four subsections a-d); two 8-bar PRECHORUS sections were added before each chorus (didn't exist before); TRANSITION is renamed INTERLUDE; VERSE 2 is now a single 8-bar section (was two 8-bar halves, 16 bars total); and the song now ends on a 12-bar OUTRO instead of a third full CHORUS.
+note: Tempo corrected to 142bpm. Notion's Songs Database property and the release/Spotify-pitch blurb both independently say 142; live Ableton tempo at this pass reads ~144-145 (normal rehearsal drift, not a discrepancy). The old chart's 138 was the error.
+note: Blocks carried over as-is only where the section still exists basically unchanged (VERSE 1a, CHORUS 1, CHORUS 2). Everywhere else is a best-effort remap, not a re-verified one - flagging what's uncertain: SOLO's instrumentation is unconfirmed at its new early position (all the old SOLO blocks assumed it sat over the chorus vamp near the end - GTR/JACK/BASS/IVAN parts for the new early SOLO are not documented here and need filling in from scratch); PRECHORUS 1 and PRECHORUS 2 have zero block data - nobody's parts for these are written down yet; VERSE 2 merged two old 8-bar halves (VERSE 2a "whole notes"/Em chords, VERSE 2b "straight 8th notes"/C chords) into one 8-bar section - kept the VERSE 2a versions (whole notes, Em-ish chords) and dropped the VERSE 2b versions, so check that's actually the half that survived; OUTRO's JACK "Riff out" and IVAN "Pat 1b" blocks are carried over from the old CHORUS 3 (the song's previous ending) since that's the closest analog, not confirmed against the actual outro recording.
