@@ -2,17 +2,17 @@ title: NEON
 time: 4/4
 tempo: 142
 
-section: INTRO | 8 | 3 | Em
-section: SOLO | 16 | 9
-section: VERSE 1a | 8 | 4 | Em
-section: VERSE 1b | 8 | 4 | Em Em Am B
-section: PRECHORUS 1 | 8 | 6
+section: INTRO | 8 | 3 | Em Am B
+section: SOLO | 16 | 9 | Em Am B
+section: VERSE 1a | 8 | 4 | Em Am B
+section: VERSE 1b | 8 | 4 | Em Am B
+section: PRECHORUS 1 | 8 | 6 | C Am
 section: CHORUS 1 | 16 | 8 | C#m B F#m G#m
 section: INTERLUDE | 8 | 5 | Em Em Am B
-section: VERSE 2 | 8 | 6 | Em Em Am B
-section: PRECHORUS 2 | 8 | 7
+section: VERSE 2 | 8 | 6 | Em Am B
+section: PRECHORUS 2 | 8 | 7 | C Am
 section: CHORUS 2 | 16 | 8 | C#m B F#m G#m
-section: OUTRO | 12 | 5
+section: OUTRO | 12 | 5 | Em Am B
 
 row: A VOX
 row: A GTR
@@ -27,6 +27,10 @@ block: A VOX | VERSE 2 | VERSE 2 | live | V2
 block: A VOX | CHORUS 1 | CHORUS 1 | live | Chorus
 block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
 block: BASS SYNTH | INTRO | INTRO | rec | BASS SYN/PAD | loop drone note/pad
+block: BASS SYNTH | SOLO | VERSE 1b | loop | BASS SYN | verse loop
+block: BASS SYNTH | VERSE 2 | VERSE 2 | loop | BASS SYN | verse loop
+block: BASS SYNTH | CHORUS 1 | CHORUS 1 | loop | BASS SYN | pre-recorded loop
+block: BASS SYNTH | CHORUS 2 | CHORUS 2 | loop | BASS SYN | pre-recorded loop
 block: A GTR | VERSE 1a | VERSE 1a | live | Em strum
 block: A GTR | VERSE 1b | VERSE 1b | live | GTR Ver Pat 1 | open with big strum
 block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Ch Pat 1
