@@ -7,7 +7,7 @@ section: INTRO 2 | 8 | 3
 section: VERSE 1 | 16 | 4 | Eaad9 C#m9 Asus2#11
 section: PRECHORUS 1 | 8 | 6 | A2 Baad11
 section: CHORUS 1 | 16 | 8 | C#m Baad11 G#m A | 135
-section: INTERLUDE 1 | 8 | 4
+section: INTERLUDE 1 | 8 | 4 | Eaad9 C#m9 Asus2#11
 section: VERSE 2 | 16 | 4 | Eaad9 C#m9 Asus2#11 | 133
 section: PRECHORUS 2 | 16 | 6 | A2 Baad11
 section: CHORUS 2 | 16 | 9 | C#m Baad11 G#m A | 135
