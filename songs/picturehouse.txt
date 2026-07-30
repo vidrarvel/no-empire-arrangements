@@ -28,28 +28,19 @@ block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
 block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
 block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
 block: A VOX | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | A VOX V3
-block: PIANO | INTRO 1 | INTRO 2 | rec | Verse chords | solo piano
-block: PIANO | VERSE 1 | VERSE 2 | loop | Verse chords | looped playback
+block: PIANO | INTRO 1 | INTRO 1 | rec | Verse chords | solo piano
+block: PIANO | INTRO 2 | VERSE 2 | loop | Verse chords | looped playback
 block: PIANO | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | PIANO VER
-block: A GTR | VERSE 2 | VERSE 2 | live | Verse riff
+block: A GTR | INTERLUDE | VERSE 2 | live | A GTR | 12th fret riff
 block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Pat 1
 block: A GTR | CHORUS 2 | CHORUS 2 | live | GTR Pat 2
 block: A GTR | SOLO A | SOLO A | live | GTR Pat 2 | distorted
 block: A GTR | SOLO B | SOLO B | live | GTR Pat 3
-block: J GTR | INTERLUDE | INTERLUDE | live | JACK Ver Pat 1 | band enters here
-block: J GTR | VERSE 2 | VERSE 2 | live | JACK Ver Pat 1
 block: J GTR | CHORUS 1 | CHORUS 1 | live | JACK Ch Riff Pat 1
 block: J GTR | CHORUS 2 | CHORUS 2 | live | JACK Ch Riff Pat 1
 block: J GTR | SOLO A | SOLO B | live | Solo
-block: BASS | VERSE 1 | VERSE 1 | live | CAM Verse Pat 1 | joins 2nd line, when vox comes in
-block: BASS | INTERLUDE | INTERLUDE | live | Fill
-block: BASS | VERSE 2 | VERSE 2 | live | CAM Verse Pat 1
-block: BASS | CHORUS 1 | CHORUS 1 | live | CAM Ch Pat 1
-block: BASS | CHORUS 2 | CHORUS 2 | live | CAM Ch Pat 1a
-block: BASS | SOLO A | SOLO B | live | CAM Ch Pat 1a
 
 note: - Tempo ramps - 65 (piano solo, INTRO/VERSE 1) to 67 (whole band, LINK/VERSE 2) to 70 (CHORUS onward). Global tempo field set to 70 (main/final tempo)
 note: - Solo into outro - Jack + Andy cut out, bass + drums hold, 1 bar of drums into piano. Jack shouldn't cut out before drums.
-note: Structure corrected against the live Ableton set (SECTIONS +CLIPCOLORS track, bars 235-307). Real changes: INTRO split into two 4-bar sections (INTRO 1, INTRO 2) per Andy's confirmation - the old single 8-bar INTRO was right about total length but wrong about it being one section; VERSE 1 is now 4 bars, not 8 (the other 4 bars of the old VERSE 1 were actually INTRO 2); SOLO total corrected from 16 to 17 bars to match Ableton's single Solo clip - the extra bar was added to SOLO B, not confirmed which half it actually belongs to; BREAK + VERSE 3 (OUTRO) corrected from 9 to 12 bars to match Ableton's "Verse 3 {quiet}" clip - the extra 3 bars were added to VERSE 3 (OUTRO), BREAK kept at 1, also not confirmed; added a new 1-bar ENDING section matching Ableton's final clip, which the chart didn't have at all before. Only one block needed remapping: PIANO's solo-piano rec block now spans INTRO 1 to INTRO 2 instead of the old single INTRO.
 idea: - Drums to be like a heartbeat - kick in at solo end, 8th notes.
 idea: - V2 piano - consider changing pattern to whole notes.
