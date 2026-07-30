@@ -2,8 +2,8 @@ title: NEON
 time: 4/4
 tempo: 142
 
-section: INTRO | 8 | 3 | Em Am B
-section: SOLO | 16 | 9 | Em Am B
+section: INTRO | 8 | 3 | Em
+section: SOLO | 16 | 9 | Em
 section: VERSE 1a | 8 | 4 | Em Am B
 section: VERSE 1b | 8 | 4 | Em Am B
 section: PRECHORUS 1 | 8 | 6 | C Am
@@ -12,7 +12,7 @@ section: INTERLUDE | 8 | 5 | Em Em Am B
 section: VERSE 2 | 8 | 6 | Em Am B
 section: PRECHORUS 2 | 8 | 7 | C Am
 section: CHORUS 2 | 16 | 8 | C#m B F#m G#m
-section: OUTRO | 12 | 5 | Em Am B
+section: OUTRO | 16 | 5 | C#m B F#m G#m
 
 row: A VOX
 row: A GTR
@@ -22,28 +22,31 @@ row: BASS SYNTH | Andy
 row: BASS
 row: DRUMS
 
-block: A VOX | VERSE 1a | VERSE 1b | live | V1
-block: A VOX | VERSE 2 | VERSE 2 | live | V2
-block: A VOX | CHORUS 1 | CHORUS 1 | live | Chorus
-block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: A VOX | VERSE 1a | VERSE 1b | live | A VOX V1
+block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
+block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
+block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
 block: BASS SYNTH | INTRO | INTRO | rec | BASS SYN/PAD | loop drone note/pad
 block: BASS SYNTH | SOLO | VERSE 1b | loop | BASS SYN VER | verse loop
 block: BASS SYNTH | INTERLUDE | VERSE 2 | loop | BASS SYN VER | verse loop
 block: BASS SYNTH | CHORUS 1 | CHORUS 1 | play | BASS SYN CH | pre-recorded loop
-block: A GTR | VERSE 1a | VERSE 1a | live | Em strum
-block: A GTR | VERSE 1b | VERSE 1b | live | GTR Ver Pat 1 | open with big strum
-block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Ch Pat 1
-block: A GTR | VERSE 2 | VERSE 2 | live | GTR Ver Pat 1
-block: A GTR | CHORUS 2 | CHORUS 2 | live | GTR Ch Pat 1
-block: J GTR | VERSE 1a | VERSE 1a | live | Ascending riff
-block: J GTR | VERSE 1b | VERSE 1b | live | Big strum, let ring out | Em bars
-block: J GTR | CHORUS 1 | CHORUS 1 | live | Chorus arp riff
-block: J GTR | INTERLUDE | INTERLUDE | live | Transition riff
-block: J GTR | VERSE 2 | VERSE 2 | live | Arp riff
-block: J GTR | CHORUS 2 | CHORUS 2 | live | Chorus arp riff
-block: J GTR | OUTRO | OUTRO | live | Riff out
+block: A GTR | INTERLUDE | INTERLUDE | live | A GTR V2 | alt picking
+block: A GTR | CHORUS 2 | OUTRO | live | A GTR CH
 block: BASS SYNTH | CHORUS 2 | CHORUS 2 | play | BASS SYN CH | pre-recorded loop
 block: BASS SYNTH | PRECHORUS 1 | PRECHORUS 1 | play | BASS SYN PRE | pre-recorded loop
 block: BASS SYNTH | PRECHORUS 2 | PRECHORUS 2 | play | BASS SYN PRE | pre-recorded loop
+block: A GTR | PRECHORUS 2 | PRECHORUS 2 | live | A GTR PRE
+block: A GTR | PRECHORUS 1 | PRECHORUS 1 | live | A GTR PRE
+block: A GTR | CHORUS 1 | CHORUS 1 | live | A GTR CH
+block: A GTR | SOLO | SOLO | live | A GTR INTRO
+block: A GTR | VERSE 1a | VERSE 1b | live | A GTR V1 | strum
+block: J GTR | SOLO | SOLO | live | J GTR Intro
+block: J GTR | VERSE 1a | VERSE 1b | live | J GTR VER
+block: J GTR | PRECHORUS 1 | PRECHORUS 1 | live | J GTR PRE
+block: J GTR | CHORUS 1 | CHORUS 1 | live | J GTR CH
+block: J GTR | INTERLUDE | INTERLUDE | live | J GTR INTER
+block: J GTR | PRECHORUS 2 | PRECHORUS 2 | live | J GTR PRE
+block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR CH
+block: J GTR | OUTRO | OUTRO | live | J GTR OUTRO
 
 idea: - Consider shortening the vocal melody (half syllables) or changing it for V2.
