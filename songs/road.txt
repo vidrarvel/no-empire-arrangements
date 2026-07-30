@@ -13,6 +13,7 @@ section: VERSE 3a | 8 | 5
 section: VERSE 3b | 8 | 6
 section: CHORUS 2 | 16 | 8
 section: FILL (END) | 2 | 3
+section: ENDING | 2 | 2
 
 row: A VOX
 row: A GTR
@@ -49,3 +50,4 @@ block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH
 block: J VOX | CHORUS 2 | CHORUS 2 | live | J VOX CH | (2nd half)
 
 note: Bass to change to whole notes for post-1st-chorus.
+note: Structure checked against the live Ableton set (SECTIONS +CLIPCOLORS track, bars 317-412, 94 bars). Ableton's clips are coarser than the chart: its "Intro" clip (16 bars) covers what the chart splits into INTRO+VERSE 1a; its "Chorus1"/"Chorus2" clips (18 bars each) cover CHORUS 1+FILL and CHORUS 2+FILL (END) respectively; and its "Interlude1"/"Interlude2" clips (8 bars each) line up with VERSE 2a and VERSE 3a. All of that already reconciled exactly with the existing chart - the only real gap was a trailing 2-bar "Ending" clip (410-412) the chart didn't have at all, so that's the only change made: added a new ENDING section (2 bars) at the very end.
