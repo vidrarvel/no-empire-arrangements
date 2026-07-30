@@ -14,9 +14,10 @@ section: BREAK | 1 | 2
 section: VERSE 3 (OUTRO) | 8 | 3
 
 row: A VOX
-row: PIANO | Andy
 row: A GTR
+row: PIANO | Andy
 row: J GTR
+row: BVs
 row: BASS
 row: DRUMS
 
