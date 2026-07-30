@@ -17,7 +17,7 @@ row: A VOX
 row: A GTR
 row: PIANO | Andy
 row: J GTR
-row: BVs
+row: J VOX
 row: BASS
 row: DRUMS
 
