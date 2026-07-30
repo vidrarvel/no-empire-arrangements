@@ -1,0 +1,26 @@
+title: PINK + BLAK
+time: 4/4
+tempo: 104
+
+section: INTRO 1 | 8 | 3
+section: INTRO 2 | 8 | 3
+section: VERSE 1 | 16 | 4
+section: INTERLUDE 1 | 8 | 4
+section: VERSE 2 | 16 | 5
+section: CHORUS 1 | 16 | 7
+section: INTERLUDE 2 | 8 | 5
+section: VERSE 3 | 16 | 5
+section: CHORUS 2 | 16 | 8
+section: OUTRO | 23 | 4
+section: ENDING | 2 | 2
+
+row: A VOX
+row: A GTR
+row: J GTR
+row: J VOX
+row: BASS
+row: DRUMS
+
+note: Key: G.
+note: New chart, bars taken straight from the live Ableton set (SECTIONS +CLIPCOLORS track, bars 938-1075, matches lyric "Hang my words in pink and black" at bars 954-970). Section names/lengths only - no blocks assigned yet, since real per-instrument parts aren't charted. Fill in blocks during rehearsal.
+idea: - Confirm section names/energy once the band has run it a few times.
