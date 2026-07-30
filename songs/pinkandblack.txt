@@ -21,6 +21,3 @@ row: J VOX
 row: BASS
 row: DRUMS
 
-note: Key: G.
-note: New chart, bars taken straight from the live Ableton set (SECTIONS +CLIPCOLORS track, bars 938-1075, matches lyric "Hang my words in pink and black" at bars 954-970). Section names/lengths only - no blocks assigned yet, since real per-instrument parts aren't charted. Fill in blocks during rehearsal.
-idea: - Confirm section names/energy once the band has run it a few times.
