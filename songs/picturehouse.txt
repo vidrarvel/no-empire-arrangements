@@ -51,3 +51,4 @@ note: - Tempo ramps - 65 (piano solo, INTRO/VERSE 1) to 67 (whole band, LINK/VER
 note: - Solo into outro - Jack + Andy cut out, bass + drums hold, 1 bar of drums into piano. Jack shouldn't cut out before drums.
 idea: - Drums to be like a heartbeat - kick in at solo end, 8th notes.
 idea: - V2 piano - consider changing pattern to whole notes.
+idea: - try out at 77 bpm - 70 too slow
