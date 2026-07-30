@@ -18,6 +18,7 @@ row: A VOX
 row: A GTR
 row: GTR SWELL | looped
 row: J GTR
+row: J VOX
 row: BASS SYNTH | looped
 row: DRUMS
 
@@ -33,7 +34,7 @@ block: A GTR | VERSE 3a | VERSE 3b | live | Fingerpicked
 block: A GTR | CHORUS 2 | CHORUS 2 | live | Chorus chords
 block: A GTR | FILL (END) | FILL (END) | live | Fill chord
 block: GTR SWELL | INTRO | INTRO | rec | Gtr swells | captured live
-block: GTR SWELL | VERSE 1a | VERSE 1b | loop | Gtr swells | sustaining underneath
+block: GTR SWELL | VERSE 1a | VERSE 2b | loop | Gtr swells | sustaining underneath
 block: BASS SYNTH | VERSE 1a | VERSE 1a | rec | Bass synth | captured live
 block: BASS SYNTH | VERSE 1b | CHORUS 1 | loop | Bass synth | prerecorded, comes on for chorus
 block: J GTR | INTRO | INTRO | live | Bg riff
