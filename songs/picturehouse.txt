@@ -4,7 +4,7 @@ tempo: 70
 
 section: INTRO | 8 | 2
 section: VERSE 1 | 8 | 3
-section: LINK | 4 | 4
+section: INTERLUDE | 4 | 4
 section: VERSE 2 | 8 | 5
 section: CHORUS 1 | 8 | 7
 section: CHORUS 2 | 8 | 8
@@ -20,11 +20,11 @@ row: J GTR
 row: BASS
 row: DRUMS
 
-block: A VOX | VERSE 1 | VERSE 1 | live | V1
-block: A VOX | VERSE 2 | VERSE 2 | live | V2
-block: A VOX | CHORUS 1 | CHORUS 1 | live | Chorus
-block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
-block: A VOX | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | V3
+block: A VOX | VERSE 1 | VERSE 1 | live | A VOX V1
+block: A VOX | VERSE 2 | VERSE 2 | live | A VOX V2
+block: A VOX | CHORUS 1 | CHORUS 1 | live | A VOX CH
+block: A VOX | CHORUS 2 | CHORUS 2 | live | A VOX CH
+block: A VOX | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | A VOX V3
 block: PIANO | INTRO | INTRO | rec | Verse chords | solo piano
 block: PIANO | VERSE 1 | VERSE 2 | loop | Verse chords | looped playback
 block: PIANO | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | Verse chords | gsheet had this on the GTR row, but notes + looping sheet say piano - check
@@ -33,18 +33,18 @@ block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Pat 1
 block: A GTR | CHORUS 2 | CHORUS 2 | live | GTR Pat 2
 block: A GTR | SOLO A | SOLO A | live | GTR Pat 2 | distorted
 block: A GTR | SOLO B | SOLO B | live | GTR Pat 3
-block: J GTR | LINK | LINK | live | JACK Ver Pat 1 | band enters here
+block: J GTR | INTERLUDE | INTERLUDE | live | JACK Ver Pat 1 | band enters here
 block: J GTR | VERSE 2 | VERSE 2 | live | JACK Ver Pat 1
 block: J GTR | CHORUS 1 | CHORUS 1 | live | JACK Ch Riff Pat 1
 block: J GTR | CHORUS 2 | CHORUS 2 | live | JACK Ch Riff Pat 1
 block: J GTR | SOLO A | SOLO B | live | Solo
 block: BASS | VERSE 1 | VERSE 1 | live | CAM Verse Pat 1 | joins 2nd line, when vox comes in
-block: BASS | LINK | LINK | live | Fill
+block: BASS | INTERLUDE | INTERLUDE | live | Fill
 block: BASS | VERSE 2 | VERSE 2 | live | CAM Verse Pat 1
 block: BASS | CHORUS 1 | CHORUS 1 | live | CAM Ch Pat 1
 block: BASS | CHORUS 2 | CHORUS 2 | live | CAM Ch Pat 1a
 block: BASS | SOLO A | SOLO B | live | CAM Ch Pat 1a
-block: DRUMS | LINK | LINK | live | IVAN Pat 1 | in
+block: DRUMS | INTERLUDE | INTERLUDE | live | IVAN Pat 1 | in
 block: DRUMS | VERSE 2 | VERSE 2 | live | IVAN Pat 1
 block: DRUMS | CHORUS 1 | CHORUS 1 | live | IVAN Pat 1a
 block: DRUMS | CHORUS 2 | CHORUS 2 | live | IVAN Pat 1a
