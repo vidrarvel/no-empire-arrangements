@@ -2,8 +2,8 @@ title: AM I REAL
 time: 4/4
 tempo: 134
 
-section: INTRO 1 | 8 | 2
-section: INTRO 2 | 8 | 3
+section: INTRO 1 | 8 | 2 | Eaad9 C#m9 Asus2#11
+section: INTRO 2 | 8 | 3 | Eaad9 C#m9 Asus2#11
 section: VERSE 1 | 16 | 4 | Eaad9 C#m9 Asus2#11
 section: PRECHORUS 1 | 8 | 6 | A2 Baad11
 section: CHORUS 1 | 16 | 8 | C#m Baad11 G#m A | 135
