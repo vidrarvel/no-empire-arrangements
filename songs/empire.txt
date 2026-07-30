@@ -16,7 +16,7 @@ section: ENDING | 2 | 3 | Em
 row: A VOX
 row: A GTR
 row: J GTR
-row: BVs
+row: J VOX
 row: BASS
 row: BASS SYNTH | Andy
 row: DRUMS
