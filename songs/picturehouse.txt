@@ -12,8 +12,9 @@ section: CHORUS 2 | 8 | 8 | F Dm Am Bb
 section: SOLO A | 8 | 8 | F Dm Am Bb
 section: SOLO B | 8 | 9 | F Dm Am Bb
 section: BREAK | 2 | 2
-section: VERSE 3 (OUTRO) | 11 | 3 | C Dm
-section: ENDING | 1 | 2
+section: INTERLUDE 2 | 4 | 4
+section: VERSE 3 (OUTRO) | 8 | 3 | C Dm
+section: ENDING | 2 | 2
 
 row: A VOX
 row: A GTR
