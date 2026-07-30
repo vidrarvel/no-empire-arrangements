@@ -23,3 +23,7 @@ row: J VOX
 row: BASS
 row: DRUMS
 
+block: A VOX | OUTRO | OUTRO | live | A VOX OUTRO | shouted
+block: J GTR | INTERLUDE 2 | INTERLUDE 2 | live | J GTR Riff
+
+note: - No Looping (A on Bass)
