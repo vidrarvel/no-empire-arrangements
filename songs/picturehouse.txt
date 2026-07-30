@@ -45,14 +45,6 @@ block: BASS | VERSE 2 | VERSE 2 | live | CAM Verse Pat 1
 block: BASS | CHORUS 1 | CHORUS 1 | live | CAM Ch Pat 1
 block: BASS | CHORUS 2 | CHORUS 2 | live | CAM Ch Pat 1a
 block: BASS | SOLO A | SOLO B | live | CAM Ch Pat 1a
-block: DRUMS | INTERLUDE | INTERLUDE | live | IVAN Pat 1 | in
-block: DRUMS | VERSE 2 | VERSE 2 | live | IVAN Pat 1
-block: DRUMS | CHORUS 1 | CHORUS 1 | live | IVAN Pat 1a
-block: DRUMS | CHORUS 2 | CHORUS 2 | live | IVAN Pat 1a
-block: DRUMS | SOLO A | SOLO A | live | IVAN Pat 1b
-block: DRUMS | SOLO B | SOLO B | live | IVAN Pat 1c
-block: DRUMS | BREAK | BREAK | live | Count / drums hold
-block: DRUMS | VERSE 3 (OUTRO) | VERSE 3 (OUTRO) | live | IVAN Heartbeat
 
 note: - Tempo ramps - 65 (piano solo, INTRO/VERSE 1) to 67 (whole band, LINK/VERSE 2) to 70 (CHORUS onward). Global tempo field set to 70 (main/final tempo)
 note: - Solo into outro - Jack + Andy cut out, bass + drums hold, 1 bar of drums into piano. Jack shouldn't cut out before drums.
