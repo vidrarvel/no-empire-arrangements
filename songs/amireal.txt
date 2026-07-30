@@ -11,7 +11,7 @@ section: INTERLUDE 1 | 8 | 4 | Eaad9 C#m9 Asus2#11
 section: VERSE 2 | 16 | 4 | Eaad9 C#m9 Asus2#11 | 133
 section: PRECHORUS 2 | 16 | 6 | A2 Baad11
 section: CHORUS 2 | 16 | 9 | C#m Baad11 G#m A | 135
-section: INTERLUDE 2 | 8 | 5 |  | 135
+section: SOLO | 8 | 5 |  | 135
 section: OUTRO | 8 | 3 |  | 135
 section: ENDING | 2 | 2 |  | 135
 
@@ -24,10 +24,23 @@ row: BASS | Andy
 row: DRUMS
 
 block: A VOX | OUTRO | OUTRO | live | A VOX OUTRO | shouted
-block: J GTR | INTERLUDE 2 | INTERLUDE 2 | live | J GTR Riff
+block: J GTR | SOLO | SOLO | live | J GTR Riff
 block: J GTR | INTRO 2 | INTRO 2 | live | J GTR Intro
 block: J GTR | VERSE 1 | VERSE 1 | live | J GTR Ver
 block: J GTR | PRECHORUS 1 | PRECHORUS 1 | live | J GTR Pre
 block: J GTR | CHORUS 1 | CHORUS 1 | live | J GTR Ch
+block: J GTR | INTERLUDE 1 | INTERLUDE 1 | live | J GTR Ver
+block: J GTR | VERSE 2 | VERSE 2 | live | J GTR Ver
+block: J GTR | PRECHORUS 2 | PRECHORUS 2 | live | J GTR Pre
+block: J GTR | CHORUS 2 | CHORUS 2 | live | J GTR Ch
+block: J GTR | OUTRO | OUTRO | live | J GTR Ch
+block: BASS | INTRO 1 | INTRO 2 | live | BASS Intro
+block: BASS | VERSE 1 | VERSE 1 | live | BASS Ver
+block: BASS | PRECHORUS 1 | PRECHORUS 1 | live | BASS Pre
+block: BASS | CHORUS 1 | CHORUS 1 | live | BASS Ch
+block: BASS | INTERLUDE 1 | INTERLUDE 1 | live | BASS Ver
+block: BASS | VERSE 2 | VERSE 2 | live | BASS Ver
+block: BASS | PRECHORUS 2 | PRECHORUS 2 | live | BASS Pre
+block: BASS | CHORUS 2 | OUTRO | live | BASS Ch
 
 note: - No Looping (A on Bass)
