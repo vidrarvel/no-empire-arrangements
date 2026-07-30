@@ -14,47 +14,34 @@ section: PRECHORUS 2 | 8 | 7
 section: CHORUS 2 | 16 | 8 | C#m B F#m G#m
 section: OUTRO | 12 | 5
 
-row: VOX
-row: SYNTH
-row: GTR
-row: JACK
+row: A VOX
+row: A GTR
+row: J GTR
+row: J VOX
+row: BASS SYNTH | Andy
 row: BASS
-row: IVAN
+row: DRUMS
 
-block: VOX | VERSE 1a | VERSE 1b | live | V1
-block: VOX | VERSE 2 | VERSE 2 | live | V2
-block: VOX | CHORUS 1 | CHORUS 1 | live | Chorus
-block: VOX | CHORUS 2 | CHORUS 2 | live | Chorus
-block: SYNTH | INTRO | INTRO | live | Synth Em
-block: SYNTH | CHORUS 1 | CHORUS 1 | live | Synth E
-block: SYNTH | INTERLUDE | INTERLUDE | live | Synth E
-block: SYNTH | VERSE 2 | VERSE 2 | live | Synth Em
-block: SYNTH | CHORUS 2 | CHORUS 2 | live | Synth E
-block: GTR | VERSE 1a | VERSE 1a | live | Em strum
-block: GTR | VERSE 1b | VERSE 1b | live | GTR Ver Pat 1 | open with big strum
-block: GTR | CHORUS 1 | CHORUS 1 | live | GTR Ch Pat 1
-block: GTR | VERSE 2 | VERSE 2 | live | GTR Ver Pat 1
-block: GTR | CHORUS 2 | CHORUS 2 | live | GTR Ch Pat 1
-block: JACK | VERSE 1a | VERSE 1a | live | Ascending riff
-block: JACK | VERSE 1b | VERSE 1b | live | Big strum, let ring out | Em bars
-block: JACK | CHORUS 1 | CHORUS 1 | live | Chorus arp riff
-block: JACK | INTERLUDE | INTERLUDE | live | Transition riff
-block: JACK | VERSE 2 | VERSE 2 | live | Arp riff
-block: JACK | CHORUS 2 | CHORUS 2 | live | Chorus arp riff
-block: JACK | OUTRO | OUTRO | live | Riff out
-block: BASS | VERSE 1a | VERSE 1a | live | Doubled 8th roots
-block: BASS | VERSE 1b | VERSE 1b | live | Straight 8th roots
-block: BASS | CHORUS 1 | CHORUS 1 | live | Chorus bass
-block: BASS | INTERLUDE | INTERLUDE | live | Doubled 8th roots
-block: BASS | VERSE 2 | VERSE 2 | live | Whole notes
-block: BASS | CHORUS 2 | CHORUS 2 | live | Chorus bass
-block: IVAN | INTRO | INTRO | live | Count in | last bar
-block: IVAN | VERSE 1a | VERSE 1a | live | IVAN Pat 1 | on hats
-block: IVAN | VERSE 1b | VERSE 1b | live | IVAN Pat 1a | on ride
-block: IVAN | CHORUS 1 | CHORUS 1 | live | IVAN Pat 1a
-block: IVAN | INTERLUDE | INTERLUDE | live | IVAN Pat 1
-block: IVAN | VERSE 2 | VERSE 2 | live | IVAN Pat 1
-block: IVAN | CHORUS 2 | CHORUS 2 | live | IVAN Pat 1a
-block: IVAN | OUTRO | OUTRO | live | IVAN Pat 1b
+block: A VOX | VERSE 1a | VERSE 1b | live | V1
+block: A VOX | VERSE 2 | VERSE 2 | live | V2
+block: A VOX | CHORUS 1 | CHORUS 1 | live | Chorus
+block: A VOX | CHORUS 2 | CHORUS 2 | live | Chorus
+block: BASS SYNTH | INTRO | INTRO | live | Synth Em
+block: BASS SYNTH | CHORUS 1 | CHORUS 1 | live | Synth E
+block: BASS SYNTH | INTERLUDE | INTERLUDE | live | Synth E
+block: BASS SYNTH | VERSE 2 | VERSE 2 | live | Synth Em
+block: BASS SYNTH | CHORUS 2 | CHORUS 2 | live | Synth E
+block: A GTR | VERSE 1a | VERSE 1a | live | Em strum
+block: A GTR | VERSE 1b | VERSE 1b | live | GTR Ver Pat 1 | open with big strum
+block: A GTR | CHORUS 1 | CHORUS 1 | live | GTR Ch Pat 1
+block: A GTR | VERSE 2 | VERSE 2 | live | GTR Ver Pat 1
+block: A GTR | CHORUS 2 | CHORUS 2 | live | GTR Ch Pat 1
+block: J GTR | VERSE 1a | VERSE 1a | live | Ascending riff
+block: J GTR | VERSE 1b | VERSE 1b | live | Big strum, let ring out | Em bars
+block: J GTR | CHORUS 1 | CHORUS 1 | live | Chorus arp riff
+block: J GTR | INTERLUDE | INTERLUDE | live | Transition riff
+block: J GTR | VERSE 2 | VERSE 2 | live | Arp riff
+block: J GTR | CHORUS 2 | CHORUS 2 | live | Chorus arp riff
+block: J GTR | OUTRO | OUTRO | live | Riff out
 
 idea: - Consider shortening the vocal melody (half syllables) or changing it for V2.
